@@ -1,0 +1,10 @@
+.container {
+  width: 100%;
+  display: flex;
+  background-color: aqua;
+}
+
+.mainDisplay {
+  flex: 4;
+  background-color: #e0e0e0;
+}

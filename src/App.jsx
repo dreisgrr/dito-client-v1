@@ -1,7 +1,8 @@
 import React from "react";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import Landing from "./Landing";
-import Admin from "./Admin";
+import Landing from "./subscriber/pages/Landing";
+import AdminLogin from "./admin/pages/AdminLogin";
+import AdminHome from "./admin/pages/AdminHome";
 
 class App extends React.Component {
 
@@ -20,7 +21,12 @@ class App extends React.Component {
             <Route
               exact
               path='/admin'
-              element={<Admin/>}
+              element={<AdminLogin/>}
+            />
+            <Route
+              exact
+              path='/adminHome'
+              element={<AdminHome/>}
             />
           </Routes>
         </Router>
