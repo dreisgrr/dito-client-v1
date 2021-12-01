@@ -1,8 +1,6 @@
 import React from "react";
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Landing from "./subscriber/pages/Landing";
-import AdminLogin from "./admin/pages/AdminLogin";
-import AdminHome from "./admin/pages/AdminHome";
 
 class App extends React.Component {
 
@@ -12,24 +10,13 @@ class App extends React.Component {
   render() {
     return(
       <Router>
-      <Routes>
-            <Route
-              exact
-              path='/'
-              element={<Landing/>}
-            />
-            <Route
-              exact
-              path='/admin'
-              element={<AdminLogin/>}
-            />
-            <Route
-              exact
-              path='/adminHome'
-              element={<AdminHome/>}
-            />
-          </Routes>
-        </Router>
+        <Switch>
+          <Route exact path='/'>
+            <Landing />
+          </Route>
+          
+        </Switch>
+      </Router>
     )
   }
 }
