@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://172.31.31.220:4000/api/";
+const BASE_URL = "http://localhost:4000/api";
 const OTP_URL_REQUEST =
   "https://u7xnwkt996.execute-api.ap-southeast-1.amazonaws.com/DEV/generate";
 
@@ -29,7 +29,7 @@ export const requestOTP = axios.create({
   header: { "Content-Type": "application/json" },
 });
 
-const OTP_SEsendOTPNDER = "DITO APP";
-export const sendOTP = axios.create({
+const OTP_SENDER = "DITO APP";
+export const semaOTP = axios.create({
   baseURL: SEMAPHONE_ENDPOINT,
 });

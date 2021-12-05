@@ -12,7 +12,7 @@ import {
   registerSuccess,
   updateUserInfo,
 } from "./subscriberRedux";
-import { publicRequest, requestOTP, sendOTP } from "../requestMethods";
+import { publicRequest, requestOTP, semaOTP } from "../requestMethods";
 
 export const subscriberLogin = async (dispatch, subscriber) => {
   dispatch(loginStart());
@@ -113,7 +113,7 @@ export const loadUserPoints = async (dispatch, mobileNumber) => {
 };
 export const sendSemaOTP = async (dispatch, params) => {
   try {
-    const res = await sendOTP
+    const res = await semaOTP
       .post("", null, {
         params: { params },
       })
