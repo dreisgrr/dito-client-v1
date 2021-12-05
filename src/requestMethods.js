@@ -1,8 +1,12 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:4000/api/";
+const BASE_URL = "http://172.31.31.220:4000/api/";
 const OTP_URL_REQUEST =
   "https://u7xnwkt996.execute-api.ap-southeast-1.amazonaws.com/DEV/generate";
+
+const SEMAPHONE_OTP_KEY = "11b4d730c511892ea9af5991b2da8248";
+
+const SEMAPHONE_ENDPOINT = "https://api.semaphore.co/api/v4/otp";
 // const TOKEN =
 //   JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser
 //     .accessToken || "";
@@ -23,4 +27,9 @@ export const userRequest = axios.create({
 export const requestOTP = axios.create({
   baseURL: OTP_URL_REQUEST,
   header: { "Content-Type": "application/json" },
+});
+
+const OTP_SENDER = "DITO APP";
+export const semaOTP = axios.create({
+  baseURL: SEMAPHONE_ENDPOINT,
 });
