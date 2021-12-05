@@ -29,7 +29,7 @@ export const requestOTP = axios.create({
   header: { "Content-Type": "application/json" },
 });
 
-const OTP_SENDER = "DITO APP";
-export const semaOTP = axios.create({
+const OTP_SEsendOTPNDER = "DITO APP";
+export const sendOTP = axios.create({
   baseURL: SEMAPHONE_ENDPOINT,
 });
