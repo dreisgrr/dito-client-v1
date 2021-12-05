@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from "styled-components";
 import ditoLogo from "../../assets/img/logo.png";
+import { Link, useLocation } from 'react-router-dom';
+import "./form.css";
 
 const Container = styled.div`
     width: 100vw;
@@ -44,6 +46,10 @@ const Login = styled.button`
     opacity: 1;
     text-transform: uppercase;
     margin-top: 5%;
+    &:disabled {
+        background-color: grey;
+        cursor: not-allowed;
+}
 `;
 const Register = styled.button`
     width: 97%;
@@ -60,6 +66,10 @@ const Register = styled.button`
     opacity: 1;
     text-transform: uppercase;
     margin-top: 5%;
+    &:disabled {
+        background-color: grey;
+        cursor: not-allowed;
+    }
 `;
 
 const Landing = () => {
@@ -68,8 +78,8 @@ const Landing = () => {
             <Wrapper>
                 <DITOLogo/>
                 <Form>
-                    <Register>Register</Register>
-                    <Login>Log in</Login>
+                    <Link className={"formButtons "}  to={"/register"} style={{textDecoration: "none", color: 'white'}}><Register >Register</Register></Link>
+                    <Link className={"formButtons "} to={"/login"} style={{textDecoration: "none", color: 'white'}}><Login>Log in</Login></Link>
                 </Form>
             </Wrapper>
         </Container>

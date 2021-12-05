@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import styled from "styled-components";
 import ditoLogo from "../../assets/img/logo.png";
-import { subscriberLogin, subscriberGenerateOTP, resetLoginError, sunscriberOTPVerified, loadUserPoints } from "../../redux/apiCalls";
+import { sunscriberNotExists, sunscriberOTPVerified, subscriberGenerateOTP } from "../../redux/apiCalls";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 const Container = styled.div`
     width: 100vw;
@@ -30,6 +31,22 @@ const DITOLogo = styled.div`
 const Form = styled.form`
     display: flex;
     flex-wrap: wrap;
+`;
+const Login = styled.button`
+    width: 97%;
+    border: none;
+    padding: 15px 20px;
+    background: #052FB0 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 6px #0000001A;
+    border-radius: 10px;
+    opacity: 1;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    letter-spacing: 0px;
+    opacity: 1;
+    text-transform: uppercase;
+    margin-top: 5%;
 `;
 const Title = styled.h1`
     font-size: 28px;
@@ -66,12 +83,11 @@ const Prefix = styled.input`
     font-size: 20px;
     pointer-events:none;
 `;
-
 const Button = styled.button`
     width: 97%;
     border: none;
     padding: 15px 20px;
-    background: #052FB0 0% 0% no-repeat padding-box;
+    background: #707070 0% 0% no-repeat padding-box;
     box-shadow: 0px 0px 6px #0000001A;
     border-radius: 10px;
     opacity: 1;
@@ -94,26 +110,24 @@ const Error = styled.div`
     align-items: center;
 `;
 
-const Login = () => {
+const Register = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
+    const { isAuthenticated, isNewUser, smsOtp, isFetching, error, errorMessage} = useSelector((state) => state.subscriber);
     const [mobileNumber, setMobileNumber] = useState('');
     const [otp, setOtp] = useState('');
-    const { isRegistered, smsOtp, error, isFetching, errorMessage, currentUser} = useSelector((state) => state?.subscriber);
-    const { otpparams, setOtpparams} = useState({
-        'mobileNumber': mobileNumber,
-        'activity': "OTP"
-    })
-
+    console.log(mobileNumber)
     const handleLogin = (e) => {
         e.preventDefault();
-        subscriberLogin(dispatch, { mobileNumber });
+        if(mobileNumber.length<10) return
+        sunscriberNotExists(dispatch, { mobileNumber });
     }
 
     const verifyOTP = (e) => {
         e.preventDefault();
         if (otp == smsOtp) {
-            sunscriberOTPVerified(dispatch, mobileNumber);
-            loadUserPoints(dispatch, { mobileNumber });
+            sunscriberOTPVerified(dispatch, {mobileNumber});
+            history.push("/regDetails");
         }
     }
 
@@ -122,25 +136,26 @@ const Login = () => {
     } 
 
     useEffect(() => {
-        console.log("useEffect isRegistered");
+        console.log("useEffect isNewUser");
         subscriberGenerateOTP(dispatch,  {'mobileNumber': `0${mobileNumber}`});
-    }, [isRegistered])
+    }, [isNewUser])
 
     return (
         <Container>
             <Wrapper>
                 <DITOLogo/>
-                <Title>Log In</Title>
+                <Title>Registration</Title>
                 <Form>
-                    <Prefix hidden={isRegistered ? true : false } value="+63"></Prefix>
-                    <Input hidden={isRegistered ? true : false } maxLength="10" placeholder="Input your mobile number" type="tel" onChange={(e) => resetError(e.target.value)}></Input>
-                    <Button hidden={isRegistered ? true : false } onClick={ handleLogin } >Log in</Button>
-                    <Input hidden={isRegistered ? false : true } maxLength="6" placeholder="Enter your One Time Passcode (OTP)" type="tel" onChange={(e) => setOtp(e.target.value)}></Input>
-                    <Button hidden={isRegistered ? false : true } onClick={ verifyOTP } >Verify</Button>
+                    <Prefix hidden={isNewUser ? true : false } value="+63"></Prefix>
+                    <Input hidden={isNewUser ? true : false } placeholder="Input your mobile number" maxLength="10" placeholder="Input your mobile number" type="tel" onChange={(e) => resetError(e.target.value)}></Input>
+                    <Button hidden={isNewUser ? true : false } onClick={ handleLogin } >Proceed</Button>
+                    <Input hidden={isNewUser ? false : true } maxLength="6" placeholder="Enter your One Time Passcode (OTP)" type="tel" onChange={(e) => setOtp(e.target.value)}></Input>
+                    <Button hidden={isNewUser ? false : true } onClick={ verifyOTP } >Verify</Button>
                 </Form>
+                <Error hidden={error ? false : true }>{errorMessage}</Error>
             </Wrapper>
         </Container>
     )
 }
 
-export default Login
+export default Register
