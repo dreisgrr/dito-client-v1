@@ -7,6 +7,10 @@ const OTP_URL_REQUEST =
 const SEMAPHONE_OTP_KEY = "11b4d730c511892ea9af5991b2da8248";
 
 const SEMAPHONE_ENDPOINT = "https://api.semaphore.co/api/v4/otp";
+
+const TWILIO_ENDPOINT = "https://verify.twilio.com/v2/";
+const TWILIO_ACC_ID = "ACf9e08bd70e810953eda95713df7c2ab1";
+const TWILIO_AUTH_KEY = "2ca3439932cc178f3504b64c8f2385f8";
 // const TOKEN =
 //   JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser
 //     .accessToken || "";
@@ -17,6 +21,7 @@ const TOKEN = currentUser?.accessToken;
 
 export const publicRequest = axios.create({
   baseURL: BASE_URL,
+  header: { "Content-Type": "application/json" },
 });
 
 export const userRequest = axios.create({
