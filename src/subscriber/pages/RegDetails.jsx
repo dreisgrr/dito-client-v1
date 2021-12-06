@@ -118,6 +118,7 @@ const RegDetails = () => {
             privacy: true,
             marketing: true,
         }
+        console.log("mobile"+mobileNumber)
         subscriberRegister(dispatch, { mobileNumber, name, email, address, consent });
     }
 

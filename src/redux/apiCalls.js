@@ -31,6 +31,7 @@ export const subscriberLogin = async (dispatch, subscriber) => {
 };
 
 export const sunscriberNotExists = async (dispatch, subscriber) => {
+  console.log("params" + subscriber);
   dispatch(loginStart());
   try {
     console.log("is Not Existing: " + subscriber);
@@ -38,7 +39,6 @@ export const sunscriberNotExists = async (dispatch, subscriber) => {
       "/auth/subscriber/ifNotExists",
       subscriber
     );
-    //const { data } = res;
     dispatch(notRegisteredsuccess(res));
     console.log("res" + res);
   } catch (err) {
@@ -55,15 +55,36 @@ export const resetLoginError = (dispatch) => {
 };
 
 export const subscriberGenerateOTP = async (dispatch, phone) => {
-  console.log("Request for OTP sent");
-  console.log("phone: " + { phone });
   dispatch(verifyOTPstart());
   try {
     console.log("API call - generate OTP", phone);
-    const res = await requestOTP.post("", phone);
-    const { data } = res;
-    console.log(data);
-    dispatch(verifyOTPCreated(data));
+    //const res = await requestOTP.post("", phone);
+
+    const res = await publicRequest.post("/auth/subscriber/otp/generate", {
+      mobileNumber: phone,
+    });
+
+    console.log(res);
+    dispatch(verifyOTPCreated(res));
+  } catch (err) {
+    if (err) {
+      const errorMessage = err.errorMessage;
+      dispatch(verifyOTPfRequestError(err));
+    }
+  }
+};
+
+export const subscriberVerifyOTP = async (dispatch, user) => {
+  dispatch(verifyOTPstart());
+  try {
+    console.log(`API call - verify OTP: ${user}`);
+
+    const res = await publicRequest.post("/auth/subscriber/otp/verify", {
+      mobileNumber: user.mobileNumber,
+      code: user.otp,
+    });
+    console.log(res.data);
+    dispatch(verifyOTPCreated(res.data));
   } catch (err) {
     if (err) {
       const errorMessage = err.errorMessage;

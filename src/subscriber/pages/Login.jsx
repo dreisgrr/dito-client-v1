@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import styled from "styled-components";
 import ditoLogo from "../../assets/img/logo.png";
-import { subscriberLogin, subscriberGenerateOTP, resetLoginError, sunscriberOTPVerified, loadUserPoints } from "../../redux/apiCalls";
+import { subscriberLogin, subscriberGenerateOTP, resetLoginError, sunscriberOTPVerified, loadUserPoints , subscriberVerifyOTP} from "../../redux/apiCalls";
 import { useDispatch, useSelector } from "react-redux";
 
 const Container = styled.div`
@@ -111,10 +111,8 @@ const Login = () => {
 
     const verifyOTP = (e) => {
         e.preventDefault();
-        if (otp == smsOtp) {
-            sunscriberOTPVerified(dispatch, mobileNumber);
-            loadUserPoints(dispatch, { mobileNumber });
-        }
+        subscriberVerifyOTP(dispatch, {mobileNumber, otp});
+        
     }
 
     const resetError = (mobileNumber) => {
@@ -123,8 +121,16 @@ const Login = () => {
 
     useEffect(() => {
         console.log("useEffect isRegistered");
-        subscriberGenerateOTP(dispatch,  {'mobileNumber': `0${mobileNumber}`});
+        subscriberGenerateOTP(dispatch, mobileNumber);
     }, [isRegistered])
+
+    useEffect(() => {
+        if(smsOtp) {
+            console.log("useEffect valid OTP");
+            sunscriberOTPVerified(dispatch, mobileNumber);
+            loadUserPoints(dispatch, { mobileNumber });
+        }
+    }, [smsOtp])
 
     return (
         <Container>

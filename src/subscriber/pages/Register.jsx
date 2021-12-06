@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import styled from "styled-components";
 import ditoLogo from "../../assets/img/logo.png";
-import { sunscriberNotExists, sunscriberOTPVerified, subscriberGenerateOTP } from "../../redux/apiCalls";
+import { sunscriberNotExists, sunscriberOTPVerified, subscriberGenerateOTP, subscriberVerifyOTP } from "../../redux/apiCalls";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -113,7 +113,7 @@ const Error = styled.div`
 const Register = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const { isAuthenticated, isNewUser, smsOtp, isFetching, error, errorMessage} = useSelector((state) => state.subscriber);
+    const { isAuthenticated, isNewUser, smsOtp, isFetching, error, errorMessage, tempNumber} = useSelector((state) => state.subscriber);
     const [mobileNumber, setMobileNumber] = useState('');
     const [otp, setOtp] = useState('');
     console.log(mobileNumber)
@@ -125,10 +125,7 @@ const Register = () => {
 
     const verifyOTP = (e) => {
         e.preventDefault();
-        if (otp == smsOtp) {
-            sunscriberOTPVerified(dispatch, {mobileNumber});
-            history.push("/regDetails");
-        }
+        subscriberVerifyOTP(dispatch, {mobileNumber, otp});
     }
 
     const resetError = (mobileNumber) => {
@@ -136,9 +133,15 @@ const Register = () => {
     } 
 
     useEffect(() => {
-        console.log("useEffect isNewUser");
-        subscriberGenerateOTP(dispatch,  {'mobileNumber': `0${mobileNumber}`});
+        subscriberGenerateOTP(dispatch, mobileNumber);
     }, [isNewUser])
+
+    useEffect(() => {
+        if(smsOtp){
+            sunscriberOTPVerified(dispatch, mobileNumber);
+            history.push("/regDetails");
+        }
+    }, [smsOtp])
 
     return (
         <Container>

@@ -11,9 +11,9 @@ const subscriberSlice = createSlice({
     isNewUser: false,
     isAuthenticated: false,
     raffleEntry: false,
-    mobileNumber: "",
+    tempNumber: "",
     tempUser: null,
-    smsOtp: "",
+    smsOtp: false,
     otpMaxRequest: 3,
   },
   reducers: {
@@ -26,6 +26,7 @@ const subscriberSlice = createSlice({
       state.isFetching = false;
       state.isRegistered = true;
       state.tempUser = action.payload;
+      state.isAuthenticated = false;
     },
     loginFailure: (state, action) => {
       state.isFetching = false;
@@ -42,9 +43,8 @@ const subscriberSlice = createSlice({
       state.errorMessage = "";
     },
     verifyOTPCreated: (state, action) => {
-      const { otp } = action.payload;
       state.isFetching = false;
-      state.smsOtp = otp;
+      state.smsOtp = action.payload.valid;
     },
     verifyOTPfRequestError: (state, action) => {
       state.isFetching = false;
@@ -54,7 +54,7 @@ const subscriberSlice = createSlice({
     verifyOTPVerifySuccess: (state, action) => {
       state.currentUser = state.tempUser;
       state.isAuthenticated = true;
-      state.mobileNumber = action.payload.mobileNumber;
+      state.mobileNumber = action.payload;
       state.tempUser = null;
       state.errorMessage = "";
       state.error = false;
@@ -62,7 +62,7 @@ const subscriberSlice = createSlice({
       state.isFetching = false;
       state.isRegistered = false;
       state.isNewUser = false;
-      state.smsOtp = "";
+      state.smsOtp = false;
     },
     verifyOTPVerifyFail: (state) => {
       state.isFetching = false;
@@ -70,9 +70,9 @@ const subscriberSlice = createSlice({
       state.errorMessage = "Invalid OTP";
     },
     notRegisteredsuccess: (state, action) => {
-      console.log("test");
       state.isFetching = false;
       state.isNewUser = true;
+      state.tempNumber = "";
     },
     isRegistered: (state) => {
       state.isFetching = false;
@@ -88,7 +88,7 @@ const subscriberSlice = createSlice({
       state.isAuthenticated = false;
       state.mobileNumber = "";
       state.tempUser = null;
-      state.smsOtp = "";
+      state.smsOtp = false;
       state.otp = "";
       state.currentUser = action.payload;
     },
