@@ -61,7 +61,8 @@ function  App() {
       //   </Switch>
       // </Router>
       <div className="container">
-          <DITOLogo/>
+          {/* <DITOLogo/> */}
+          <div className="maintenance"></div>
 
       </div>
     )
