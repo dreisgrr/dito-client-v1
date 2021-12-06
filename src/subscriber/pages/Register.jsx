@@ -113,7 +113,7 @@ const Error = styled.div`
 const Register = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const { isAuthenticated, isNewUser, smsOtp, isFetching, error, errorMessage, tempNumber} = useSelector((state) => state.subscriber);
+    const { isAuthenticated, isNewUser, smsOtp, isFetching, error, errorMessage} = useSelector((state) => state.subscriber);
     const [mobileNumber, setMobileNumber] = useState('');
     const [otp, setOtp] = useState('');
     console.log(mobileNumber)

@@ -30,41 +30,41 @@ function  App() {
   const subscriber = useSelector((state) => state.subscriber?.currentUser);
   const auth = useSelector((state) => state.subscriber?.isAuthenticated);
     return(
-      <Router>
-        <Switch>
-          <Route exact path='/landing'>
-            {subscriber ? <Redirect to='/' /> : <Landing />}
-          </Route>
-          <Route exact path='/register'>
-            {subscriber ? <Redirect to='/' /> : <Register />}
-          </Route>
-          <Route exact path='/login'>
-            {subscriber ? <Redirect to='/' /> : <Login />}
-          </Route>
-          <Route exact path='/regDetails'>
-            {auth ? <RegDetails /> : <Redirect to='/' />}
-          </Route>
-          <Route exact path='/'>
-            {subscriber ?
-            <>
-              <Topbar/>
-              <div className="container">
-              <Route exact path='/'>
-                <RafflePage />
-              </Route>
-              </div>
-            </> 
+      // <Router>
+      //   <Switch>
+      //     <Route exact path='/landing'>
+      //       {subscriber ? <Redirect to='/' /> : <Landing />}
+      //     </Route>
+      //     <Route exact path='/register'>
+      //       {subscriber ? <Redirect to='/' /> : <Register />}
+      //     </Route>
+      //     <Route exact path='/login'>
+      //       {subscriber ? <Redirect to='/' /> : <Login />}
+      //     </Route>
+      //     <Route exact path='/regDetails'>
+      //       {auth ? <RegDetails /> : <Redirect to='/' />}
+      //     </Route>
+      //     <Route exact path='/'>
+      //       {subscriber ?
+      //       <>
+      //         <Topbar/>
+      //         <div className="container">
+      //         <Route exact path='/'>
+      //           <RafflePage />
+      //         </Route>
+      //         </div>
+      //       </> 
             
-            : <Landing />}
-          </Route>
+      //       : <Landing />}
+      //     </Route>
           
-        </Switch>
-      </Router>
-      // <div className="container">
-      //     {/* <DITOLogo/> */}
-      //     <div className="maintenance"></div>
+      //   </Switch>
+      // </Router>
+      <div className="container">
+          {/* <DITOLogo/> */}
+          <div className="maintenance"></div>
 
-      // </div>
+      </div>
     )
 }
 
