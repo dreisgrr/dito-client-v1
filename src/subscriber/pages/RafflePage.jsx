@@ -66,6 +66,7 @@ const RaffleNumber = styled.h1`
     float: left;
     display: block;
     position: relative;
+    padding-bottom: 10px;
 `;
 const RaffleImage = styled.div`
     min-width: 70%;
@@ -82,11 +83,12 @@ const RaffleImage = styled.div`
 const RaffleHeader = styled.div`
     text-align: center;
     color: #151515;
+    margin-top: 15px;
 `;
 
 const RafflePage = () => {
-    const raffleEntry  = useSelector((state) => state.subscriber.raffleEntry.count)
-    console.log(raffleEntry)
+    let raffleEntry  = useSelector((state) => state.subscriber.raffleEntry.count)
+    if (!raffleEntry) raffleEntry = 0;
     return (
         <Container>
             <Wrapper>

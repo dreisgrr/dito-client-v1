@@ -29,10 +29,16 @@ const subscriberSlice = createSlice({
       state.tempUser = action.payload;
       state.isAuthenticated = false;
     },
+    loginSuccessPW: (state, action) => {
+      state.isFetching = false;
+      state.currentUser = action.payload;
+    },
     loginFailure: (state, action) => {
       state.isFetching = false;
       state.error = true;
       state.errorMessage = action.payload;
+      state.tempUser = null;
+      state.isNewUser = false;
     },
     resetLoginFormError: (state) => {
       state.error = false;
@@ -82,7 +88,6 @@ const subscriberSlice = createSlice({
       state.errorMessage = "Already registered!";
     },
     registerSuccess: (state, action) => {
-      console.log("register succcess");
       state.isFetching = false;
       state.isRegistered = false;
       state.isNewUser = false;
@@ -93,9 +98,10 @@ const subscriberSlice = createSlice({
       state.otp = "";
       state.currentUser = action.payload;
     },
-    registerPWSuccess: (state) => {
+    registerPWSuccess: (state, action) => {
       state.isFetching = false;
       state.isNewUser = true;
+      state.tempUser = action.payload;
       state.error = false;
       state.errorMessage = "";
     },
@@ -108,6 +114,7 @@ const subscriberSlice = createSlice({
 export const {
   loginStart,
   loginSuccess,
+  loginSuccessPW,
   loginFailure,
   resetLoginFormError,
   verifyOTPstart,

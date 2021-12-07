@@ -98,10 +98,8 @@ const RegDetails = () => {
     const [error, setError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
 
-    const { mobileNumber } = useSelector((state) => state.subscriber);
+    const { tempUser } = useSelector((state) => state.subscriber);
 
-    console.log(name);
-    console.log(email)
 
     const handleRegister = (e) => {
         console.log("handleRegister");
@@ -118,8 +116,8 @@ const RegDetails = () => {
             privacy: true,
             marketing: true,
         }
-        console.log("mobile"+mobileNumber)
-        subscriberRegister(dispatch, { mobileNumber, name, email, address, consent });
+        const { mobileNumber, password } = tempUser;
+        subscriberRegister(dispatch, { mobileNumber, password, name, email, address, consent });
     }
 
     const resetError = (mobileNumber) => {

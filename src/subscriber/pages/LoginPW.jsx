@@ -1,15 +1,8 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react'
 import styled from "styled-components";
-import axios from "axios";
-import dotenv from "dotenv"
 import ditoLogo from "../../assets/img/logo.png";
-import { useEffect, useState } from "react";
-import { sunscriberNotExistsPW, sunscriberNotExists, resetLoginError } from "../../redux/apiCalls";
+import { resetLoginError, subscriberLoginPW} from "../../redux/apiCalls";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-
-dotenv.config();
-
 
 const Container = styled.div`
     width: 100vw;
@@ -35,14 +28,14 @@ const DITOLogo = styled.div`
     justify-content: center;
     margin-bottom: 20%;
 `;
+const Form = styled.form`
+    display: flex;
+    flex-wrap: wrap;
+`;
 const Title = styled.h1`
     font-size: 28px;
     font-weight: 300;
     text-align: center;
-`;
-const Form = styled.form`
-    display: flex;
-    flex-wrap: wrap;
 `;
 const Input = styled.input`
     flex: 1;
@@ -59,6 +52,22 @@ const Input = styled.input`
     transition:background-color 0.5s ease;
     font-size: 20px;
 `;
+const Prefix = styled.input`
+    flex: 1;
+    max-width: 40px;
+    line-height: 30px;
+    margin: 20px 10px 0px 0px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 3px #0000001A;
+    border-radius: 6px;
+    opacity: 1;
+    border: none;
+    margin-bottom: 7%;
+    transition:background-color 0.5s ease;
+    font-size: 20px;
+    pointer-events:none;
+`;
+
 const Button = styled.button`
     width: 97%;
     border: none;
@@ -85,62 +94,33 @@ const Error = styled.div`
     justify-content: center;
     align-items: center;
 `;
-const Prefix = styled.input`
-    flex: 1;
-    max-width: 40px;
-    line-height: 30px;
-    margin: 20px 10px 0px 0px;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    box-shadow: 0px 0px 3px #0000001A;
-    border-radius: 6px;
-    opacity: 1;
-    border: none;
-    margin-bottom: 7%;
-    transition:background-color 0.5s ease;
-    font-size: 20px;
-    pointer-events:none;
-`;
 
-
-const RegisterThruPW = () => {
+const LoginPW = () => {
     const dispatch = useDispatch();
-    const history = useHistory();
-    const subscriber = useSelector((state) => state.subscriber?.currentUser);
-    // console.log("Remove"+ subscriber);
-    // if (!subscriber) {
-    //     localStorage.removeItem("persist:root");
-    // }
-    const [mobileNumber, setMobileNumber] = useState('');
-    const [password, setPassword] = useState("");
-    const { error, errorMessage, isNewUser, tempUser } = useSelector((state) =>  state.subscriber);
+    const [ mobileNumber, setMobileNumber ] = useState('');
+    const [ password, setPassword ] = useState("");
+    
+    const { error, errorMessage } = useSelector((state) => state?.subscriber);
 
-
-    const handleRegister = (e) => {
+    const handleLogin = (e) => {
         e.preventDefault();
-        sunscriberNotExistsPW(dispatch, { mobileNumber, password });
+        subscriberLoginPW(dispatch, { mobileNumber, password });
     }
 
-    const resetError = (formMobileNumber) => {
-        setMobileNumber(formMobileNumber);
+    const resetError = (mobileNumber) => {
+        setMobileNumber(mobileNumber);
     } 
-
-    useEffect(() => {
-        if( isNewUser || tempUser ){
-            history.push("/regDetails");
-        }
-    }, [isNewUser])
 
     return (
         <Container>
             <Wrapper>
                 <DITOLogo/>
-                <Title>Registration</Title>
+                <Title>Log In</Title>
                 <Form>
                     <Prefix value="+63"></Prefix>
-                    <Input placeholder="Input your mobile number" onFocus={(e) => resetLoginError(dispatch)} type="tel" onChange={(e) => resetError(e.target.value)}></Input>
-                    <Input placeholder="Password" type="password" onChange={(e)=>setPassword(e.target.value)}/>
-                    <Button onClick={ handleRegister } >Proceed</Button>
-                    
+                    <Input maxLength="10" placeholder="Input your mobile number" onFocus={(e) => resetLoginError(dispatch)} type="tel" onChange={(e)=>resetError(e.target.value)}/>
+                    <Input  placeholder="Input your password" type="password" onChange={(e)=>setPassword(e.target.value)}/>
+                    <Button onClick={ handleLogin } >Log in</Button>
                 </Form>
                 <Error hidden={error ? false : true }>{errorMessage}</Error>
             </Wrapper>
@@ -148,4 +128,4 @@ const RegisterThruPW = () => {
     )
 }
 
-export default RegisterThruPW
+export default LoginPW

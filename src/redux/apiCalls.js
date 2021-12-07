@@ -2,6 +2,7 @@ import {
   loginFailure,
   loginStart,
   loginSuccess,
+  loginSuccessPW,
   resetLoginFormError,
   verifyOTPstart,
   verifyOTPCreated,
@@ -18,11 +19,27 @@ import { publicRequest, requestOTP, semaOTP } from "../requestMethods";
 export const subscriberLogin = async (dispatch, subscriber) => {
   dispatch(loginStart());
   try {
-    console.log("login: " + subscriber);
     const res = await publicRequest.post("/auth/subscriber/login", subscriber);
     const { data } = res;
     console.log(data);
     dispatch(loginSuccess(data));
+  } catch (err) {
+    if (err.response) {
+      const errorMessage = err.response.data;
+      dispatch(loginFailure(errorMessage));
+    }
+  }
+};
+
+export const subscriberLoginPW = async (dispatch, subscriber) => {
+  console.log("apiCall - subscriberLoginPW");
+  dispatch(loginStart());
+  const { mobileNumber, password } = subscriber;
+  try {
+    const res = await publicRequest.post("/auth/subscriber/login", subscriber);
+    const { data } = res;
+    console.log(data);
+    dispatch(loginSuccessPW(data));
   } catch (err) {
     if (err.response) {
       const errorMessage = err.response.data;
@@ -50,18 +67,18 @@ export const sunscriberNotExists = async (dispatch, subscriber) => {
   }
 };
 export const sunscriberNotExistsPW = async (dispatch, subscriber) => {
-  console.log("params" + subscriber);
+  console.log("apiCall - sunscriberNotExistsPW");
+  console.log(JSON.stringify(subscriber));
   dispatch(loginStart());
   try {
-    console.log(subscriber);
-    console.log("Registration PW processing" + subscriber);
     const res = await publicRequest.post(
       "/auth/subscriber/registerPW",
       subscriber
     );
-    console.log(res);
-    //dispatch(loginSuccess(res.data));
-    registerPWSuccess(res);
+    const { config } = res;
+    const newUser = config.data;
+    console.log(newUser);
+    dispatch(registerPWSuccess(JSON.parse(newUser)));
   } catch (err) {
     if (err.response) {
       const errorMessage = err.response.data;
@@ -119,7 +136,14 @@ export const sunscriberOTPVerified = (dispatch, mobileNumber) => {
 };
 
 export const subscriberRegister = async (dispatch, subscriber) => {
-  console.log("subscriberRegister");
+  console.log("apiCall - subscriberRegister");
+  const { mobileNumber, password, name, email, address, consent } = subscriber;
+  console.log(mobileNumber);
+  console.log(password);
+  console.log(email);
+  console.log(name);
+  console.log(address);
+  console.log(consent);
   dispatch(loginStart());
   try {
     const res = await publicRequest.post(
