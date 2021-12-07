@@ -2,6 +2,7 @@ import React from "react";
 import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 import Landing from "./subscriber/pages/Landing";
 import Register from "./subscriber/pages/Register";
+import RegisterThruPW from "./subscriber/pages/RegisterThruPW";
 import Login from "./subscriber/pages/Login";
 import Home from "./subscriber/pages/Home";
 import RegDetails from "./subscriber/pages/RegDetails";
@@ -28,7 +29,7 @@ const DITOLogo = styled.div`
 
 function  App() {
   const subscriber = useSelector((state) => state.subscriber?.currentUser);
-  const auth = useSelector((state) => state.subscriber?.isAuthenticated);
+  const auth = useSelector((state) => state.subscriber?.isNewUser);
     return(
       // <Router>
       //   <Switch>
@@ -36,7 +37,7 @@ function  App() {
       //       {subscriber ? <Redirect to='/' /> : <Landing />}
       //     </Route>
       //     <Route exact path='/register'>
-      //       {subscriber ? <Redirect to='/' /> : <Register />}
+      //       {subscriber ? <Redirect to='/' /> : <RegisterThruPW />}
       //     </Route>
       //     <Route exact path='/login'>
       //       {subscriber ? <Redirect to='/' /> : <Login />}

@@ -150,7 +150,7 @@ const Register = () => {
                 <Title>Registration</Title>
                 <Form>
                     <Prefix hidden={isNewUser ? true : false } value="+63"></Prefix>
-                    <Input hidden={isNewUser ? true : false } placeholder="Input your mobile number" maxLength="10" placeholder="Input your mobile number" type="tel" onChange={(e) => resetError(e.target.value)}></Input>
+                    <Input hidden={isNewUser ? true : false } placeholder="Input your mobile number" maxLength="10" type="tel" onChange={(e) => resetError(e.target.value)}></Input>
                     <Button hidden={isNewUser ? true : false } onClick={ handleLogin } >Proceed</Button>
                     <Input hidden={isNewUser ? false : true } maxLength="6" placeholder="Enter your One Time Passcode (OTP)" type="tel" onChange={(e) => setOtp(e.target.value)}></Input>
                     <Button hidden={isNewUser ? false : true } onClick={ verifyOTP } >Verify</Button>

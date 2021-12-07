@@ -11,6 +11,7 @@ import {
   isRegistered,
   registerSuccess,
   updateUserInfo,
+  registerPWSuccess,
 } from "./subscriberRedux";
 import { publicRequest, requestOTP, semaOTP } from "../requestMethods";
 
@@ -45,6 +46,26 @@ export const sunscriberNotExists = async (dispatch, subscriber) => {
     if (err.response) {
       const errorMessage = err.response.data;
       dispatch(isRegistered(errorMessage));
+    }
+  }
+};
+export const sunscriberNotExistsPW = async (dispatch, subscriber) => {
+  console.log("params" + subscriber);
+  dispatch(loginStart());
+  try {
+    console.log(subscriber);
+    console.log("Registration PW processing" + subscriber);
+    const res = await publicRequest.post(
+      "/auth/subscriber/registerPW",
+      subscriber
+    );
+    console.log(res);
+    //dispatch(loginSuccess(res.data));
+    registerPWSuccess(res);
+  } catch (err) {
+    if (err.response) {
+      const errorMessage = err.response.data;
+      dispatch(loginFailure(errorMessage));
     }
   }
 };

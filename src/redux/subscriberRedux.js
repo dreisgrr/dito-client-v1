@@ -15,6 +15,7 @@ const subscriberSlice = createSlice({
     tempUser: null,
     smsOtp: false,
     otpMaxRequest: 3,
+    tempPw: "",
   },
   reducers: {
     loginStart: (state) => {
@@ -92,6 +93,12 @@ const subscriberSlice = createSlice({
       state.otp = "";
       state.currentUser = action.payload;
     },
+    registerPWSuccess: (state) => {
+      state.isFetching = false;
+      state.isNewUser = true;
+      state.error = false;
+      state.errorMessage = "";
+    },
     updateUserInfo: (state, action) => {
       state.raffleEntry = action.payload;
     },
@@ -112,5 +119,6 @@ export const {
   isRegistered,
   registerSuccess,
   updateUserInfo,
+  registerPWSuccess,
 } = subscriberSlice.actions;
 export default subscriberSlice.reducer;
