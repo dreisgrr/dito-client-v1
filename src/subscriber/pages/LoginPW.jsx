@@ -28,7 +28,7 @@ const DITOLogo = styled.div`
     justify-content: center;
     margin-bottom: 20%;
 `;
-const Form = styled.form`
+const Form = styled.div`
     display: flex;
     flex-wrap: wrap;
 `;

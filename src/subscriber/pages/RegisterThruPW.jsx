@@ -40,7 +40,7 @@ const Title = styled.h1`
     font-weight: 300;
     text-align: center;
 `;
-const Form = styled.form`
+const Form = styled.div`
     display: flex;
     flex-wrap: wrap;
 `;
@@ -105,7 +105,6 @@ const Prefix = styled.input`
 const RegisterThruPW = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const subscriber = useSelector((state) => state.subscriber?.currentUser);
     // console.log("Remove"+ subscriber);
     // if (!subscriber) {
     //     localStorage.removeItem("persist:root");
