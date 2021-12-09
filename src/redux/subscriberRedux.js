@@ -11,11 +11,14 @@ const subscriberSlice = createSlice({
     isNewUser: false,
     isAuthenticated: false,
     raffleEntry: false,
+    pointsHistory: null,
     tempNumber: "",
     tempUser: null,
     smsOtp: false,
     otpMaxRequest: 3,
     tempPw: "",
+    regFormError: false,
+    regFormMessage: "",
   },
   reducers: {
     loginStart: (state) => {
@@ -90,13 +93,15 @@ const subscriberSlice = createSlice({
     registerSuccess: (state, action) => {
       state.isFetching = false;
       state.isRegistered = false;
-      state.isNewUser = false;
-      state.isAuthenticated = false;
       state.mobileNumber = "";
       state.tempUser = null;
       state.smsOtp = false;
       state.otp = "";
       state.currentUser = action.payload;
+    },
+    clearWelcomeState: (state, action) => {
+      state.isNewUser = false;
+      state.isAuthenticated = false;
     },
     registerPWSuccess: (state, action) => {
       state.isFetching = false;
@@ -107,6 +112,21 @@ const subscriberSlice = createSlice({
     },
     updateUserInfo: (state, action) => {
       state.raffleEntry = action.payload;
+    },
+    getPointsHistory: (state, action) => {
+      state.pointsHistory = action.payload;
+    },
+    invalidEmailFormError: (state) => {
+      state.regFormError = true;
+      state.regFormMessage = "Invalid email address";
+    },
+    resetRegFormErrors: (state) => {
+      state.regFormError = false;
+      state.regFormMessage = "";
+    },
+    setErrorMessage: (state, action) => {
+      state.error = true;
+      state.errorMessage = action.payload;
     },
   },
 });
@@ -127,5 +147,10 @@ export const {
   registerSuccess,
   updateUserInfo,
   registerPWSuccess,
+  invalidEmailFormError,
+  resetRegFormErrors,
+  clearWelcomeState,
+  setErrorMessage,
+  getPointsHistory,
 } = subscriberSlice.actions;
 export default subscriberSlice.reducer;

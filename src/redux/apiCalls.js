@@ -13,6 +13,10 @@ import {
   registerSuccess,
   updateUserInfo,
   registerPWSuccess,
+  invalidEmailFormError,
+  clearWelcomeState,
+  setErrorMessage,
+  getPointsHistory,
 } from "./subscriberRedux";
 import { publicRequest, requestOTP, semaOTP } from "../requestMethods";
 
@@ -161,6 +165,7 @@ export const subscriberRegister = async (dispatch, subscriber) => {
     }
   }
 };
+
 export const loadUserPoints = async (dispatch, mobileNumber) => {
   try {
     console.log("Load user points");
@@ -177,6 +182,22 @@ export const loadUserPoints = async (dispatch, mobileNumber) => {
     }
   }
 };
+export const loadUserPointsHistory = async (dispatch, mobileNumber) => {
+  try {
+    console.log("Load user points history");
+    const res = await publicRequest.post(
+      "/info/subscriber/pointsHistory",
+      mobileNumber
+    );
+    const { data } = res;
+    dispatch(getPointsHistory(data));
+  } catch (err) {
+    if (err.response) {
+      const errorMessage = err.response.data;
+    }
+  }
+};
+
 export const sendSemaOTP = async (dispatch, params) => {
   try {
     const res = await semaOTP
@@ -185,4 +206,14 @@ export const sendSemaOTP = async (dispatch, params) => {
       })
       .then((res) => dispatch(verifyOTPCreated(res)));
   } catch (err) {}
+};
+
+export const invalidEmailError = (dispatch) => {
+  dispatch(invalidEmailFormError());
+};
+export const afterSplashScreen = async (dispatch) => {
+  dispatch(clearWelcomeState());
+};
+export const showErrorMessage = async (dispatch, err) => {
+  dispatch(setErrorMessage(err));
 };

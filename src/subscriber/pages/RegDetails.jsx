@@ -1,9 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import styled from "styled-components";
 import ditoLogo from "../../assets/img/logo.png";
-import { subscriberRegister, sunscriberOTPVerified, subscriberGenerateOTP } from "../../redux/apiCalls";
+import { subscriberRegister, invalidEmailError, subscriberGenerateOTP } from "../../redux/apiCalls";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+
+const regions = require('philippines/regions');
+const provinces = require('philippines/provinces');
+const cities = require('philippines/cities');
 
 const Container = styled.div`
     width: 100vw;
@@ -14,8 +17,8 @@ const Container = styled.div`
     justify-content: center;
 `;
 const Wrapper = styled.div`
-    width: 100vw;
-    height: 100vh;
+    width: 650px;
+    height: 100%;
     min-width: 50%;
     padding: 20px;
 `;
@@ -98,15 +101,18 @@ const RegDetails = () => {
     const [error, setError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
 
+    console.log(regions)
+
     const { tempUser } = useSelector((state) => state.subscriber);
 
 
     const handleRegister = (e) => {
         console.log("handleRegister");
-        console.log(name)
-        console.log(email)
         e.preventDefault();
         //VALIDATE
+        if(!emailIsValid(email)) {
+            invalidEmailError(dispatch)
+        }
 
         //PROCESS
         const address = `${street} ${barangay} ${city} ${province} ${region}`;
@@ -120,9 +126,9 @@ const RegDetails = () => {
         subscriberRegister(dispatch, { mobileNumber, password, name, email, address, consent });
     }
 
-    const resetError = (mobileNumber) => {
-
-    } 
+    const emailIsValid = (email) => {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+    }
 
     return (
         <Container>

@@ -14,6 +14,14 @@ import RafflePage from "./subscriber/pages/RafflePage";
 import styled from "styled-components";
 import maintenance from "../src/assets/img/maintenance.png";
 
+import LandingReskin from "./reskin/pages/LandingReskin";
+import LoginReskin from "./reskin/pages/LoginReskin";
+import RegisterReskin from "./reskin/pages/RegisterReskin";
+import RegDetailsReskin from "./reskin/pages/RegDetailsReskin";
+import HomeReskin from "./reskin/pages/HomeReskin";
+import SplashReskin from "./reskin/pages/SplashReskin";
+
+
 const DITOLogo = styled.div`
     flex: 1;
     width: 700px;
@@ -35,27 +43,57 @@ function  App() {
     localStorage.removeItem("persist:root");
   }
   const auth = useSelector((state) => state.subscriber?.isNewUser);
+  // const subscriber = true;
+  // const auth = true;
     return(
       <Router>
         <Switch>
-          <Route exact path='/landing'>
-            {subscriber ? <Redirect to='/' /> : <Landing />}
+          <Route exact path='/reskin/landing'>
+            {subscriber ? <Redirect to='/reskin' /> : <LandingReskin />}
           </Route>
-          <Route exact path='/register'>
-            {subscriber ? <Redirect to='/' /> : <RegisterThruPW />}
+          <Route exact path='/reskin/register'>
+            {subscriber ? <Redirect to='/reskin' /> : <RegisterReskin />}
           </Route>
-          <Route exact path='/login'>
-            {subscriber ? <Redirect to='/' /> : <LoginPW />}
+          <Route exact path='/reskin/login'>
+            {subscriber ? <Redirect to='/reskin' /> : <LoginReskin />}
           </Route>
-          <Route exact path='/regDetails'>
-            {auth ? <RegDetails /> : <Redirect to='/' />}
+          <Route exact path='/reskin/regDetails'>
+            {auth ? <RegDetailsReskin /> : <Redirect to='/reskin' />}
           </Route>
-          <Route exact path='/'>
+          <Route exact path='/reskin/welcomekadito'>
+            {auth ? <SplashReskin /> : <Redirect to='/reskin' />}
+          </Route>
+          <Route exact path='/reskin'>
+            {subscriber ? <HomeReskin />
+            // <>
+            //   <Topbar/>
+            //   <div className="container">
+            //   <Route exact path='/'>
+            //     <RafflePage />
+            //   </Route>
+            //   </div>
+            // </> 
+            
+            : <LandingReskin />}
+          </Route>
+          <Route exact path='/current/landing'>
+            {subscriber ? <Redirect to='/current' /> : <Landing />}
+          </Route>
+          <Route exact path='/current/register'>
+            {subscriber ? <Redirect to='/current' /> : <Register />}
+          </Route>
+          <Route exact path='/current/login'>
+            {subscriber ? <Redirect to='/current' /> : <LoginPW />}
+          </Route>
+          <Route exact path='/current/regDetails'>
+            {auth ? <RegDetails /> : <Redirect to='/current' />}
+          </Route>
+          <Route exact path='/current'>
             {subscriber ?
             <>
               <Topbar/>
               <div className="container">
-              <Route exact path='/'>
+              <Route exact path='/current'>
                 <RafflePage />
               </Route>
               </div>
@@ -63,14 +101,15 @@ function  App() {
             
             : <Landing />}
           </Route>
+          <Route exact path='/'>
+            <div className="container">
+              <div className="maintenance"></div>
+            </div>
+          </Route>
           
         </Switch>
       </Router>
-      // <div className="container">
-      //     {/* <DITOLogo/> */}
-      //     <div className="maintenance"></div>
 
-      // </div>
     )
 }
 

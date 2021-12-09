@@ -1,0 +1,1089 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+  font-family: "Exo 2", sans-serif;
+  margin: 0;
+  font-family: var(--bs-body-font-family);
+  font-size: var(--bs-body-font-size);
+  font-weight: var(--bs-body-font-weight);
+  line-height: var(--bs-body-line-height);
+  color: var(--bs-body-color);
+  text-align: var(--bs-body-text-align);
+  background-color: var(--bs-body-bg);
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-red {
+  background-color: #ce242e;
+  border-color: #ce242e;
+  border-radius: 25px;
+  width: 100%;
+  color: #ffffff;
+  padding: 10px 0;
+}
+
+.btn-blue {
+  background-color: #0038a8;
+  border-color: #0038a8;
+  border-radius: 25px;
+  width: 100%;
+  color: #ffffff;
+  padding: 10px 0;
+  margin-bottom: 16px;
+}
+
+.btn-red:hover,
+.btn-blue:hover {
+  color: #ffffff;
+}
+
+/* ---------------------------------------------- */
+
+div.home {
+  background-image: url("../assets//bg-home.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+}
+
+.home-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  width: 20%;
+}
+
+.home-content > .logo-loadeddito {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.home-content > .logo-dito {
+  margin-top: 20px;
+  width: 50%;
+}
+
+.home-content > .btn {
+  margin-bottom: 25px;
+}
+
+/* ---------------------------------------------- */
+
+div.register,
+div.login {
+  background-image: url("../assets/bg-home_header.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  background-color: var(--bs-body-bg);
+}
+
+.register-content,
+.register-form,
+.login-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  width: 100%;
+}
+
+.register-content .title-registration,
+.login-content .title-login {
+  width: 100%;
+}
+
+.register-content > .logo-dito,
+.register-form .logo-dito,
+.login-content > .logo-dito {
+  margin-top: 20px;
+  width: 10%;
+}
+
+.box-registration,
+.box-login {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: inherit;
+  padding: 30px;
+  min-height: 380px;
+}
+
+.box-registration {
+  background-image: url("../assets/box-registration.png");
+}
+
+.box-login {
+  background-image: url("../assets/box-login.png");
+}
+
+.box-registration > p,
+.box-otp > p,
+.box-login > p {
+  text-align: left;
+  color: #ffffff;
+  margin-top: 22px;
+  margin-bottom: 50px;
+}
+
+.box-registration .box-mobile,
+.box-login .box-mobile {
+  position: absolute;
+  top: -23px;
+  width: 50px;
+}
+
+.box-registration > .input-group,
+.box-login > .input-group {
+  margin-bottom: 10px;
+}
+
+.box-registration > .input-group > .input-group-text,
+.box-registration > .input-group > .form-control,
+.box-login > .input-group > .input-group-text,
+.box-login > .input-group > .form-control {
+  border: 1px solid #ffffff;
+  z-index: 99;
+}
+
+.box-registration .form-check,
+.box-login .form-check {
+  color: #ffffff;
+  font-size: 14px;
+  text-align: right;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.box-registration .form-check .form-check-input,
+.box-login .form-check .form-check-input {
+  float: inherit;
+}
+
+.box-otp {
+  padding: 20px 30px;
+  min-height: 430px;
+}
+
+.box-otp p {
+  margin-bottom: 1px;
+}
+
+.box-otp > .input-group {
+  margin-top: 20px;
+}
+
+.box-otp .form-control {
+  width: 20px;
+  margin: 0 6px;
+  height: 45px;
+  text-align: center;
+}
+
+.box-otp .form-check {
+  margin-bottom: 16px;
+}
+
+.box-otp .btn-blue {
+  margin-bottom: 0;
+}
+
+.box-otp .otp-sendlabel {
+  font-size: 13px;
+}
+
+.box-otp .otp-sendagain {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.box-reg p span {
+  color: #ce242e;
+  font-weight: 700;
+}
+
+/* ---------------------------------------------- */
+/*              Registration Form                 */
+/* ---------------------------------------------- */
+
+.register-form {
+  padding-top: 8%;
+}
+
+.register-form .logo-dito {
+  margin-top: 40px;
+  margin-bottom: 90px;
+}
+
+.box-regform form {
+  text-align: left;
+}
+
+.box-regform > p {
+  margin: 30px 0;
+}
+
+.box-regform p span {
+  color: #ce242e;
+  font-weight: 600;
+}
+
+.box-regform .form-group {
+  margin-bottom: 15px;
+}
+
+.box-regform .form-group > label {
+  margin-bottom: 5px;
+}
+
+.box-regform .form-address label {
+  margin-bottom: 0;
+}
+
+.box-regform .form-address p {
+  font-size: 14px;
+  font-weight: 200;
+  color: gray;
+}
+
+.box-regform .form-check a {
+  font-weight: 600;
+  color: black;
+  text-decoration: none;
+}
+
+.box-regform .btn-red {
+  margin: 30px 0;
+}
+
+/* ---------------------------------------------- */
+/*                First Login                     */
+/* ---------------------------------------------- */
+.popup-firstlogin {
+  background-color: #0038a8;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.raffle .popup {
+  background-image: url("../assets/bg-firstlogin.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top;
+  width: 40%;
+  margin: 0 auto;
+  min-height: 550px;
+  padding: 0 70px;
+  text-align: center;
+}
+
+.popup-firstlogin .popup-close {
+  position: absolute;
+  right: 31%;
+  top: 191px;
+}
+
+.popup-firstlogin h2 {
+  color: #ce242e;
+  font-weight: bolder;
+  font-size: 3.5rem;
+  margin-top: 160px;
+  margin-bottom: 30px;
+}
+
+.popup-firstlogin h5 {
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.popup-firstlogin p {
+  margin-top: 38px;
+}
+
+/* ---------------------------------------------- */
+/*                Navigation Menu                 */
+/* ---------------------------------------------- */
+
+.navbar {
+  box-shadow: 0px 3px 6px #00000029;
+  background-color: #ffffff;
+  padding: 0;
+}
+
+.navbar-nav {
+  margin: auto;
+}
+
+.navbar-brand {
+  padding: 0;
+}
+
+.logo-loadedpasko {
+  width: 50px;
+}
+
+.nav-item {
+  width: 200px;
+  text-align: center;
+}
+
+.nav-link {
+  padding: 15px 0;
+}
+
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #ffffff;
+  background-color: #0038a8;
+}
+
+.navbar-text {
+  color: #ce242e !important;
+  font-size: 12px;
+  text-align: right;
+  padding: 0;
+}
+
+.navbar-text.account {
+  padding-right: 10px;
+  border-right: 1px solid #ce242e;
+}
+
+.navbar-text.signout > a > img {
+  width: 30px;
+  padding-left: 10px;
+}
+
+.modal-header {
+  color: #0038a8;
+}
+
+.mobile-account,
+.mobile-footer {
+  display: none;
+}
+
+/* ---------------------------------------------- */
+/*                 Raffle Page                    */
+/* ---------------------------------------------- */
+
+body.raffle {
+  background-color: #ce242e;
+}
+
+.raffle-entries {
+  background-image: url("../assets/div-raffleentry.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  min-height: 590px;
+  text-align: center;
+  padding-top: 40px;
+}
+
+.raffle-entries h3 {
+  color: #0038a8;
+  font-weight: 900;
+  font-size: 30px;
+  text-shadow: 2px 2px #fad115;
+}
+
+.raffle-entries h2 {
+  color: #ce242e;
+  font-weight: 900;
+  font-size: 60px;
+  font-style: italic;
+}
+
+.raffle-entries h2 img {
+  width: 60px;
+}
+
+.raffle-entries p {
+  margin-bottom: 0;
+}
+
+.raffle-label {
+  color: #0038a8;
+  font-size: 18px;
+}
+
+.raffle-date {
+  color: #9d9d9d;
+  font-weight: 200;
+  font-size: 12px;
+}
+
+.raffle-refresh {
+  margin-top: 15px;
+}
+
+.raffle-points {
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+.raffle-countdown {
+  background-image: url("../assets/div-rafflecount.png");
+  background-repeat: no-repeat;
+  background-size: inherit;
+  background-position: top;
+  min-height: 650px;
+  text-align: center;
+}
+
+.raffle-countdown h3 {
+  color: #0038a8;
+  font-weight: 900;
+  font-size: 30px;
+  text-shadow: 2px 2px #fad115;
+  padding-top: 120px;
+}
+
+.raffle-countdown .draw-countdown {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.raffle-countdown h2 {
+  margin-top: 20px;
+  color: #0038a8;
+  font-weight: 900;
+  font-size: 60px;
+}
+
+.raffle-countdown h2.space {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.raffle-join {
+  background-image: url("../assets/div-rafflejoin.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top;
+  min-height: 400px;
+  text-align: center;
+  margin: 0 10px;
+}
+
+.raffle-join h3 {
+  color: #0038a8;
+  background-color: #fad115;
+  padding: 20px 0;
+  border-radius: 10px;
+  font-weight: 900;
+  margin-bottom: 25px;
+}
+
+.raffle-steps {
+  display: flex;
+  margin: 0 auto;
+  padding: 20px;
+  width: 50%;
+  background-color: #ffffff;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.steps-img {
+  width: 30%;
+  padding-right: 20px;
+  border-right: 2px solid #fad115;
+}
+
+.steps-details {
+  width: 100%;
+  margin-left: 20px;
+  text-align: left;
+  color: #0038a8;
+}
+
+.raffle-prizes {
+  background-image: url("../assets/div-raffleprizes.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  min-height: 900px;
+  text-align: center;
+}
+
+.raffle-prizes > .row {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.raffle-prizes h3 {
+  color: #0038a8;
+  font-weight: 900;
+  font-size: 30px;
+  text-shadow: 2px 2px #fad115;
+  padding-top: 120px;
+}
+
+.raffle-prizes .prizes {
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid #e5e5e5;
+  width: 100%;
+  margin-top: 20px;
+  min-height: 500px;
+}
+
+.raffle-prizes .prizes h4 {
+  color: #ce242e;
+  font-weight: 900;
+  margin-bottom: 40px;
+}
+
+.raffle-prizes .prizes span {
+  color: #0038a8;
+  font-weight: 700;
+}
+
+.raffle-prizes .prize-voucher span img {
+  width: 40%;
+}
+
+.raffle-prizes .prize-phone img {
+  margin-bottom: 10px;
+}
+
+/* ---------------------------------------------- */
+/*                 Winners Page                   */
+/* ---------------------------------------------- */
+body.winner,
+body.faq {
+  background-image: url("../assets/bg-winners.png");
+  background-repeat: repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.winners-myprizes {
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.winners-myprizes .dropdown {
+  align-self: flex-end;
+  margin-bottom: 10px;
+  margin-top: 60px;
+}
+
+.winners-myprizes .btn-light {
+  border-color: #cbcbcb;
+  background-color: #ffffff;
+}
+
+.winners-myprizes h3 {
+  color: #0038a8;
+  font-weight: 900;
+  font-size: 30px;
+  text-shadow: 2px 2px #fad115;
+  text-align: center;
+}
+
+.myprize-list {
+  background-color: #fad115;
+}
+
+.myprize-list {
+  border-radius: 30px;
+  padding: 30px;
+}
+
+.myprize-list thead tr th {
+  color: #ce242e;
+}
+
+.winners-list {
+  background-color: #ce242e;
+  border-radius: 30px;
+  margin-top: 60px;
+  padding: 30px;
+}
+
+.winners-list img {
+  width: 20%;
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: -20px;
+}
+
+.winners-list h3 {
+  color: #ffffff;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 40px;
+  text-shadow: none;
+}
+
+.winners-list table {
+  color: #ffffff;
+}
+
+.myprize-list .table > :not(:first-child),
+.winners-list .table > :not(:first-child),
+.myprize-list thead tr th,
+.winners-list thead tr th,
+.myprize-list tbody td,
+.winners-list tbody td {
+  border: none;
+}
+
+.myprize-list tbody,
+td,
+.winners-list tbody,
+td {
+  font-weight: 300;
+}
+
+/* ---------------------------------------------- */
+/*                       FAQ                      */
+/* ---------------------------------------------- */
+
+body.faq .container .col-md-6 {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.faqs-content {
+  background-color: #ce242e;
+  color: #ffffff;
+  margin-top: 10px;
+  margin-bottom: 60px;
+  padding: 20px;
+  border-radius: 20px;
+  text-align: left;
+}
+
+.title-faq {
+  width: 50%;
+  margin-top: 50px;
+}
+
+.faqs-content h5,
+.faqs-content h6 {
+  font-weight: bold;
+}
+
+.faqs-content p,
+.faqs-content ol li,
+.faqs-content ul li {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.faqs-content table {
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.faqs-content table thead {
+  background-color: #ffffff29;
+}
+
+/* ---------------------------------------------- */
+/*               Mobile Responsive                */
+/* ---------------------------------------------- */
+
+@media only screen and (max-width: 1024px) {
+  .nav-item {
+    width: 150px;
+  }
+
+  .raffle-prizes .row {
+    width: 96%;
+  }
+
+  .raffle .popup {
+    width: 51%;
+  }
+
+  .popup-firstlogin .popup-close {
+    top: 37%;
+    right: 24%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .home-content {
+    width: 40%;
+  }
+
+  body.raffle > .container {
+    padding: 0;
+  }
+
+  .navbar {
+    padding: 10px 0;
+  }
+
+  .mobile-account {
+    display: flex;
+    align-items: center;
+  }
+
+  .mobile-account p {
+    color: #ce242e;
+    text-align: right;
+    margin-bottom: 0;
+    margin-right: 10px;
+    line-height: 1;
+    padding-right: 10px;
+    border-right: 1px solid #ce242e;
+    font-size: 12px;
+  }
+
+  .mobile-account img {
+    width: 15px;
+  }
+
+  .mobile-footer {
+    display: flex;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    background-image: url("../assets/mobile-footer_tablet.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+    min-height: 155px;
+    color: #ffffff;
+    text-align: center;
+    align-items: flex-end;
+    padding-bottom: 10px;
+  }
+
+  .mobile-footer .nav-menu {
+    width: 100%;
+  }
+
+  /* Pop up */
+  .raffle .popup {
+    width: 70%;
+  }
+
+  .popup-firstlogin .popup-close {
+    top: 34%;
+    right: 14%;
+  }
+
+  /* Raffle Page */
+
+  .raffle-steps {
+    width: 80%;
+  }
+
+  .raffle-steps .steps-details li {
+    font-size: 12px;
+  }
+
+  .raffle-steps .steps-details h5 {
+    font-size: 16px;
+  }
+
+  .raffle-steps .steps-details > img {
+    width: 40%;
+  }
+
+  .raffle-prizes .prizes {
+    min-height: 580px;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  ul {
+    padding-left: 1rem;
+  }
+
+  body.home {
+    background-image: url("../assets/bg-home_mobile.png");
+  }
+
+  .home-content {
+    width: 70%;
+  }
+
+  .mobile-footer {
+    background-image: url("../assets/mobile-footer.png");
+  }
+
+  /* Pop up */
+  .raffle .popup {
+    background-image: url("../assets/bg-firstlogin_mobile.png");
+    padding: 0 25px;
+  }
+
+  .popup-firstlogin .popup-close {
+    right: 15%;
+    width: 20px;
+    top: 24%;
+  }
+
+  .popup-firstlogin h2 {
+    margin-top: 123px;
+    font-size: 30px;
+  }
+
+  .popup-firstlogin h5 {
+    font-size: 16px;
+  }
+
+  .popup-firstlogin p {
+    font-size: 12px;
+    margin-top: 25px;
+  }
+
+  .register-content .title-registration,
+  .login-content .title-login {
+    width: 100%;
+  }
+
+  .register-form {
+    width: 90%;
+  }
+
+  .register-content > .logo-dito,
+  .register-form > .logo-dito,
+  .login-content > .logo-dito {
+    width: 25%;
+  }
+
+  .raffle-entries h3,
+  .raffle-countdown h3,
+  .raffle-join h3,
+  .raffle-prizes h3 {
+    font-size: 25px;
+  }
+
+  .raffle-countdown h2 {
+    font-size: 43px;
+  }
+
+  .raffle-prizes {
+    background-image: url("../assets/div-raffleprizes_mobile.png");
+    background-size: contain;
+    min-height: 1300px;
+    margin-bottom: 200px;
+  }
+
+  .raffle-prizes .row {
+    width: 70%;
+  }
+
+  .raffle-prizes .prizes {
+    min-height: auto;
+  }
+
+  .raffle-prizes .prize-phone {
+    margin-bottom: 30%;
+  }
+
+  .raffle-prizes h3 {
+    padding-top: 75px;
+  }
+
+  .raffle-prizes .prizes h4 {
+    font-size: 20px;
+  }
+
+  .raffle-steps .steps-details h5,
+  .raffle-countdown .hours p,
+  .raffle-prizes .prizes span,
+  .raffle-prizes .prizes p {
+    font-size: 14px;
+  }
+
+  body.winner {
+    background-image: url("../assets/bg-winners_mobile.png");
+  }
+
+  .myprize-list,
+  .winners-list {
+    padding: 20px 20px 0 20px;
+  }
+
+  .myprize-list table thead tr th,
+  .myprize-list table tbody tr td,
+  .winners-list table thead tr th,
+  .winners-list table tbody tr td {
+    font-size: 12px;
+  }
+
+  .myprize-list .table > :not(caption) > * > *,
+  .winners-list .table > :not(caption) > * > * {
+    padding: 0.2rem 0.2rem;
+  }
+
+  .winners-myprizes {
+    width: 100%;
+  }
+
+  .winners-list {
+    margin-bottom: 200px;
+  }
+
+  .winners-list img {
+    width: 50%;
+  }
+
+  .winners-list h3,
+  .winners-myprizes h3 {
+    font-size: 25px;
+  }
+
+  .winners-list h3 {
+    margin-top: 20px;
+  }
+
+  .winners-myprizes .btn-light,
+  .winners-myprizes .dropdown-item {
+    font-size: 12px;
+  }
+
+  .winners-myprizes .dropdown-menu.show {
+    right: 0;
+  }
+
+  .faqs-content {
+    margin-bottom: 200px;
+  }
+
+  .title-faq {
+    width: 80%;
+  }
+
+  .faqs-content h5,
+  .faqs-content h6 {
+    font-size: 14px;
+  }
+
+  .faqs-content p,
+  .faqs-content ol li,
+  .faqs-content ul li,
+  .faqs-content table {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 411px) and (max-height: 823px) {
+  .popup-firstlogin .popup-close {
+    top: 26%;
+  }
+}
+
+@media only screen and (max-width: 411px) and (max-height: 731px) {
+  .popup-firstlogin .popup-close {
+    top: 23%;
+  }
+}
+
+@media only screen and (max-width: 375px) and (max-height: 812px) {
+  .popup-firstlogin .popup-close {
+    top: 25%;
+    width: 16px;
+  }
+}
+
+@media only screen and (max-width: 375px) and (max-height: 667px) {
+  .popup-firstlogin .popup-close {
+    top: 20%;
+    width: 16px;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .box-regform p,
+  .box-regform .form-group label {
+    font-size: 13px;
+  }
+
+  .box-regform .form-group p,
+  .box-regform .form-check label,
+  .box-regform .form-check a {
+    font-size: 11px;
+  }
+
+  .raffle .popup {
+    min-height: 350px;
+  }
+
+  .popup-firstlogin .popup-close {
+    top: 32%;
+    right: 18%;
+  }
+
+  .popup-firstlogin h2 {
+    font-size: 30px;
+    margin-top: 105px;
+  }
+
+  .popup-firstlogin h5 {
+    font-size: 12px;
+  }
+
+  .popup-firstlogin p {
+    font-size: 10px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .box-registration,
+  .box-login {
+    min-height: 338px;
+  }
+
+  .register-content .title-registration,
+  .login-content .title-login {
+    width: 50%;
+  }
+
+  .register-content > .logo-dito,
+  .register-form > .logo-dito,
+  .login-content > .logo-dito {
+    width: 30%;
+  }
+
+  .box-registration > p,
+  .box-otp > p,
+  .box-login > p,
+  .box-otp > p {
+    margin-top: 15px;
+  }
+
+  .box-otp .form-control {
+    height: 30px;
+  }
+
+  .box-otp .btn-blue,
+  .box-otp p,
+  .box-otp .otp-sendlabel,
+  .box-otp .form-check-label {
+    font-size: 11px;
+  }
+
+  .popup-firstlogin .popup-close {
+    top: 30%;
+    right: 14%;
+  }
+
+  .raffle-prizes {
+    background-image: url("../assets/div-raffleprizes_mobile-320.png");
+  }
+}

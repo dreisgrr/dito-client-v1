@@ -1,6 +1,9 @@
 import axios from "axios";
 
-const BASE_URL = "https://api.loadedkadito.ph/api";
+const localhost = "http://localhost:4000/api";
+const production = "https://api.loadedkadito.ph/api";
+
+const BASE_URL = production;
 const OTP_URL_REQUEST =
   "https://u7xnwkt996.execute-api.ap-southeast-1.amazonaws.com/DEV/generate";
 
