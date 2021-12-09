@@ -47,12 +47,12 @@ const LoginReskin = () => {
                 </a>
 
                 <div className="box-login">
-                    <p>Input your Dito Number</p>
+                    <p>Input your DITO Number</p>
                     <Error hidden={error ? false : true }>{errorMessage}</Error>
                     <div className="input-group">
                         <img className="box-mobile" src={ boxMobile } />
                         <span className="input-group-text">+63</span>
-                        <input type="tel" className="form-control" placeholder="912 345 678" onFocus={(e) => resetLoginError(dispatch)} onChange={(e)=>resetError(e.target.value)} />
+                        <input type="tel" className="form-control" placeholder="991 000 0000" onFocus={(e) => resetLoginError(dispatch)} onChange={(e)=>resetError(e.target.value)} />
                     </div>
                     <div className="input-group">
                         <input type="password" className="form-control" placeholder="Password" onChange={(e)=>setPassword(e.target.value)} />

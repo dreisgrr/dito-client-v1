@@ -48,18 +48,18 @@ const HomeReskin = () => {
                                 <a className="nav-link active" aria-current="page" >RAFFLE</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" >WINNERS</a>
+                                <a className="nav-link" ></a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" >FAQS</a>
+                                <a className="nav-link" ></a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" >ACCOUNT</a>
+                                <a className="nav-link" ></a>
                             </li>
                         </ul>
 
                         <span className="navbar-text account">
-                            Welcome, <br/> <b>J{name}</b>
+                            Welcome, <br/> <b>{name}</b>
                         </span>
 
                         <span className="navbar-text signout">
@@ -87,18 +87,18 @@ const HomeReskin = () => {
                 <h3>NEXT LOADED DAILY DRAW</h3>
                 <div className="draw-countdown">
                     <div className="hours">
-                        <h2>12</h2>
-                        <p>HOURS</p>
+                        <h2>11</h2>
+                        <p></p>
                     </div>
                     <h2 className="space">:</h2>
                     <div class="hours">
                         <h2>00</h2>
-                        <p>MINUTES</p>
+                        <p></p>
                     </div>
                     <h2 className="space">:</h2>
                     <div className="hours">
-                        <h2>00</h2>
-                        <p>SECONDS</p>
+                        <h2>AM</h2>
+                        <p></p>
                     </div>
                 </div>
             </div>

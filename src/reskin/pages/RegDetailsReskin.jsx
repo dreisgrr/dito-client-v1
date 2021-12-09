@@ -115,17 +115,17 @@ const RegDetailsReskin = () => {
                 </div>
 
                 <div className="form-check">
-                    <input className="form-check-input" type="checkbox"/>
+                    <input className="form-check-input" checked type="checkbox"/>
                     <label className="form-check-label">I agree to <a href="https://dito.ph/terms-and-conditions?hsLang=en" target="_blank" className="modal-link" type="button"data-bs-toggle="modal" data-bs-target="#Terms">DITO's Terms and Conditions</a></label>
                 </div>
 
                 <div className="form-check">
-                    <input className="form-check-input" type="checkbox"/>
-                    <label className="form-check-label">I agree to <a href="https://dito.ph/privacy-policy?hsLang=en" target="_blank" className="modal-link" type="button"data-bs-toggle="modal" data-bs-target="#Privacy">DITO's Privacy Policy</a></label>
+                    <input className="form-check-input" checked type="checkbox"/>
+                    <label className="form-check-label" >I agree to <a href="https://dito.ph/privacy-policy?hsLang=en" target="_blank" className="modal-link" type="button"data-bs-toggle="modal" data-bs-target="#Privacy">DITO's Privacy Policy</a></label>
                 </div>
 
                 <div className="form-check">
-                    <input className="form-check-input" type="checkbox"/>
+                    <input className="form-check-input" checked type="checkbox"/>
                     <label className="form-check-label">I agree to <a className="modal-link" type="button"data-bs-toggle="modal" data-bs-target="#Marketing">DITO Telecommunity marketing notifications</a></label>
                 </div>
             </form>

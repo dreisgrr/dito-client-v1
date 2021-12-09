@@ -15,7 +15,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function AlertDialogSlide() {
     const pointsHistory = useSelector((state) => state.subscriber?.pointsHistory);
-    console.log(pointsHistory[0]);
     // const [ points, setPoints] = useState('');
     // setPoints(pointsHistory);
     const [open, setOpen] = React.useState(false);
@@ -28,6 +27,12 @@ export default function AlertDialogSlide() {
     setOpen(false);
   };
 
+  const convertDate = (date) => {
+      let isoDate = new Date(date);
+      isoDate.toISOString().substring(9, 10);
+      return isoDate;
+  }
+
   return (
     <div>
       <Button variant="outlined" onClick={handleClickOpen}>
@@ -39,16 +44,15 @@ export default function AlertDialogSlide() {
         keepMounted
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"
+        fullWidth="true"
+        maxWidth="400"
       >
         <DialogTitle>{"My DITO Points History"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
           <table id="drawTable" style={{width: 70 + '%'}}> 
                         <thead> 
-                            <tr>
-                            <th>
-                                    #
-                                </th>
+                            <tr style={{textAlign: 'center'}}>
                                 <th>
                                     Transaction
                                 </th>
@@ -61,24 +65,21 @@ export default function AlertDialogSlide() {
                             </tr>
                         </thead>
                         <tbody>
-                        {/* { pointsHistory[0] ? pointsHistory[0].map((item, i) => 
+                        { pointsHistory.length > 0 ? pointsHistory.map((item) => 
                         
                     (
-                            <tr key={i} style={{textAlign: 'center'}}>
-                                <td>
-                                    {i+1}
-                                </td>
-                                <td>
+                            <tr key={item._id} style={{textAlign: 'center'}}>
+                                <td style={{textAlign: 'center'}}>
                                     {item.transaction}
                                 </td>
-                                <td style={{textTransform: 'capitalize'}}>
+                                <td style={{textAlign: 'center'}}>
                                     {item.points}
                                 </td>
-                                <td>
-                                    {item.date}
+                                <td style={{textAlign: 'center'}}>
+                                    {(item.date).substring(0, 10)}
                                 </td>
                             </tr>
-                    )) : ""} */}
+                    )) : ""}
                         </tbody>
                     </table>
           </DialogContentText>
