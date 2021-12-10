@@ -97,7 +97,7 @@ const RegDetailsReskin = () => {
     //   showErrorMessage(dispatch, "Please complete your address")
     //   return;
     // }
-    if(isStringInputEmpty(region) ){
+    if(isStringInputEmpty(street) ){
       showErrorMessage(dispatch, "Please complete your address")
       return;
     }
@@ -123,13 +123,13 @@ const RegDetailsReskin = () => {
     //PROCESS
 
 
-    const addressNew = {
-      street: street,
-      barangay: barangay,
-      city: city,
-      province: province,
-      region: region,
-    }
+    // const addressNew = {
+    //   street: street,
+    //   barangay: barangay,
+    //   city: city,
+    //   province: province,
+    //   region: region,
+    // }
 
     const consent = {
         tnc: tnc,
@@ -144,7 +144,7 @@ const RegDetailsReskin = () => {
     // console.log(consent)
     // console.log(addressNew)
     if(!registerDisabled) {
-      subscriberRegister(dispatch, { mobileNumber, password, name, email, addressNew, consent });
+      subscriberRegister(dispatch, { mobileNumber, password, name, email, street, consent });
       history.push("/welcomekadito");
     }
 
