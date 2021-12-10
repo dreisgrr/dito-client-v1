@@ -78,9 +78,9 @@ const RegDetailsReskin = () => {
     const checkPrivacy = document.getElementById('checkPrivacy').checked;
 
     
-    const region = $('#region').find(":selected").text();
-    const province = $('#province').find(":selected").text();
-    const city = $('#city').find(":selected").text();
+    //const region = $('#region').find(":selected").text();
+    //const province = $('#province').find(":selected").text();
+    //const city = $('#city').find(":selected").text();
     const barangay = $('#barangay').find(":selected").text();
 
     if(isStringInputEmpty(name)) {
@@ -93,7 +93,11 @@ const RegDetailsReskin = () => {
       showErrorMessage(dispatch, "Invalid e-mail format!")
       return;
     }
-    if(isStringInputEmpty(region) || isStringInputEmpty(province) || isStringInputEmpty(city) || isStringInputEmpty(barangay)  || isStringInputEmpty(street) ) {
+    // if(isStringInputEmpty(region) || isStringInputEmpty(province) || isStringInputEmpty(city) || isStringInputEmpty(barangay)  || isStringInputEmpty(street) ) {
+    //   showErrorMessage(dispatch, "Please complete your address")
+    //   return;
+    // }
+    if(isStringInputEmpty(region) ){
       showErrorMessage(dispatch, "Please complete your address")
       return;
     }
@@ -170,25 +174,25 @@ const RegDetailsReskin = () => {
 
                 <div className="form-group">
                     <label>Region</label>
-                    <select id="region" className="form-select" aria-label="Select Region">
+                    <select id="region" disabled  className="form-select" aria-label="Select Region">
                     </select>
                 </div>
 
                 <div className="form-group">
                     <label>Province</label>
-                    <select id="province" className="form-select" aria-label="Select Province">
+                    <select id="province" disabled className="form-select" aria-label="Select Province">
                     </select>
                 </div>
 
                 <div className="form-group">
                     <label>City</label>
-                    <select id="city" className="form-select" aria-label="Select City">
+                    <select id="city" disabled className="form-select" aria-label="Select City">
                     </select>
                 </div>
 
                 <div className="form-group">
                     <label>Barangay</label>
-                    <select id="barangay" className="form-select"  aria-label="Select Barangay">
+                    <select id="barangay" disabled className="form-select"  aria-label="Select Barangay">
                     <option selected>Please select</option>
                     </select>
                 </div>
