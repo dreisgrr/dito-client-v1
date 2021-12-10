@@ -193,14 +193,13 @@ const RegDetailsReskin = () => {
                 <div className="form-group">
                     <label>Barangay</label>
                     <select id="barangay" disabled className="form-select"  aria-label="Select Barangay">
-                    <option selected>Please select</option>
                     </select>
                 </div>
 
                 <div className="form-group form-address">
                     <label>Address</label>
                     <p>Unit Number, House Number, Building Name, Street Name</p>
-                    <input type="text" className="form-control" id="" maxLength="50" type="text" onChange={(e) => setStreet(e.target.value)}></input>
+                    <input type="text" placeholder="Unit Number, House number, Building name, Street Name Barangay, City, Province, Region" className="form-control" id="" maxLength="50" type="text" onChange={(e) => setStreet(e.target.value)}></input>
                 </div>
 
                 <div className="form-check">
