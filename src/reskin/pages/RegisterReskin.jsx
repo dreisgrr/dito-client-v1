@@ -56,7 +56,7 @@ const RegisterReskin = () => {
 
     useEffect(() => {
         if( isNewUser || tempUser ){
-            history.push("/reskin/regDetails");
+            history.push("/regDetails");
         }
     }, [isNewUser])
 

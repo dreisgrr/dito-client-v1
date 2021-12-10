@@ -48,7 +48,6 @@ const RegDetailsReskin = () => {
   const [regionDropdown, setRegionDropdown] = useState({});
 
   const popoulateRegion = () => {
-    $("#region").ph_locations("fetch_list");
     fetch('https://ph-locations-api.buonzz.com/v1/regions').then(res => res.json()).then(json => {
       const { data } = json;  
       //setRegionDropdown(data);
@@ -172,21 +171,18 @@ const RegDetailsReskin = () => {
                 <div className="form-group">
                     <label>Region</label>
                     <select id="region" className="form-select" aria-label="Select Region">
-                        <option selected >Please select</option>
                     </select>
                 </div>
 
                 <div className="form-group">
                     <label>Province</label>
                     <select id="province" className="form-select" aria-label="Select Province">
-                    <option selected>Please select</option>
                     </select>
                 </div>
 
                 <div className="form-group">
                     <label>City</label>
                     <select id="city" className="form-select" aria-label="Select City">
-                    <option selected>Please select</option>
                     </select>
                 </div>
 

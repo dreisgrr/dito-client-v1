@@ -12,8 +12,8 @@ const LandingReskin = () => {
         <div className="home">
             <div className="container home-content">
                 <img className="logo-loadeddito" src={ logoLoadedkadito }/>
-                <Link className={"btn btn-red "}  to={"/reskin/register"} >REGISTER NOW</Link>
-                <Link className={"btn btn-blue "}  to={"/reskin/login"} >LOGIN</Link>
+                <Link className={"btn btn-red "}  to={"/register"} >REGISTER NOW</Link>
+                <Link className={"btn btn-blue "}  to={"/login"} >LOGIN</Link>
                 <img className="logo-dito" src={ logoDito }/>
             </div>
             
