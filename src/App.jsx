@@ -165,11 +165,11 @@ function  App() {
           </Route> */}
 
               {/* MAINTENANCE */}
-          {/* <Route exact path='/'>
+          <Route exact path='/'>
             <div className="container">
               <div className="maintenance"></div>
             </div>
-          </Route> */}
+          </Route>
           
         </Switch>
       </Router>
