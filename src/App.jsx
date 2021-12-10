@@ -47,8 +47,37 @@ function  App() {
   // const auth = true;
     return(
       <Router>
-        <Switch>
-          <Route exact path='/reskin/landing'>
+          <Switch>
+                <Route exact path='/landing'>
+                  {subscriber ? <Redirect to='/' /> : <Landing />}
+                </Route>
+                <Route exact path='/register'>
+                  {subscriber ? <Redirect to='/' /> : <RegisterThruPW />}
+                </Route>
+                <Route exact path='/login'>
+                  {subscriber ? <Redirect to='/' /> : <LoginPW />}
+                </Route>
+                <Route exact path='/regDetails'>
+                  {auth ? <RegDetails /> : <Redirect to='/' />}
+                </Route>
+                <Route exact path='/'>
+                  {subscriber ?
+                  <>
+                    <Topbar/>
+                    <div className="container">
+                    <Route exact path='/'>
+                      <RafflePage />
+                    </Route>
+                    </div>
+                  </> 
+                  
+                  : <Landing />}
+                </Route>
+
+
+          
+          {/* Reskin */}
+          {/* <Route exact path='/reskin/landing'>
             {subscriber ? <Redirect to='/reskin' /> : <LandingReskin />}
           </Route>
           <Route exact path='/reskin/register'>
@@ -75,8 +104,10 @@ function  App() {
             // </> 
             
             : <LandingReskin />}
-          </Route>
-          <Route exact path='/current/landing'>
+          </Route> */}
+
+          {/* Current */}
+          {/* <Route exact path='/current/landing'>
             {subscriber ? <Redirect to='/current' /> : <Landing />}
           </Route>
           <Route exact path='/current/register'>
@@ -100,12 +131,14 @@ function  App() {
             </> 
             
             : <Landing />}
-          </Route>
-          <Route exact path='/'>
+          </Route> */}
+
+              {/* MAINTENANCE */}
+          {/* <Route exact path='/'>
             <div className="container">
               <div className="maintenance"></div>
             </div>
-          </Route>
+          </Route> */}
           
         </Switch>
       </Router>
