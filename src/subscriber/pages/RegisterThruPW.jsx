@@ -125,7 +125,7 @@ const RegisterThruPW = () => {
 
     useEffect(() => {
         if( isNewUser || tempUser ){
-            history.push("/regDetails");
+            history.push("/reskin/regDetails");
         }
     }, [isNewUser])
 

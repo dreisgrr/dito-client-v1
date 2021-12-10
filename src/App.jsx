@@ -49,7 +49,7 @@ function  App() {
       <Router>
           <Switch>
           {/* LOCAL */}
-              <Route exact path='/landing'>
+              {/* <Route exact path='/landing'>
             {subscriber ? <Redirect to='/' /> : <LandingReskin />}
           </Route>
           <Route exact path='/register'>
@@ -76,7 +76,7 @@ function  App() {
             // </> 
             
             : <LandingReskin />}
-          </Route>
+          </Route> */}
 
               {/* PROD ROUTE */}
                 {/* <Route exact path='/landing'>
@@ -108,7 +108,7 @@ function  App() {
 
           
           {/* Reskin */}
-          {/* <Route exact path='/reskin/landing'>
+          <Route exact path='/reskin/landing'>
             {subscriber ? <Redirect to='/reskin' /> : <LandingReskin />}
           </Route>
           <Route exact path='/reskin/register'>
@@ -135,7 +135,7 @@ function  App() {
             // </> 
             
             : <LandingReskin />}
-          </Route> */}
+          </Route>
 
           {/* Current */}
           {/* <Route exact path='/current/landing'>
