@@ -221,7 +221,7 @@ div.login {
   margin-bottom: 90px;
 }
 
-.box-regform form {
+.box-regform div {
   text-align: left;
 }
 
@@ -277,7 +277,7 @@ div.login {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: top;
-  width: 40%;
+  width: 35%;
   margin: 0 auto;
   min-height: 550px;
   padding: 0 70px;
@@ -376,6 +376,9 @@ div.login {
 /* ---------------------------------------------- */
 
 body.raffle {
+  background-color: #ce242e;
+}
+div.raffle {
   background-color: #ce242e;
 }
 

@@ -15,6 +15,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function AlertDialogSlide() {
     const pointsHistory = useSelector((state) => state.subscriber?.pointsHistory);
+    let isEmpty = (pointsHistory == null);
+    console.log(isEmpty)
     // const [ points, setPoints] = useState('');
     // setPoints(pointsHistory);
     const [open, setOpen] = React.useState(false);
@@ -32,6 +34,20 @@ export default function AlertDialogSlide() {
       isoDate.toISOString().substring(9, 10);
       return isoDate;
   }
+
+  const transactionsMap = new Map();
+  transactionsMap.set("activation", "DITO SIM Activation");
+  transactionsMap.set("DITO39", "DITO 39");
+  transactionsMap.set("DITO99", "DITO 99");
+  transactionsMap.set("DITO199", "DITO 199");
+  transactionsMap.set("firstLogin", "DITO APP");
+  transactionsMap.set("FirstLogin", "DITO APP");
+  transactionsMap.set("firstlogin", "DITO APP");
+  transactionsMap.set("VIVA1", "VIVAMAX Subscription");
+  transactionsMap.set("WeTV1", "WeTV");
+  transactionsMap.set("HBO1", "HBO 1 month Subscription");
+  transactionsMap.set("HBO3", "HBO 3 month Subscription");
+
 
   return (
     <div>
@@ -65,12 +81,12 @@ export default function AlertDialogSlide() {
                             </tr>
                         </thead>
                         <tbody>
-                        { pointsHistory.length > 0 ? pointsHistory.map((item) => 
+                        { ( !isEmpty )? pointsHistory.map((item) => 
                         
                     (
                             <tr key={item._id} style={{textAlign: 'center'}}>
                                 <td style={{textAlign: 'center'}}>
-                                    {item.transaction}
+                                    {transactionsMap.get(item.transaction)}
                                 </td>
                                 <td style={{textAlign: 'center'}}>
                                     {item.points}

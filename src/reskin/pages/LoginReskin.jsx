@@ -42,7 +42,7 @@ const LoginReskin = () => {
     return (
         <div className="login">
             <div className="container login-content">
-                <a href="/reskin">
+                <a href="/">
                     <img className="title-login" src={ titleLogin } />
                 </a>
 

@@ -16,7 +16,7 @@ const SplashReskin = () => {
         <div className="raffle">
             <div className="popup-firstlogin">
                 <div className="popup">
-                    <a href="/reskin" onClick={ handleClearWelcomeState } ><img className="popup-close" src={ closeButton } /></a>
+                    <a href="/" onClick={ handleClearWelcomeState } ><img className="popup-close" src={ closeButton } /></a>
                     <h2>Congrats!</h2>  
                     <h5>You've successfully registered to the DITO Loaded ang Pasko Raffle Promo!
                     Ready ka na ba to win?</h5>

@@ -48,7 +48,38 @@ function  App() {
     return(
       <Router>
           <Switch>
-                <Route exact path='/landing'>
+          {/* LOCAL */}
+              <Route exact path='/landing'>
+            {subscriber ? <Redirect to='/' /> : <LandingReskin />}
+          </Route>
+          <Route exact path='/register'>
+            {subscriber ? <Redirect to='/' /> : <RegisterReskin />}
+          </Route>
+          <Route exact path='/login'>
+            {subscriber ? <Redirect to='/' /> : <LoginReskin />}
+          </Route>
+          <Route exact path='/regDetails'>
+            {auth ? <RegDetailsReskin /> : <Redirect to='/' />}
+          </Route>
+          <Route exact path='/welcomekadito'>
+            {auth ? <SplashReskin /> : <Redirect to='/' />}
+          </Route>
+          <Route exact path='/'>
+            {subscriber ? <HomeReskin />
+            // <>
+            //   <Topbar/>
+            //   <div className="container">
+            //   <Route exact path='/'>
+            //     <RafflePage />
+            //   </Route>
+            //   </div>
+            // </> 
+            
+            : <LandingReskin />}
+          </Route>
+
+              {/* PROD ROUTE */}
+                {/* <Route exact path='/landing'>
                   {subscriber ? <Redirect to='/' /> : <Landing />}
                 </Route>
                 <Route exact path='/register'>
@@ -72,7 +103,7 @@ function  App() {
                   </> 
                   
                   : <Landing />}
-                </Route>
+                </Route> */}
 
 
           

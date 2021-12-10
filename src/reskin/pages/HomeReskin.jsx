@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import { loadUserPoints, loadUserPointsHistory } from "../../redux/apiCalls";
 
-import PointsHistory from "../../reskin/components/PointsHistory";
+import PointsHistory from "../components/PointsHistory";
 
 import logoLoadedpasko from "../../assets/logo-loadedpasko.png";
 import arrowRed from "../../assets/arrow-red.png";
@@ -31,10 +31,15 @@ const HomeReskin = () => {
     let raffleEntry  = useSelector((state) => state.subscriber.raffleEntry.count)
     if (!raffleEntry) raffleEntry = 0;
 
+    const date = new Date();
+    const today = `${date.getMonth()+1}-${date.getDate()},-${date.getFullYear()} `;
+    const hrs = date.toLocaleString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true })
+
     const handleLogout = () => {
         localStorage.removeItem("persist:root");
-        window.location = "/reskin";
+        window.location = "/";
     }
+    
 
     return (
         <div className="raffle">
@@ -48,13 +53,11 @@ const HomeReskin = () => {
                                 <a className="nav-link active" aria-current="page" >RAFFLE</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" ></a>
+                                
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" ></a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" ></a>
                             </li>
                         </ul>
 
@@ -63,13 +66,13 @@ const HomeReskin = () => {
                         </span>
 
                         <span className="navbar-text signout">
-                            <a href="/reskin" type="button" onClick={ handleLogout }><img src={ arrowRed }/></a>
+                            <a href="/" type="button" onClick={ handleLogout }><img src={ arrowRed }/></a>
                         </span>
                     </div>
 
                     <div className="mobile-account">
                         <p>Welcome, <br/> <b>{name}</b></p>
-                        <a ><img src={ arrowRed }/></a>
+                        <a href="/" type="button" onClick={ handleLogout }><img src={ arrowRed }/></a>
                     </div>
                 </div>
             </nav>
@@ -78,8 +81,7 @@ const HomeReskin = () => {
                     <h3>RAFFLE ENTRIES</h3>
                     <h2>{ raffleEntry } <img src={ assetsTicket } /></h2>
                     <p className="raffle-label">Your raffle entries</p>
-                    <p className="raffle-date">As of 12:00 AM 12-01-21</p>
-                    <p className="raffle-refresh">Your raffle entries will be refreshed in the next 00:15 hour(s).</p>
+                    <p className="raffle-date">As of { hrs } { today }</p>
                     <p className="raffle-points"><PointsHistory/></p>
                 </div>
             </div>
@@ -95,7 +97,7 @@ const HomeReskin = () => {
                         <h2>00</h2>
                         <p></p>
                     </div>
-                    <h2 className="space">:</h2>
+                    <h2 className="space"></h2>
                     <div className="hours">
                         <h2>AM</h2>
                         <p></p>
@@ -114,7 +116,7 @@ const HomeReskin = () => {
                                 <li>Purchase DITO Promos</li>
                                 <li>Purchase content subscriptions</li>
                             </ul>
-                            <img src={ rafflePrizeWETV } />
+                            <img  style={{marginRight: 20 + 'px'}} src={ rafflePrizeWETV } />
                             <img src={ rafflePrizeVIVA } />
                         </div>
                 </div>

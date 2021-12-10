@@ -56,14 +56,14 @@ const RegisterReskin = () => {
 
     useEffect(() => {
         if( isNewUser || tempUser ){
-            history.push("/reskin/regDetails");
+            history.push("/regDetails");
         }
     }, [isNewUser])
 
     return (
         <div className="register">
             <div className="container register-content">
-                <a href="/reskin">
+                <a href="/">
                     <img className="title-registration" src={ titleRegistration } />
                 </a>
 

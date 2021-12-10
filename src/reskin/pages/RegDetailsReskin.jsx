@@ -1,14 +1,28 @@
 import React, {useState, useEffect} from 'react'
 
+import $ from 'jquery'
 import '../../css/main.css';
 import { useDispatch, useSelector } from "react-redux";
+import { showErrorMessage } from "../../redux/apiCalls";
 import { subscriberRegister } from "../../redux/apiCalls";
 import { useHistory } from "react-router-dom";
+import styled from "styled-components";
+import '../../js/jquery-ph-locations'
+import '../../js/app'
 
-import TNC from '../../reskin/components/TNC';
 
 import titleRegistration from "../../assets/title-registration.png";
 import logoDito from "../../assets/logo-dito.png";
+import e from 'cors';
+
+const Error = styled.div`
+    color: red;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 600;
+`;
 
 const RegDetailsReskin = () => {
   
@@ -16,6 +30,7 @@ const RegDetailsReskin = () => {
   const history = useHistory();
 
   const { tempUser } = useSelector((state) => state.subscriber);
+  const { error, errorMessage } = useSelector((state) => state?.subscriber);
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -27,84 +42,158 @@ const RegDetailsReskin = () => {
   const [tnc, setTnc] = useState(false);
   const [privacy, setPrivacy] = useState(false);
   const [marketing, setMarketing] = useState(false);
-  const [error, setError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
   const [emailValid, SetEmailValid] = useState(false);
-  
+  const[registerDisabled, setRegisterDisabled] = useState(true);
 
+  const [regionDropdown, setRegionDropdown] = useState({});
+
+  const popoulateRegion = () => {
+    $("#region").ph_locations("fetch_list");
+    fetch('https://ph-locations-api.buonzz.com/v1/regions').then(res => res.json()).then(json => {
+      const { data } = json;  
+      //setRegionDropdown(data);
+      var select = document.getElementById("selRegion");
+      data.forEach((item, i) => {
+        var el = document.createElement("option");
+        console.log(item.name)
+        el.text = item.name;
+        el.value = item.name;
+        select.appendChild(el);
+      })
+    })
+  }
+  
   const emailValidator = ( inputEmail ) => {
-      let isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inputEmail);
+      let isValid = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(inputEmail);
       SetEmailValid(isValid);
+      setEmail(inputEmail)
       return isValid;
   }
 
+  const isStringInputEmpty = (str) => {
+    return !str.trim().length;
+  }
+
+  const validateForm =( ) => {
+    const checkTNC = document.getElementById('checkTNC').checked;
+    const checkPrivacy = document.getElementById('checkPrivacy').checked;
+
+    
+    const region = $('#region').find(":selected").text();
+    const province = $('#province').find(":selected").text();
+    const city = $('#city').find(":selected").text();
+    const barangay = $('#barangay').find(":selected").text();
+
+    if(isStringInputEmpty(name)) {
+      showErrorMessage(dispatch, "Please provide your name")
+      return;
+    }
+
+    if (!emailValid) {
+      console.log("invalid email")
+      showErrorMessage(dispatch, "Invalid e-mail format!")
+      return;
+    }
+    if(isStringInputEmpty(region) || isStringInputEmpty(province) || isStringInputEmpty(city) || isStringInputEmpty(barangay)  || isStringInputEmpty(street) ) {
+      showErrorMessage(dispatch, "Please complete your address")
+      return;
+    }
+    if (!checkTNC) {
+      showErrorMessage(dispatch, "You must accept the Terms and Conditions")
+      return;
+    }
+    if (!checkPrivacy) {
+      showErrorMessage(dispatch, "You must agree to the Privacy Policy")
+      return;
+    }
+    if ( emailValid && checkPrivacy && checkTNC ) {
+      setRegisterDisabled(false);
+    }
+  }
+
+
   const handleRegister = (e) => {
-    console.log("handleRegister");
     e.preventDefault();
-    //VALIDATE
-    // if(!emailIsValid(email)) {
-    //     invalidEmailError(dispatch)
-    // }
+    validateForm();
+    
 
     //PROCESS
-   // const address = `${street} ${barangay} ${city} ${province} ${region}`;
-   const address = `${street}`;
+
+
+    const addressNew = {
+      street: street,
+      barangay: barangay,
+      city: city,
+      province: province,
+      region: region,
+    }
+
     const consent = {
         tnc: tnc,
         privacy: privacy,
         marketing: marketing,
     }
     const { mobileNumber, password } = tempUser;
-    subscriberRegister(dispatch, { mobileNumber, password, name, email, address, consent });
-    history.push("/reskin/welcomekadito");
+    // console.log( mobileNumber)
+    // console.log( password)
+    // console.log(name)
+    // console.log(email)
+    // console.log(consent)
+    // console.log(addressNew)
+    if(!registerDisabled) {
+      subscriberRegister(dispatch, { mobileNumber, password, name, email, addressNew, consent });
+      history.push("/welcomekadito");
+    }
+
 }
   
     return (
         <div className="register">
             <div className="container register-form" >
-        <a href="/reskin">
+        <a href="/">
             <img className="title-registration" src={ titleRegistration } />
         </a>
 
         <div className="box-regform">
             <p>Ensure that <span>details</span> provided  are accurate <br/> as these will be used for the <span>redemption of prizes.</span></p>
           
-            <form>
+            <div >
                 <div className="form-group">
+                
                     <label>Full Name</label>
                     <input type="text" className="form-control" id=""  maxLength="50" type="text" onChange={(e) => setName(e.target.value)} ></input>
                 </div>
 
                 <div className="form-group">
                     <label>Email Address</label>
-                    <input type="email" className="form-control" id="" maxLength="50" type="email" onChange={(e) => setEmail(e.target.value)}></input>
+                    <input type="email" className="form-control" id="" maxLength="50" type="email" onChange={(e) => emailValidator(e.target.value)}></input>
                 </div>
 
                 <div className="form-group">
                     <label>Region</label>
-                    <select className="form-select" id="" aria-label="Select Region">
-                        <option> </option>
+                    <select id="region" className="form-select" aria-label="Select Region">
+                        <option selected >Please select</option>
                     </select>
                 </div>
 
                 <div className="form-group">
                     <label>Province</label>
-                    <select className="form-select" id="" aria-label="Select Province">
-                        <option> </option>
+                    <select id="province" className="form-select" aria-label="Select Province">
+                    <option selected>Please select</option>
                     </select>
                 </div>
 
                 <div className="form-group">
                     <label>City</label>
-                    <select className="form-select" id="" aria-label="Select City">
-                        <option> </option>
+                    <select id="city" className="form-select" aria-label="Select City">
+                    <option selected>Please select</option>
                     </select>
                 </div>
 
                 <div className="form-group">
                     <label>Barangay</label>
-                    <select className="form-select" id="" aria-label="Select Barangay">
-                        <option> </option>
+                    <select id="barangay" className="form-select"  aria-label="Select Barangay">
+                    <option selected>Please select</option>
                     </select>
                 </div>
 
@@ -115,22 +204,22 @@ const RegDetailsReskin = () => {
                 </div>
 
                 <div className="form-check">
-                    <input className="form-check-input" checked type="checkbox"/>
+                    <input className="form-check-input" id="checkTNC"  type="checkbox"/>
                     <label className="form-check-label">I agree to <a href="https://dito.ph/terms-and-conditions?hsLang=en" target="_blank" className="modal-link" type="button"data-bs-toggle="modal" data-bs-target="#Terms">DITO's Terms and Conditions</a></label>
                 </div>
 
                 <div className="form-check">
-                    <input className="form-check-input" checked type="checkbox"/>
+                    <input className="form-check-input" id="checkPrivacy"  type="checkbox"/>
                     <label className="form-check-label" >I agree to <a href="https://dito.ph/privacy-policy?hsLang=en" target="_blank" className="modal-link" type="button"data-bs-toggle="modal" data-bs-target="#Privacy">DITO's Privacy Policy</a></label>
                 </div>
 
                 <div className="form-check">
-                    <input className="form-check-input" checked type="checkbox"/>
+                    <input className="form-check-input" id="checkMarketing" type="checkbox"/>
                     <label className="form-check-label">I agree to <a className="modal-link" type="button"data-bs-toggle="modal" data-bs-target="#Marketing">DITO Telecommunity marketing notifications</a></label>
                 </div>
-            </form>
-
-            <a type="button" className="btn btn-red" onClick={ (e) => handleRegister(e) } >REGISTER</a>
+            </div>
+            <Error hidden={error ? false : true }>{errorMessage}</Error>
+            <button className="btn btn-red"  onClick={ (e) => handleRegister(e) } >REGISTER</button>
         </div>
         <img className="logo-dito" src={ logoDito }/>
     </div>
