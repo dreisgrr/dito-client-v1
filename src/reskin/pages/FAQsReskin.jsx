@@ -131,6 +131,11 @@ const FAQsReskin = () => {
                         </tr>
 
                         <tr>
+                            <td>Lazada P300 Voucher</td>
+                            <td>1</td>
+                        </tr>
+
+                        <tr>
                             <td>Vivamax 1-month subscription</td>
                             <td>10</td>
                         </tr>
