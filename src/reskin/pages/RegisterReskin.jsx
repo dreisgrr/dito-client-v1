@@ -33,9 +33,13 @@ const RegisterReskin = () => {
     const { error, errorMessage, isNewUser, tempUser } = useSelector((state) =>  state.subscriber);
 
     const handleRegister = (e) => {
+        if(password.length < 10) {
+            showErrorMessage(dispatch, "Password should be at least 10 characters!")
+            return;
+        }
         e.preventDefault();
         if(!isValid)  {
-            showErrorMessage(dispatch, "Invalid phone number")
+            showErrorMessage(dispatch, "Invalid phone number!")
             return;
         }
         sunscriberNotExistsPW(dispatch, { mobileNumber, password });

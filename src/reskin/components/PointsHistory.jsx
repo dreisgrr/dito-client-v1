@@ -60,13 +60,16 @@ export default function AlertDialogSlide() {
         keepMounted
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"
-        fullWidth="true"
         maxWidth="400"
+        style={{ backgroundColor: '#0038a8e6'}}
+        fullWidth
+        maxWidth="sm"
+        className="points-history-box"
       >
-        <DialogTitle>{"My DITO Points History"}</DialogTitle>
-        <DialogContent>
+        <DialogTitle className="points-history-header">{"My DITO Points History"}</DialogTitle>
+        <DialogContent className="points-history-center">
           <DialogContentText id="alert-dialog-slide-description">
-          <table id="drawTable" style={{width: 70 + '%'}}> 
+          <table className="points-history-center" id="drawTable" style={{width: 90 + '%', paddingTop: 10 + 'px'}}> 
                         <thead> 
                             <tr style={{textAlign: 'center'}}>
                                 <th>

@@ -17,6 +17,7 @@ import {
   clearWelcomeState,
   setErrorMessage,
   getPointsHistory,
+  clearRegAuth,
 } from "./subscriberRedux";
 import { publicRequest, requestOTP, semaOTP } from "../requestMethods";
 
@@ -142,12 +143,12 @@ export const sunscriberOTPVerified = (dispatch, mobileNumber) => {
 export const subscriberRegister = async (dispatch, subscriber) => {
   console.log("apiCall - subscriberRegister");
   const { mobileNumber, password, name, email, address, consent } = subscriber;
-  console.log(mobileNumber);
-  console.log(password);
-  console.log(email);
-  console.log(name);
-  console.log(address);
-  console.log(consent);
+  //   console.log(mobileNumber);
+  //   console.log(password);
+  //   console.log(email);
+  //   console.log(name);
+  //   console.log(address);
+  //   console.log(consent);
   dispatch(loginStart());
   try {
     const res = await publicRequest.post(
@@ -216,4 +217,7 @@ export const afterSplashScreen = async (dispatch) => {
 };
 export const showErrorMessage = async (dispatch, err) => {
   dispatch(setErrorMessage(err));
+};
+export const clearRegistrationAuth = (dispatch) => {
+  dispatch(clearRegAuth());
 };

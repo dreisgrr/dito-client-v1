@@ -3,8 +3,7 @@ import React, {useState, useEffect} from 'react'
 import $ from 'jquery'
 import '../../css/main.css';
 import { useDispatch, useSelector } from "react-redux";
-import { showErrorMessage } from "../../redux/apiCalls";
-import { subscriberRegister } from "../../redux/apiCalls";
+import { subscriberRegister, clearRegistrationAuth, showErrorMessage } from "../../redux/apiCalls";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import '../../js/jquery-ph-locations'
@@ -113,15 +112,15 @@ const RegDetailsReskin = () => {
       setRegisterDisabled(false);
     }
   }
-
+  const clearDetails = (e) => {
+    e.preventDefault();
+    clearRegistrationAuth(dispatch)
+  }
 
   const handleRegister = (e) => {
     e.preventDefault();
     validateForm();
-    
-
     //PROCESS
-
 
     // const addressNew = {
     //   street: street,
@@ -219,6 +218,7 @@ const RegDetailsReskin = () => {
             </div>
             <Error hidden={error ? false : true }>{errorMessage}</Error>
             <button className="btn btn-red"  onClick={ (e) => handleRegister(e) } >REGISTER</button>
+            <button className="btn btn-red"  onClick={ (e) => clearDetails(e) } >RE-ENTER MOBILE PHONE</button>
         </div>
         <img className="logo-dito" src={ logoDito }/>
     </div>

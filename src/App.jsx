@@ -20,7 +20,10 @@ import RegisterReskin from "./reskin/pages/RegisterReskin";
 import RegDetailsReskin from "./reskin/pages/RegDetailsReskin";
 import HomeReskin from "./reskin/pages/HomeReskin";
 import SplashReskin from "./reskin/pages/SplashReskin";
-
+import TopbarReskin from './reskin/components/TopbarReskin';
+import RafflePageReskin from './reskin/pages/RafflePageReskin';
+import FAQsReskin from './reskin/pages/FAQsReskin';
+import FooterReskin from './reskin/components/FooterReskin';
 
 const DITOLogo = styled.div`
     flex: 1;
@@ -41,6 +44,7 @@ function  App() {
   console.log("Remove"+ subscriber);
   if (subscriber == null) {
     localStorage.removeItem("persist:root");
+    localStorage.clear();
   }
   const auth = useSelector((state) => state.subscriber?.isNewUser);
   // const subscriber = true;
@@ -64,18 +68,25 @@ function  App() {
           <Route exact path='/welcomekadito'>
             {auth ? <SplashReskin /> : <Redirect to='/' />}
           </Route>
-          <Route exact path='/'>
-            {subscriber ? <HomeReskin />
-            // <>
-            //   <Topbar/>
-            //   <div className="container">
-            //   <Route exact path='/'>
-            //     <RafflePage />
-            //   </Route>
-            //   </div>
-            // </> 
-            
-            : <LandingReskin />}
+            {subscriber && (
+            <>
+              <TopbarReskin/>
+              <div className="home-page-container">
+                <Route  path='/raffle'>
+                  <RafflePageReskin />
+                </Route>
+                <Route  path='/faqs'>
+                  <FAQsReskin />
+                </Route>
+                <Route  exact path='/'>
+                  <RafflePageReskin />
+                </Route>
+              </div>
+              <FooterReskin/>
+            </>
+            )}
+          <Route path='/'>
+            <LandingReskin />
           </Route>
 
               {/* PROD ROUTE */}

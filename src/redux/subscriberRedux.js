@@ -128,6 +128,21 @@ const subscriberSlice = createSlice({
       state.error = true;
       state.errorMessage = action.payload;
     },
+    clearRegAuth: (state) => {
+      state.currentUser = null;
+      state.isFetching = "";
+      state.errorMessage = "";
+      state.isRegistered = false;
+      state.isNewUser = false;
+      state.isAuthenticated = false;
+      state.raffleEntry = false;
+      state.pointsHistory = null;
+      state.tempNumber = "";
+      state.tempUser = null;
+      state.tempPw = "";
+      state.regFormError = false;
+      state.regFormMessage = "";
+    },
   },
 });
 
@@ -152,5 +167,6 @@ export const {
   clearWelcomeState,
   setErrorMessage,
   getPointsHistory,
+  clearRegAuth,
 } = subscriberSlice.actions;
 export default subscriberSlice.reducer;
