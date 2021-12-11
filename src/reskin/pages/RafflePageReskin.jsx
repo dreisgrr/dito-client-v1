@@ -71,8 +71,8 @@ const RafflePageReskin = () => {
                         <div className="steps-details">
                             <h5>Earn points with any DITO transaction:</h5>
                             <ul>
-                                <li>Active your DITO SIM</li>
-                                <li>Log-in to the DITO APP for the fist time</li>
+                                <li>Activate your DITO SIM</li>
+                                <li>Log-in to the DITO APP for the first time</li>
                                 <li>Purchase DITO Promos</li>
                                 <li>Purchase content subscriptions</li>
                             </ul>

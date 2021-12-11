@@ -10,10 +10,10 @@ import assetsTicket from "../../assets/ticket.png";
 
 const TopbarItem = styled.li`
     padding: 15px 0;
-    coloer: white;
+    coloer: blue;
     color: ${
         props => props.active ?
-        "white" : "white"
+        "white" : "blue"
     };
     background-color: ${
         props => props.active ?
@@ -44,12 +44,12 @@ const TopbarReskin = () => {
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
                             <Link className="link-nav-wrap" to={"/raffle"}>
-                                <TopbarItem  className="nav-link link-item"  active={splitLocation[1].toString().includes("raffle") || splitLocation[1] === '' ? true : false}>RAFFLE</TopbarItem>
+                                <TopbarItem  className="link-item"  active={splitLocation[1].toString().includes("raffle") || splitLocation[1] === '' ? true : false}>RAFFLE</TopbarItem>
                             </Link>
                         </li>
                         <li className="nav-item">
                             <Link className="link-nav-wrap" to={"/faqs"}>
-                            <TopbarItem className="nav-link link-item"  active={splitLocation[1].toString().includes("faqs") ? true : false}>FAQS</TopbarItem>
+                            <TopbarItem className="link-item"  active={splitLocation[1].toString().includes("faqs") ? true : false}>FAQS</TopbarItem>
                             </Link>
                         </li>
                         <li className="nav-item"></li>
