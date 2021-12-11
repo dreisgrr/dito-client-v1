@@ -31,7 +31,7 @@ const RafflePageReskin = () => {
     if (!raffleEntry) raffleEntry = 0;
 
     const date = new Date();
-    const today = `${date.getMonth()+1}-${date.getDate()},-${date.getFullYear()} `;
+    const today = `${date.getMonth()+1}-${date.getDate()}-${date.getFullYear()} `;
     const hrs = date.toLocaleString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true })
 
     return (
