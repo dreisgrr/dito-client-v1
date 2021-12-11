@@ -17,7 +17,7 @@ const FAQsReskin = () => {
 
                 <h5>How can I join the DITO Loaded Ang Pasko Christmas raffle?</h5>
                 <ol>
-                    <li>Earn DITO raffle points by activating a DITO SIM, logging in to the DITO APP for the first time, purchasing DITO promos, or purchasing select Vivamax (1 month), WeTV (1 month), and HBO Go (1 month/3 months) subscriptions via the DITO APP.</li>
+                    <li>Earn DITO raffle points by activating a DITO SIM, logging in to the DITO APP for the first time, purchasing DITO promos, or purchasing select Vivamax (1 month), and WeTV (1 month) subscriptions via the DITO APP.</li>
                     <li>Convert your DITO raffle points into raffle entries by registering in LoadedKaDITO.ph </li>
                     <li>Get a chance to be part of thousands of winners everyday!</li>
                 </ol>
@@ -64,16 +64,6 @@ const FAQsReskin = () => {
                         <tr>
                             <td>WeTV 1-month subscription via the DITO APP</td>
                             <td>2</td>
-                        </tr>
-
-                        <tr>
-                            <td>HBO Go 1-month subscription via the DITO APP</td>
-                            <td>2</td>
-                        </tr>
-
-                        <tr>
-                            <td>HBO Go 3-month subscription via the DITO APP</td>
-                            <td>4</td>
                         </tr>
 
                     </tbody>
@@ -143,11 +133,6 @@ const FAQsReskin = () => {
                         <tr>
                             <td>Vivamax 1-month subscription</td>
                             <td>10</td>
-                        </tr>
-
-                        <tr>
-                            <td>HBO Go 1-month subscription</td>
-                            <td>1</td>
                         </tr>
 
                          <tr>
@@ -282,10 +267,6 @@ const FAQsReskin = () => {
 
                         <tr>
                             <td>Vivamax 3-month subscription</td>
-                        </tr>
-
-                        <tr>
-                            <td>HBO Go 1-month subscription</td>
                         </tr>
 
                         <tr>
