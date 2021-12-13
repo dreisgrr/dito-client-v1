@@ -13,7 +13,7 @@ const TopbarItem = styled.li`
     coloer: blue;
     color: ${
         props => props.active ?
-        "white" : "blue"
+        "#ffffff" : "#0038a8"
     };
     background-color: ${
         props => props.active ?
@@ -27,7 +27,7 @@ const TopbarReskin = () => {
     const location = useLocation();
     const { pathname } = location;
     const splitLocation = pathname.split("/");
-    console.log("split"+splitLocation[1].toString().includes("/raffle") || splitLocation[1] === '');
+    //console.log("split"+splitLocation[1].toString().includes("/raffle") || splitLocation[1] === '');
     const { name, mobileNumber } = useSelector((state) => state.subscriber?.currentUser?.user);
 
     const handleLogout = () => {
@@ -50,6 +50,11 @@ const TopbarReskin = () => {
                         <li className="nav-item">
                             <Link className="link-nav-wrap" to={"/faqs"}>
                             <TopbarItem className="link-item"  active={splitLocation[1].toString().includes("faqs") ? true : false}>FAQS</TopbarItem>
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="link-nav-wrap" to={"/account"}>
+                            <TopbarItem className="link-item"  active={splitLocation[1].toString().includes("account") ? true : false}>Account</TopbarItem>
                             </Link>
                         </li>
                         <li className="nav-item"></li>

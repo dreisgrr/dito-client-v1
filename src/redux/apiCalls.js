@@ -18,6 +18,10 @@ import {
   setErrorMessage,
   getPointsHistory,
   clearRegAuth,
+  updatePersonalInfoRedux,
+  showErrorMessagePwRedux,
+  updatePersonalPwRedux,
+  resetPwErrorsRedux,
 } from "./subscriberRedux";
 import { publicRequest, requestOTP, semaOTP } from "../requestMethods";
 
@@ -93,8 +97,10 @@ export const sunscriberNotExistsPW = async (dispatch, subscriber) => {
 };
 
 export const resetLoginError = (dispatch) => {
-  console.log("Reset Subscriber Login Form error message");
   dispatch(resetLoginFormError());
+};
+export const resetPwErrors = (dispatch) => {
+  dispatch(resetPwErrorsRedux());
 };
 
 export const subscriberGenerateOTP = async (dispatch, phone) => {
@@ -199,6 +205,42 @@ export const loadUserPointsHistory = async (dispatch, mobileNumber) => {
   }
 };
 
+export const updatePersonalInfo = async (dispatch, subscriber) => {
+  try {
+    console.log("Update Personal Information");
+    const res = await publicRequest.post(
+      "/info/subscriber/updatePersonalInfo",
+      subscriber
+    );
+
+    const { data } = res;
+    console.log(res);
+    dispatch(updatePersonalInfoRedux(subscriber));
+  } catch (err) {
+    if (err.response) {
+      const errorMessage = err.response.data;
+    }
+  }
+};
+
+export const updatePersonalPw = async (dispatch, password) => {
+  try {
+    console.log("Update Personal Password");
+    const res = await publicRequest.post(
+      "/info/subscriber/updatePersonalPw",
+      password
+    );
+
+    const { data } = res;
+    console.log(res);
+    dispatch(updatePersonalPwRedux(password));
+  } catch (err) {
+    if (err.response) {
+      const errorMessage = err.response.data;
+    }
+  }
+};
+
 export const sendSemaOTP = async (dispatch, params) => {
   try {
     const res = await semaOTP
@@ -217,6 +259,9 @@ export const afterSplashScreen = async (dispatch) => {
 };
 export const showErrorMessage = async (dispatch, err) => {
   dispatch(setErrorMessage(err));
+};
+export const showErrorMessagePw = async (dispatch, err) => {
+  dispatch(showErrorMessagePwRedux(err));
 };
 export const clearRegistrationAuth = (dispatch) => {
   dispatch(clearRegAuth());

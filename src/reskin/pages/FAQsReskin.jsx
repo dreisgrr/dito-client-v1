@@ -126,18 +126,20 @@ const FAQsReskin = () => {
                         </tr>
 
                         <tr>
-                            <td>WeTV 1-month subscription</td>
+                            <td>WeTV 1-month subscriptions</td>
                             <td>10</td>
                         </tr>
 
                         <tr>
-                            <td>Lazada P300 Voucher</td>
+                            <td>Vivamax 1-month subscriptions</td>
+                            <td>10</td>
+                        </tr>
+
+                        
+
+                        <tr>
+                            <td>Php300 Lazada Gift Vouchers</td>
                             <td>1</td>
-                        </tr>
-
-                        <tr>
-                            <td>Vivamax 1-month subscription</td>
-                            <td>10</td>
                         </tr>
 
                          <tr>
@@ -159,7 +161,7 @@ const FAQsReskin = () => {
 
                     <tbody>
                         <tr>
-                            <td>Vivamax 3-month subscription</td>
+                            <td>Vivamax 3-month subscriptions</td>
                             <td>6</td>
                         </tr>
 
@@ -274,13 +276,6 @@ const FAQsReskin = () => {
                             <td>Vivamax 3-month subscription</td>
                         </tr>
 
-                        <tr>
-                            <td>Php500 Lazada Gift Vouchers</td>
-                        </tr>
-
-                        <tr>
-                            <td>Php500 Shopee Gift Vouchers</td>
-                        </tr>
                     </tbody>
                 </table>
 

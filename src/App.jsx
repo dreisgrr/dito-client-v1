@@ -1,13 +1,5 @@
 import React from "react";
 import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
-import Landing from "./subscriber/pages/Landing";
-import Register from "./subscriber/pages/Register";
-import RegisterThruPW from "./subscriber/pages/RegisterThruPW";
-import Login from "./subscriber/pages/Login";
-import LoginPW from "./subscriber/pages/LoginPW";
-import Home from "./subscriber/pages/Home";
-import RegDetails from "./subscriber/pages/RegDetails";
-import Topbar from "./subscriber/components/Topbar"
 import { useSelector } from "react-redux";
 import "./App.css";
 import RafflePage from "./subscriber/pages/RafflePage";
@@ -24,6 +16,8 @@ import TopbarReskin from './reskin/components/TopbarReskin';
 import RafflePageReskin from './reskin/pages/RafflePageReskin';
 import FAQsReskin from './reskin/pages/FAQsReskin';
 import FooterReskin from './reskin/components/FooterReskin';
+import AccountsReskin from "./reskin/pages/AccountsReskin";
+import './js/app'
 
 const DITOLogo = styled.div`
     flex: 1;
@@ -46,9 +40,9 @@ function  App() {
     localStorage.removeItem("persist:root");
     localStorage.clear();
   }
-  const auth = useSelector((state) => state.subscriber?.isNewUser);
+  let auth = useSelector((state) => state.subscriber?.isNewUser);
+  //auth = true;
   // const subscriber = true;
-  // const auth = true;
     return(
       <Router>
           <Switch>
@@ -75,8 +69,11 @@ function  App() {
                 <Route  path='/raffle'>
                   <RafflePageReskin />
                 </Route>
-                <Route  path='/faqs'>
+                <Route path='/faqs'>
                   <FAQsReskin />
+                </Route>
+                <Route path='/account'>
+                  <AccountsReskin />
                 </Route>
                 <Route  exact path='/'>
                   <RafflePageReskin />

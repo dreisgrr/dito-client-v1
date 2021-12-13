@@ -40,14 +40,11 @@ const FooterReskin = () => {
                     <div className="nav-menu">
                         <Link to={"/faqs"}><img src={ mobilemenuFaqs } /></Link>
                     </div>
+                    <div className="nav-menu">
+                        <Link to={"/account"}><img src={ mobilemenuProfile } /></Link>
+                    </div>
 
-                {/* <div className="nav-menu">
-                    <a ><img src={ mobilemenuWinners } /></a>
-                </div> */}
-
-                {/* <div className="nav-menu">
-                    <a ><img src={ mobilemenuProfile } /></a>
-                </div> */}
+                
             </footer>
         </div>
     )

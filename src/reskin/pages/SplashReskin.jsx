@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 
 import '../../css/main.css';
 import closeButton from "../../assets/close-button.png";
+import splashLogoDITO from "../../assets/logo-loadeddito.png";
 
 const SplashReskin = () => {
     const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const SplashReskin = () => {
     return (
         <div className="raffle">
             <div className="popup-firstlogin">
+            <img className="logo-loadeddito" src={ splashLogoDITO } />
                 <div className="popup">
                     <a href="/" onClick={ handleClearWelcomeState } ><img className="popup-close" src={ closeButton } /></a>
                     <h2>Congrats!</h2>  

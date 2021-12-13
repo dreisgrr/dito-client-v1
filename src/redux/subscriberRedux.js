@@ -7,6 +7,8 @@ const subscriberSlice = createSlice({
     isFetching: "",
     error: false,
     errorMessage: "",
+    errorPw: false,
+    errorMessagePw: "",
     isRegistered: false,
     isNewUser: false,
     isAuthenticated: false,
@@ -110,8 +112,19 @@ const subscriberSlice = createSlice({
       state.error = false;
       state.errorMessage = "";
     },
+    updatePersonalInfoRedux: (state, action) => {
+      state.currentUser.user.name = action.payload.name;
+      state.currentUser.user.email = action.payload.email;
+    },
+    updatePersonalPwRedux: (state, action) => {
+      state.currentUser.user.password = action.payload.password;
+      state.errorPw = true;
+      state.errorMessagePw = "Password successfuly changed";
+    },
     updateUserInfo: (state, action) => {
       state.raffleEntry = action.payload;
+      state.error = true;
+      state.errorMessage = "Account information updated";
     },
     getPointsHistory: (state, action) => {
       state.pointsHistory = action.payload;
@@ -124,9 +137,17 @@ const subscriberSlice = createSlice({
       state.regFormError = false;
       state.regFormMessage = "";
     },
+    resetPwErrorsRedux: (state) => {
+      state.errorPw = false;
+      state.errorMessagePw = "";
+    },
     setErrorMessage: (state, action) => {
       state.error = true;
       state.errorMessage = action.payload;
+    },
+    showErrorMessagePwRedux: (state, action) => {
+      state.errorPw = true;
+      state.errorMessagePw = action.payload;
     },
     clearRegAuth: (state) => {
       state.currentUser = null;
@@ -168,5 +189,9 @@ export const {
   setErrorMessage,
   getPointsHistory,
   clearRegAuth,
+  updatePersonalInfoRedux,
+  showErrorMessagePwRedux,
+  updatePersonalPwRedux,
+  resetPwErrorsRedux,
 } = subscriberSlice.actions;
 export default subscriberSlice.reducer;

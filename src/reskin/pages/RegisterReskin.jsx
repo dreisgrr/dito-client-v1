@@ -17,9 +17,6 @@ const Error = styled.div`
     justify-content: center;
     align-items: center;
     font-size: 12px;
-    font-weight: 600;
-    margin-top: -50px;
-	position:fixed;
 `;
 
 const RegisterReskin = () => {
@@ -28,21 +25,68 @@ const RegisterReskin = () => {
 
     const [mobileNumber, setMobileNumber] = useState('');
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+
     const [isValid, setIsValid] = useState("");
+    const[passwordFormValidate, setPasswordFormValidate] = useState(false);
 
     const { error, errorMessage, isNewUser, tempUser } = useSelector((state) =>  state.subscriber);
 
-    const handleRegister = (e) => {
-        if(password.length < 10) {
-            showErrorMessage(dispatch, "Password should be at least 10 characters!")
-            return;
-        }
-        e.preventDefault();
+    const isStringInputEmpty = (str) => {
+        return !str.trim().length;
+    }
+
+    const validatePassword =( ) => {
+        
         if(!isValid)  {
             showErrorMessage(dispatch, "Invalid phone number!")
             return;
         }
-        sunscriberNotExistsPW(dispatch, { mobileNumber, password });
+        if(isStringInputEmpty(password)) {
+            showErrorMessage(dispatch, "Please type your desired password")
+            setPasswordFormValidate(false)
+            return;
+        }
+      
+        if(password.length < 9) {
+            showErrorMessage(dispatch, "Password should be at least 8 characters")
+            setPasswordFormValidate(false)
+            return;
+        }
+        let numberCheck = /\d/.test(password)
+        if(!numberCheck) {
+            showErrorMessage(dispatch, "Passwords must have at least 1 number")
+            setPasswordFormValidate(false)
+            return;
+        }
+        let lowerCaseCheck = /(?=.*[a-z])/.test(password)
+        if(!lowerCaseCheck) {
+            showErrorMessage(dispatch, "Passwords must have at least 1 lowercase letter")
+            setPasswordFormValidate(false)
+            return;
+        }
+        let uppperCaseCheck = /(?=.*[a-z])/.test(password)
+        if(!uppperCaseCheck) {
+            showErrorMessage(dispatch, "Passwords must have at least 1 uppercase letter")
+            setPasswordFormValidate(false)
+            return;
+        }
+        console.log(password)
+        console.log(confirmPassword)
+        if(password !== confirmPassword) {
+            showErrorMessage(dispatch, "Passwords do not match!")
+            setPasswordFormValidate(false)
+            return;
+          }
+          setPasswordFormValidate(true)
+    }
+
+    const handleRegister = (e) => {
+        e.preventDefault();
+        validatePassword();
+        if(passwordFormValidate) {
+            sunscriberNotExistsPW(dispatch, { mobileNumber, password });
+        }
     }
 
 
@@ -73,21 +117,27 @@ const RegisterReskin = () => {
 
                 <div className="box-registration">
                     <p>Input your DITO Number</p>
-                    <Error hidden={error ? false : true }>{errorMessage}</Error>
+                    
                     <div className="input-group">
                         <img className="box-mobile" src={ boxMobile }/>
                         <span className="input-group-text">+63</span>
                         <input type="tel" className="form-control" placeholder="991 000 0000" maxLength="10"  onFocus={(e) => resetLoginError(dispatch)} onInput={(e) => resetError(e.target.value)} />
                     </div>
-                    <div className="input-group" style={{marginTop: 25 + 'px'}}>
-                        <input type="password" className="form-control" placeholder="Password" onChange={(e)=>setPassword(e.target.value)} />
+                    <p className="label-password">Password</p>
+                    <div className="input-group">
+                    <input type="password" className="form-control" onChange={(e)=>setPassword(e.target.value)} />
+                    </div>
+
+                    <p className="label-password">Confirm Password</p>
+                    <div className="input-group">
+                        <input type="password" className="form-control" onChange={(e) =>setConfirmPassword(e.target.value)} />
                     </div>
 
                     <div className="form-check">
                     <input className="form-check-input" type="checkbox"/>
                     <label className="form-check-label">Remember Me</label>
+                    <Error hidden={error ? false : true }>{errorMessage}</Error>
                     </div>
-
                     <a type="button" onClick={ handleRegister } className="btn btn-blue">PROCEED</a>
                     
                 </div>
