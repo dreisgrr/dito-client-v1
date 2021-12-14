@@ -99,10 +99,10 @@ const RegDetailsReskin = () => {
     const checkPrivacy = document.getElementById('checkPrivacy').checked;
 
     
-    const region = $('#region').find(":selected").val();
-    const province = $('#province').find(":selected").val();
-    const city = $('#city').find(":selected").val();
-    const barangay = $('#barangay').find(":selected").val();
+    // const region = $('#region').find(":selected").val();
+    // const province = $('#province').find(":selected").val();
+    // const city = $('#city').find(":selected").val();
+    // const barangay = $('#barangay').find(":selected").val();
 
     if(isStringInputEmpty(name)) {
       showErrorMessage(dispatch, "Please provide your name!")
@@ -119,10 +119,10 @@ const RegDetailsReskin = () => {
       showErrorMessage(dispatch, "Invalid e-mail format!")
       return;
     }
-    if(isStringInputEmpty(region) || isStringInputEmpty(province) || isStringInputEmpty(city) || isStringInputEmpty(street) ) {
-      showErrorMessage(dispatch, "Please complete your address")
-      return;
-    }
+    // if(isStringInputEmpty(region) || isStringInputEmpty(province) || isStringInputEmpty(city) || isStringInputEmpty(street) ) {
+    //   showErrorMessage(dispatch, "Please complete your address")
+    //   return;
+    // }
     if(isStringInputEmpty(street) ){
       showErrorMessage(dispatch, "Please complete your address")
       return;
@@ -148,18 +148,18 @@ const RegDetailsReskin = () => {
     e.preventDefault();
     validateForm();
     //PROCESS
-    const region = $('#region').find(":selected").text();
-    const province = $('#province').find(":selected").text();
-    const city = $('#city').find(":selected").text();
-    const barangay = $('#barangay').find(":selected").text();
+    // const region = $('#region').find(":selected").text();
+    // const province = $('#province').find(":selected").text();
+    // const city = $('#city').find(":selected").text();
+    // const barangay = $('#barangay').find(":selected").text();
 
-    const addressNew = {
-      street: street,
-      barangay: barangay,
-      city: city,
-      province: province,
-      region: region,
-    }
+    // const addressNew = {
+    //   street: street,
+    //   barangay: barangay,
+    //   city: city,
+    //   province: province,
+    //   region: region,
+    // }
 
     const consent = {
         tnc: tnc,
@@ -172,17 +172,18 @@ const RegDetailsReskin = () => {
     console.log(name)
     console.log(email)
     console.log(consent)
-    console.log(addressNew)
+    console.log("street: "+street)
+    //console.log(addressNew)
     if(!registerDisabled) {
-      subscriberRegister(dispatch, { mobileNumber, password, name, email, addressNew, consent });
+      subscriberRegister(dispatch, { mobileNumber, password, name, email, street, consent });
       history.push("/welcomekadito");
     }
 
 }
   
-useEffect(() => {
-  loadCascading();
-}, [])
+// useEffect(() => {
+//   loadCascading();
+// }, [])
     return (
         <div className="register">
             <div className="container register-form" >
@@ -207,25 +208,25 @@ useEffect(() => {
 
                 <div className="form-group">
                     <label style={{ float: 'left' }}>Region</label>
-                    <select id="region"  className="form-select" aria-label="Select Region">
+                    <select id="region" disabled  className="form-select" aria-label="Select Region">
                     </select>
                 </div>
 
                 <div className="form-group">
                     <label style={{ float: 'left' }}>Province</label>
-                    <select id="province" className="form-select" aria-label="Select Province">
+                    <select id="province" disabled className="form-select" aria-label="Select Province">
                     </select>
                 </div>
 
                 <div className="form-group">
                     <label style={{ float: 'left' }}>City</label>
-                    <select id="city" className="form-select" aria-label="Select City">
+                    <select id="city" disabled className="form-select" aria-label="Select City">
                     </select>
                 </div>
 
                 <div className="form-group">
                     <label style={{ float: 'left' }}>Barangay</label>
-                    <select id="barangay" className="form-select"  aria-label="Select Barangay">
+                    <select id="barangay" disabled className="form-select"  aria-label="Select Barangay">
                     </select>
                 </div>
 
