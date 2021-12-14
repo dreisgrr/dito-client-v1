@@ -1200,6 +1200,12 @@ table tr th:nth-child(2) {
 }
 
 @media only screen and (max-width: 414px) {
+  .register-content > .logo-dito,
+  .register-form > .logo-dito,
+  .login-content > .logo-dito {
+    width: 25%;
+    margin-top: 80px;
+  }
   ul {
     padding-left: 1rem;
   }
