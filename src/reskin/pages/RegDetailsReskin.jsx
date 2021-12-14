@@ -18,7 +18,7 @@ const Error = styled.div`
     text-align: center;
     justify-content: center;
     align-items: center;
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 600;
 `;
 
@@ -105,18 +105,22 @@ const RegDetailsReskin = () => {
     // const barangay = $('#barangay').find(":selected").val();
 
     if(isStringInputEmpty(name)) {
-      showErrorMessage(dispatch, "Please provide your name!")
+      showErrorMessage(dispatch, "Your name is required")
       return;
     }
 
-    if(name.length < 8) {
-      showErrorMessage(dispatch, "Full name too short!")
+    if(name.length < 5) {
+      showErrorMessage(dispatch, "Full name too short")
+      return;
+    }
+
+    if(isStringInputEmpty(email)) {
+      showErrorMessage(dispatch, "Email is required")
       return;
     }
 
     if (!emailValid) {
-      console.log("invalid email")
-      showErrorMessage(dispatch, "Invalid e-mail format!")
+      showErrorMessage(dispatch, "The email you entered is invalid")
       return;
     }
     // if(isStringInputEmpty(region) || isStringInputEmpty(province) || isStringInputEmpty(city) || isStringInputEmpty(street) ) {
@@ -124,20 +128,25 @@ const RegDetailsReskin = () => {
     //   return;
     // }
     if(isStringInputEmpty(street) ){
-      showErrorMessage(dispatch, "Please complete your address")
+      showErrorMessage(dispatch, "Address is required")
+      return;
+    }
+    if(street.length < 15){
+      showErrorMessage(dispatch, "Address too short")
       return;
     }
     if (!checkTNC) {
-      showErrorMessage(dispatch, "You must accept the Terms and Conditions")
+      showErrorMessage(dispatch, "You must accept DITO's Terms and Conditions")
       return;
     }
     if (!checkPrivacy) {
-      showErrorMessage(dispatch, "You must agree to the Privacy Policy")
+      showErrorMessage(dispatch, "You must agree to DITO's Privacy Policy")
       return;
     }
-    if ( emailValid && checkPrivacy && checkTNC ) {
-      setRegisterDisabled(false);
-    }
+    // if ( emailValid && checkPrivacy && checkTNC ) {
+    //   setRegisterDisabled(false);
+    // }
+    setRegisterDisabled(false);
   }
   const clearDetails = (e) => {
     e.preventDefault();
@@ -167,11 +176,11 @@ const RegDetailsReskin = () => {
         marketing: marketing,
     }
     const { mobileNumber, password } = tempUser;
-    console.log( mobileNumber)
-    console.log( password)
-    console.log(name)
-    console.log(email)
-    console.log(consent)
+    // console.log( mobileNumber)
+    // console.log( password)
+    // console.log(name)
+    // console.log(email)
+    // console.log(consent)
     console.log("street: "+street)
     //console.log(addressNew)
     if(!registerDisabled) {
@@ -181,9 +190,9 @@ const RegDetailsReskin = () => {
 
 }
   
-// useEffect(() => {
-//   loadCascading();
-// }, [])
+useEffect(() => {
+  loadCascading();
+}, [])
     return (
         <div className="register">
             <div className="container register-form" >
@@ -198,61 +207,62 @@ const RegDetailsReskin = () => {
                 <div className="form-group">
                 
                     <label style={{ float: 'left' }}>Full Name</label>
-                    <input type="text" className="form-control" id=""  maxLength="50" type="text" onChange={(e) => setName(e.target.value)} ></input>
+                    <input type="text" className="form-control" placeholder="Juan de la Cruz" maxLength="50" type="text" onChange={(e) => setName(e.target.value)} ></input>
                 </div>
 
                 <div className="form-group">
                     <label style={{ float: 'left' }}>Email Address</label >
-                    <input type="email" className="form-control" id="" maxLength="50" type="email" onChange={(e) => emailValidator(e.target.value)}></input>
+                    <input type="email" className="form-control" placeholder="juandelacruz@gmail.com" maxLength="50" type="email" onChange={(e) => emailValidator(e.target.value)}></input>
                 </div>
 
-                <div className="form-group">
+                {/* <div className="form-group">
                     <label style={{ float: 'left' }}>Region</label>
-                    <select id="region" disabled  className="form-select" aria-label="Select Region">
+                    <select id="region"  className="form-select" aria-label="Select Region">
                     </select>
                 </div>
 
                 <div className="form-group">
                     <label style={{ float: 'left' }}>Province</label>
-                    <select id="province" disabled className="form-select" aria-label="Select Province">
+                    <select id="province" className="form-select" aria-label="Select Province">
                     </select>
                 </div>
 
                 <div className="form-group">
                     <label style={{ float: 'left' }}>City</label>
-                    <select id="city" disabled className="form-select" aria-label="Select City">
+                    <select id="city" className="form-select" aria-label="Select City">
                     </select>
                 </div>
 
                 <div className="form-group">
                     <label style={{ float: 'left' }}>Barangay</label>
-                    <select id="barangay" disabled className="form-select"  aria-label="Select Barangay">
+                    <select id="barangay" className="form-select"  aria-label="Select Barangay">
                     </select>
-                </div>
+                </div> */}
 
                 <div className="form-group form-address">
-                    <label style={{ float: 'left' }}>Address</label>
-                    <p>Unit Number, House Number, Building Name, Street Name</p>
-                    <input type="text" placeholder="Unit Number, House number, Building name, Street Name Barangay, City, Province, Region" className="form-control" id="" maxLength="50" type="text" onChange={(e) => setStreet(e.target.value)}></input>
+                    <label style={{ float: 'left' }}>Complete Address</label><br/>
+                    <p >House Number, Street Name, Barangay, City, Province, Postal Code</p>
+                    {/* <input type="text" placeholder="Unit Number, House number, Building name, Street Name Barangay, City, Province, Region" className="form-control" id="" maxLength="50" type="text" onChange={(e) => setStreet(e.target.value)}></input> */}
+                    <textarea id="addressStreet"  cols="40" placeholder='House Number, Street Name, Barangay, City, Province, Postal Code' maxLength="80" rows="6" className="form-control" onChange={(e) => setStreet(e.target.value)} />
                 </div>
 
-                <div className="form-check">
+                <div className="form-check" style={{ textAlign: 'left' }}>
                     <input className="form-check-input" id="checkTNC"  type="checkbox"/>
                     <label className="form-check-label"  style={{ float: 'left' }}>I agree to <a href="https://dito.ph/terms-and-conditions?hsLang=en" target="_blank" className="modal-link" type="button"data-bs-toggle="modal" data-bs-target="#Terms">DITO's Terms and Conditions</a></label>
                 </div>
 
-                <div className="form-check">
+                <div className="form-check" style={{ textAlign: 'left' }}>
                     <input className="form-check-input" id="checkPrivacy"  type="checkbox"/>
                     <label className="form-check-label" style={{ float: 'left' }} >I agree to <a href="https://dito.ph/privacy-policy?hsLang=en" target="_blank" className="modal-link" type="button"data-bs-toggle="modal" data-bs-target="#Privacy">DITO's Privacy Policy</a></label>
                 </div>
 
-                <div className="form-check">
+                <div className="form-check" style={{ marginBottom: 20 + 'px' , textAlign: 'left'}}>
                     <input className="form-check-input" id="checkMarketing" type="checkbox"/>
-                    <label className="form-check-label" style={{ float: 'left' }}>I agree to <a className="modal-link" type="button"data-bs-toggle="modal" data-bs-target="#Marketing">DITO Telecommunity marketing notifications</a></label>
+                    <label className="form-check-label"  >I agree to <a className="modal-link" type="button"data-bs-toggle="modal" data-bs-target="#Marketing">DITO's Telecommunity marketing notifications</a></label>
                 </div>
             </div>
-            <Error hidden={error ? false : true }>{errorMessage}</Error>
             <button className="btn btn-red"  onClick={ (e) => handleRegister(e) } >REGISTER</button>
+            <Error hidden={error ? false : true }>{errorMessage}</Error>
             <button className="btn btn-red"  onClick={ (e) => clearDetails(e) } >RE-ENTER MOBILE PHONE</button>
         </div>
         <img className="logo-dito" src={ logoDito }/>

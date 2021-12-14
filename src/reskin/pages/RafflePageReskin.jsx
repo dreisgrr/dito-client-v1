@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import { loadUserPoints, loadUserPointsHistory } from "../../redux/apiCalls";
 
@@ -32,7 +32,75 @@ const RafflePageReskin = () => {
 
     const date = new Date();
     const today = `${date.getMonth()+1}-${date.getDate()}-${date.getFullYear()} `;
-    const hrs = date.toLocaleString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true })
+    const hrs = date.toLocaleString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+
+    const loadCountdown = () => {
+        let convertToEST = (date) => {
+            var estOffset = -4.0; // -5 + 1 daylight savings
+            var utc = date.getTime() + date.getTimezoneOffset() * 60000;
+            return new Date(utc + 3600000 * estOffset);
+          }
+          let  getTimeRemaining = (endtime) => {
+            var t = Date.parse(endtime) - Date.parse(new Date());
+            var seconds = Math.floor((t / 1000) % 60);
+            var minutes = Math.floor((t / 1000 / 60) % 60);
+            var hour = Math.floor((t / (1000 * 60 * 60)) % 24);
+            var days = Math.floor(t / (1000 * 60 * 60 * 24));
+            return {
+              total: t,
+          
+              hour: hour,
+              minutes: minutes,
+              seconds: seconds,
+            };
+          }
+          
+          let initializeClock = (id, endtime) => {
+            var clock = document.getElementById(id);
+          
+            console.log(clock)
+            var hoursSpan = clock.querySelector(".hour");
+            var minutesSpan = clock.querySelector(".minutes");
+            var secondsSpan = clock.querySelector(".seconds");
+          
+            let updateClock = () => {
+              var t = getTimeRemaining(endtime);
+          
+              hoursSpan.innerHTML = ("0" + t.hour).slice(-2);
+              minutesSpan.innerHTML = ("0" + t.minutes).slice(-2);
+              secondsSpan.innerHTML = ("0" + t.seconds).slice(-2);
+          
+              if (t.total <= 0) {
+                clearInterval(timeinterval);
+              }
+            }
+          
+            updateClock();
+            let timeinterval = setInterval(updateClock, 1000);
+          }
+          
+          let getTimeRaffle = () => {
+            var now = new Date();
+            var nextDraw = new Date();
+            nextDraw.setDate(now.getDate() + 1);
+            nextDraw.setHours(11, 0, 0, 0);
+            return nextDraw;
+          }
+          
+        convertToEST = (date) => {
+            var estOffset = +8;
+            var utc = date.getTime() + date.getTimezoneOffset() * 60000;
+            return new Date(utc + 3600000 * estOffset);
+          }
+          
+          var deadline = getTimeRaffle();
+          initializeClock("clockdiv", convertToEST(deadline));
+          
+    }
+
+    useEffect(() => {
+        loadCountdown();
+    }, [])
 
     return (
         <div className="raffle">
@@ -45,56 +113,59 @@ const RafflePageReskin = () => {
                     <p className="raffle-points"><PointsHistory/></p>
                 </div>
             </div>
-            <div className="col-md-12 raffle-countdown">
-                <h3>NEXT LOADED DAILY DRAW</h3>
-                <div className="draw-countdown">
-                    <div className="hours">
-                        <h2>11</h2>
-                        <p></p>
-                    </div>
-                    <h2 className="space">:</h2>
-                    <div class="hours">
-                        <h2>00</h2>
-                        <p></p>
-                    </div>
-                    <h2 className="space"></h2>
-                    <div className="hours">
-                        <h2>AM</h2>
-                        <p></p>
-                    </div>
-                </div>
-            </div>
-            <div className="col-md-12 raffle-join">
-                <h3>HOW TO JOIN</h3>
-                <div className="raffle-steps">
-                    <img className="steps-img"src={ howToJoin1 }/>
-                        <div className="steps-details">
-                            <h5>Earn points with any DITO transaction:</h5>
-                            <ul>
-                                <li>Activate your DITO SIM</li>
-                                <li>Log-in to the DITO APP for the first time</li>
-                                <li>Purchase DITO Promos</li>
-                                <li>Purchase content subscriptions</li>
-                            </ul>
-                            <img  style={{marginRight: 20 + 'px'}} src={ rafflePrizeWETV } />
-                            <img src={ rafflePrizeVIVA } />
+            <div id="clockdiv">
+                <div className="col-md-12 raffle-countdown">
+                    <h3>NEXT LOADED DAILY DRAW</h3>
+			        <div className="draw-countdown">
+                        <div className ="hours" >
+                            <h2 className="hour" >00</h2>
+                            <p>HOURS</p>
                         </div>
+                        
+                        <h2 className="space">:</h2>
+                        <div className = "hours" >
+                            <h2 className="minutes">00</h2>
+                            <p>MINUTES</p>
+                        </div>
+                        <h2 className="space">:</h2>
+                        <div className = "hours" >
+                            <h2 className="seconds">00</h2>
+                            <p>SECONDS</p>
+                        </div>
+                    </div>
                 </div>
+		    </div>
+                <div className="col-md-12 raffle-join">
+                    <h3>HOW TO JOIN</h3>
+                    <div className="raffle-steps">
+                        <img className="steps-img"src={ howToJoin1 }/>
+                            <div className="steps-details">
+                                <h5>Earn points with any DITO transaction:</h5>
+                                <ul>
+                                    <li>Activate your DITO SIM</li>
+                                    <li>Log-in to the DITO APP for the first time</li>
+                                    <li>Purchase DITO Promos</li>
+                                    <li>Purchase content subscriptions</li>
+                                </ul>
+                                <img  style={{marginRight: 20 + 'px'}} src={ rafflePrizeWETV } />
+                                <img src={ rafflePrizeVIVA } />
+                            </div>
+                    </div>
 
-                <div className="raffle-steps">
-                    <img className="steps-img"src={ howToJoin2 } />
-                        <div className="steps-details">
-                            <h5>Convert your DITO Raffle Points to Raffle Entries by registering at LoadedKaDITO.ph</h5>
-                        </div>
-                </div>
+                    <div className="raffle-steps">
+                        <img className="steps-img"src={ howToJoin2 } />
+                            <div className="steps-details">
+                                <h5>Convert your DITO Raffle Points to Raffle Entries by registering at LoadedKaDITO.ph</h5>
+                            </div>
+                    </div>
 
-                <div className="raffle-steps">
-                    <img className="steps-img"src={ howToJoin3 } />
-                        <div className="steps-details">
-                            <h5>Get a chance to be part of thousands of winners everyday</h5>
-                        </div>
+                    <div className="raffle-steps">
+                        <img className="steps-img"src={ howToJoin3 } />
+                            <div className="steps-details">
+                                <h5>Get a chance to be part of thousands of winners everyday</h5>
+                            </div>
+                    </div>
                 </div>
-            </div>
             <div className="col-md-12 raffle-prizes">
                 <h3>DITO RAFFLE PRIZES</h3>
 
@@ -116,11 +187,12 @@ const RafflePageReskin = () => {
                         <div className="prizes prize-voucher">
                             <h4>DIGITAL VOUCHERS</h4>
 
-                            <p className="data-vouchers"><span>PHP 300 <img src={ rafflePrizeLAZ } /></span> <br/> 1 Daily Winner</p>
-                            <p className="data-vouchers"><span>PHP 500 <img src={ rafflePrizeSPP } /></span> <br/> 20 Daily Winners</p>
-                            <p className="data-vouchers"><span>1-MONTH <img src={ rafflePrizeWETV } /></span> <br/> 10 Daily Winners</p>
-                            <p className="data-vouchers"><span>1-MONTH <img src={ rafflePrizeVIVA }/></span> <br/> 10 Daily Winners</p>
-                            <p className="data-vouchers"><span>3-MONTH <img src={ rafflePrizeVIVA } /></span> <br/> 6 Weekly Winners</p>
+                            <p className="data-vouchers"><span>PHP 300 <img src={ rafflePrizeLAZ }  style={{ marginBottom: 0 + 'px', width: 10 + 'vh'}}/></span> <br/> 1 Daily Winner</p>
+                            <p className="data-vouchers"><span>PHP 500 <img src={ rafflePrizeLAZ }  style={{ marginBottom: 0 + 'px', width: 10 + 'vh'}}/></span> <br/> 20 Daily Winners</p>
+                            <p className="data-vouchers"  ><span >PHP 500 <img src={ rafflePrizeSPP }  style={{ marginTop: -1.5 + 'vh', width: 10 + 'vh'}} /></span> <br/> 20 Daily Winners</p>
+                            <p className="data-vouchers"><span>1-MONTH <img src={ rafflePrizeWETV } style={{ marginTop: -0.5 + 'vh', width: 10 + 'vh'}} /></span> <br/> 10 Daily Winners</p>
+                            <p className="data-vouchers"><span>1-MONTH <img src={ rafflePrizeVIVA } style={{ marginTop:-1 + 'vh', width: 10 + 'vh'}} /></span> <br/> 10 Daily Winners</p>
+                            <p className="data-vouchers"><span>3-MONTH <img src={ rafflePrizeVIVA } style={{ marginTop:-1 + 'vh', width: 10 + 'vh'}} /></span> <br/> 6 Weekly Winners</p>
                         </div>
                     </div>
 

@@ -9,6 +9,8 @@ const subscriberSlice = createSlice({
     errorMessage: "",
     errorPw: false,
     errorMessagePw: "",
+    errorAddress: false,
+    errorMessageAddress: "",
     isRegistered: false,
     isNewUser: false,
     isAuthenticated: false,
@@ -48,6 +50,14 @@ const subscriberSlice = createSlice({
     resetLoginFormError: (state) => {
       state.error = false;
       state.errorMessage = "";
+    },
+    resetAccountPageErrorsRedux: (state) => {
+      state.error = false;
+      state.errorMessage = "";
+      state.errorAddress = false;
+      state.errorMessageAddress = "";
+      state.errorPw = false;
+      state.errorMessagePw = "";
     },
     verifyOTPstart: (state) => {
       state.isFetching = true;
@@ -115,11 +125,18 @@ const subscriberSlice = createSlice({
     updatePersonalInfoRedux: (state, action) => {
       state.currentUser.user.name = action.payload.name;
       state.currentUser.user.email = action.payload.email;
+      state.error = true;
+      state.errorMessage = "Perosnal information successfully changed";
     },
     updatePersonalPwRedux: (state, action) => {
       state.currentUser.user.password = action.payload.password;
       state.errorPw = true;
       state.errorMessagePw = "Password successfuly changed";
+    },
+    updatePersonalAddressRedux: (state, action) => {
+      state.currentUser.user.address = action.payload.address;
+      state.errorAddress = true;
+      state.errorMessageAddress = "Address successfuly changed";
     },
     updateUserInfo: (state, action) => {
       state.raffleEntry = action.payload;
@@ -148,6 +165,10 @@ const subscriberSlice = createSlice({
     showErrorMessagePwRedux: (state, action) => {
       state.errorPw = true;
       state.errorMessagePw = action.payload;
+    },
+    showErrorMessageAddressRedux: (state, action) => {
+      state.errorAddress = true;
+      state.errorMessageAddress = action.payload;
     },
     clearRegAuth: (state) => {
       state.currentUser = null;
@@ -193,5 +214,8 @@ export const {
   showErrorMessagePwRedux,
   updatePersonalPwRedux,
   resetPwErrorsRedux,
+  updatePersonalAddressRedux,
+  showErrorMessageAddressRedux,
+  resetAccountPageErrorsRedux,
 } = subscriberSlice.actions;
 export default subscriberSlice.reducer;

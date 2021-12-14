@@ -61,7 +61,7 @@ div.home {
 
 .home-content > .logo-loadeddito {
   width: 70%;
-  margin-top: 200px;
+  margin-top: 120px;
 }
 
 .home-content h4 {
@@ -80,7 +80,7 @@ div.home {
   color: #0038a8;
   background-color: #fad115;
   padding: 8px 14px;
-  border-radius: 20px;
+  border-radius: 10px;
   font-weight: 800;
   font-size: 20px;
   width: 20%;
@@ -88,11 +88,10 @@ div.home {
   left: 50%;
   transform: translate(-50%, -50%);
   right: 50%;
-  margin-top: 50px;
 }
 
 .img-howtojoin {
-  width: 25%;
+  width: 35%;
   height: 25%;
   padding-right: 20px;
 }
@@ -151,6 +150,7 @@ div.home {
   background-color: #ffffff;
   border-radius: 50px;
   text-align: center;
+  margin-top: -10px;
 }
 
 .box-subscriptions img {
@@ -230,7 +230,7 @@ a.link-seemachanics {
   }
 
   .img-howtojoin {
-    width: 25%;
+    width: 30%;
     height: 25%;
     padding-right: 20px;
   }
@@ -285,6 +285,7 @@ a.link-seemachanics {
 
   .img-homefooter-1 {
     width: 20%;
+    margin-top: 10px;
   }
 
   .img-homefooter-2 {
@@ -298,7 +299,7 @@ a.link-seemachanics {
 
 @media only screen and (max-width: 414px) {
   .home-content > .logo-loadeddito {
-    margin-top: 100px;
+    margin-top: 50px;
   }
 
   .home-content h2 {
@@ -307,11 +308,13 @@ a.link-seemachanics {
 
   .home-content h4 {
     font-size: 18px;
-    padding: 0 20px;
+    padding: 0 50px;
   }
 
   .home-content h6 {
-    width: 55%;
+    width: 70%;
+    padding: 10px 0;
+    font-size: 15px;
   }
 }
 
@@ -339,7 +342,7 @@ div.account {
   flex-direction: column;
   /*justify-content: center;*/
   align-items: center;
-  /* height: calc(100vh - 100px); */
+  height: calc(100vh - 100px);
   text-align: center;
   width: 100%;
 }
@@ -519,6 +522,7 @@ div.account {
   font-size: 14px;
   font-weight: 200;
   color: gray;
+  text-align: left;
 }
 
 .box-regform .form-check a {
@@ -528,7 +532,7 @@ div.account {
 }
 
 .box-regform .btn-red {
-  margin: 30px 0;
+  margin: 10px 0;
 }
 
 /* ---------------------------------------------- */
@@ -885,6 +889,19 @@ div.raffle {
   text-align: left;
   color: white;
 }
+body.account {
+  background-image: url("../assets/account.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+}
+
+div.account {
+  background-image: url("../assets/account.png");
+  background-repeat: repeat;
+  background-size: cover;
+  min-height: 120vh;
+}
 div.account h4 {
   background-color: #0038a8;
   color: white;
@@ -904,7 +921,7 @@ div.account .big .box-registration {
 
 div.account .title-registration {
   width: 70%;
-  padding-top: 50px;
+  margin-top: -50px;
 }
 div.account .block {
   width: 90%;
@@ -939,6 +956,21 @@ div.account .big .box-registration {
   height: 800px;
   font-size: 14pt;
 }
+
+div.account .med .box-registration {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: inherit;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 25px;
+  background-position: center center;
+  width: 500px;
+  margin-top: 5%;
+  height: 700px;
+  font-size: 14pt;
+}
+
 div.account .btn-blue {
   background-color: #0038a8;
   border-color: #0038a8;
@@ -1120,6 +1152,78 @@ table tr th:nth-child(2) {
   .popup-firstlogin {
     padding-top: 40%;
   }
+
+  div.account .small .box-registration {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: inherit;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 25px;
+    background-position: center center;
+    width: 300px;
+    height: 400px;
+    margin-top: 5%;
+    font-size: 14pt;
+    z-index: -1;
+  }
+
+  div.account .big .box-registration {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: inherit;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 25px;
+    background-position: center center;
+    width: 300px;
+    margin-top: 5%;
+    height: 800px;
+    font-size: 14pt;
+  }
+
+  div.account .med .box-registration {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: inherit;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 25px;
+    background-position: center center;
+    width: 300px;
+    margin-top: 5%;
+    height: 600px;
+    font-size: 14pt;
+  }
+
+  div.account h4 {
+    background-color: #0038a8;
+    color: white;
+    width: 300px;
+    height: 50px;
+    margin-left: -12.5%;
+    margin-top: -5%;
+    padding-top: 10px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    font-family: "Exo 2", "bold", sans-serif;
+  }
+
+  div.account .title-registration {
+    width: 70%;
+    margin-top: -70px;
+  }
+
+  div.account ul li {
+    font-size: 15px;
+    font-weight: 300;
+  }
+
+  div.account .foot-banner {
+    width: 70%;
+    margin-top: -15%;
+    margin-left: 20%;
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -1200,12 +1304,6 @@ table tr th:nth-child(2) {
 }
 
 @media only screen and (max-width: 414px) {
-  .register-content > .logo-dito,
-  .register-form > .logo-dito,
-  .login-content > .logo-dito {
-    width: 25%;
-    margin-top: 80px;
-  }
   ul {
     padding-left: 1rem;
   }
@@ -1267,6 +1365,7 @@ table tr th:nth-child(2) {
   .register-form > .logo-dito,
   .login-content > .logo-dito {
     width: 25%;
+    margin-top: 80px;
   }
 
   .raffle-entries h3,

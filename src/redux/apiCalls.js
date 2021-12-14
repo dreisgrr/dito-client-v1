@@ -22,6 +22,9 @@ import {
   showErrorMessagePwRedux,
   updatePersonalPwRedux,
   resetPwErrorsRedux,
+  updatePersonalAddressRedux,
+  showErrorMessageAddressRedux,
+  resetAccountPageErrorsRedux,
 } from "./subscriberRedux";
 import { publicRequest, requestOTP, semaOTP } from "../requestMethods";
 
@@ -103,6 +106,10 @@ export const resetPwErrors = (dispatch) => {
   dispatch(resetPwErrorsRedux());
 };
 
+export const resetAccountPageErrors = (dispatch) => {
+  //dispatch(resetAccountPageErrorsRedux());
+};
+
 export const subscriberGenerateOTP = async (dispatch, phone) => {
   dispatch(verifyOTPstart());
   try {
@@ -149,12 +156,12 @@ export const sunscriberOTPVerified = (dispatch, mobileNumber) => {
 export const subscriberRegister = async (dispatch, subscriber) => {
   console.log("apiCall - subscriberRegister");
   const { mobileNumber, password, name, email, address, consent } = subscriber;
-  //   console.log(mobileNumber);
-  //   console.log(password);
-  //   console.log(email);
-  //   console.log(name);
-  //   console.log(address);
-  //   console.log(consent);
+  console.log(mobileNumber);
+  console.log(password);
+  console.log(email);
+  console.log(name);
+  console.log(address);
+  console.log(consent);
   dispatch(loginStart());
   try {
     const res = await publicRequest.post(
@@ -223,17 +230,35 @@ export const updatePersonalInfo = async (dispatch, subscriber) => {
   }
 };
 
-export const updatePersonalPw = async (dispatch, password) => {
+export const updatePersonalPw = async (dispatch, subscriber) => {
   try {
     console.log("Update Personal Password");
     const res = await publicRequest.post(
       "/info/subscriber/updatePersonalPw",
-      password
+      subscriber
     );
 
     const { data } = res;
     console.log(res);
-    dispatch(updatePersonalPwRedux(password));
+    dispatch(updatePersonalPwRedux(subscriber));
+  } catch (err) {
+    if (err.response) {
+      const errorMessage = err.response.data;
+    }
+  }
+};
+
+export const updatePersonalAddress = async (dispatch, subscriber) => {
+  try {
+    console.log("Update Personal Address");
+    const res = await publicRequest.post(
+      "/info/subscriber/updatePersonalAddress",
+      subscriber
+    );
+
+    const { data } = res;
+    console.log(res);
+    dispatch(updatePersonalAddressRedux(subscriber));
   } catch (err) {
     if (err.response) {
       const errorMessage = err.response.data;
@@ -262,6 +287,9 @@ export const showErrorMessage = async (dispatch, err) => {
 };
 export const showErrorMessagePw = async (dispatch, err) => {
   dispatch(showErrorMessagePwRedux(err));
+};
+export const showErrorMessageAddress = async (dispatch, err) => {
+  dispatch(showErrorMessageAddressRedux(err));
 };
 export const clearRegistrationAuth = (dispatch) => {
   dispatch(clearRegAuth());

@@ -27,6 +27,7 @@ const LoginReskin = () => {
     const dispatch = useDispatch();
     const [ mobileNumber, setMobileNumber ] = useState('');
     const [ password, setPassword ] = useState("");
+    const [isValid, setIsValid] = useState("");
 
     const { error, errorMessage } = useSelector((state) => state?.subscriber);
 
@@ -36,8 +37,15 @@ const LoginReskin = () => {
     }
 
     const resetError = (mobileNumber) => {
+        setIsValid(validatePhone(mobileNumber))
         setMobileNumber(mobileNumber);
     } 
+
+    const validatePhone = (phone) => {
+        return phone.match(
+            /^(9|\+639)\d{9}$/
+        );
+    }
 
     return (
         <div className="login">
@@ -52,7 +60,7 @@ const LoginReskin = () => {
                     <div className="input-group">
                         <img className="box-mobile" src={ boxMobile } />
                         <span className="input-group-text">+63</span>
-                        <input type="tel" className="form-control" placeholder="991 000 0000" onFocus={(e) => resetLoginError(dispatch)} onChange={(e)=>resetError(e.target.value)} />
+                        <input type="tel" className="form-control" placeholder="991 000 0000" maxLength="10"  onFocus={(e) => resetLoginError(dispatch)} onChange={(e)=>resetError(e.target.value)} />
                     </div>
                     <div className="input-group">
                         <input type="password" className="form-control" placeholder="Password" onChange={(e)=>setPassword(e.target.value)} />

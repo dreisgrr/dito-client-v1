@@ -14,7 +14,7 @@ import logoDito from "../../assets/logo-dito.png";
 const Error = styled.div`
     color: white;
     text-align: center;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     font-size: 12px;
 `;
@@ -37,17 +37,15 @@ const RegisterReskin = () => {
     }
 
     const validatePassword =( ) => {
-        
         if(!isValid)  {
             showErrorMessage(dispatch, "Invalid phone number!")
             return;
         }
         if(isStringInputEmpty(password)) {
-            showErrorMessage(dispatch, "Please type your desired password")
+            showErrorMessage(dispatch, "Password is required")
             setPasswordFormValidate(false)
             return;
         }
-      
         if(password.length < 9) {
             showErrorMessage(dispatch, "Password should be at least 8 characters")
             setPasswordFormValidate(false)
@@ -136,9 +134,9 @@ const RegisterReskin = () => {
                     <div className="form-check">
                     <input className="form-check-input" type="checkbox"/>
                     <label className="form-check-label">Remember Me</label>
-                    <Error hidden={error ? false : true }>{errorMessage}</Error>
                     </div>
                     <a type="button" onClick={ handleRegister } className="btn btn-blue">PROCEED</a>
+                    <Error hidden={error ? false : true }>{errorMessage}</Error>
                     
                 </div>
 

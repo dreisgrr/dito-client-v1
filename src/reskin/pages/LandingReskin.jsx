@@ -26,7 +26,7 @@ const LandingReskin = () => {
                     <Link className={"btn btn-blue "}  to={"/login"} >LOGIN</Link>
                 </div>
 
-                <h6 style={{fontSize: 28 + 'px', marginBottom: -10 + 'px', marginTop: 100 + 'px'}}>HOW TO JOIN!</h6>
+                <h6 style={{fontSize: 28 + 'px', marginBottom: -10 + 'px', marginTop: 60 + 'px', paddingLeft: 20 + 'px',  paddingRight: 20 + 'px'}}>HOW TO JOIN!</h6>
 
                 <div className="row div-howtojoin">
                     <div className="col-md-4">
