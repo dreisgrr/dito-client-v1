@@ -1089,10 +1089,15 @@ div.faq .container .col-md-6 {
 .faqs-content table {
   color: #ffffff;
   font-size: 14px;
+  table-layout: fixed;
+  width: 100%;
 }
 
 .faqs-content table thead {
   background-color: #ffffff29;
+}
+table tr th:nth-child(2) {
+  width: 35%;
 }
 
 /* ---------------------------------------------- */

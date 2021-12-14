@@ -114,7 +114,7 @@ const RafflePageReskin = () => {
 
                     <div className="col-md-4">
                         <div className="prizes prize-voucher">
-                            <h4>DATA VOUCHERS</h4>
+                            <h4>DIGITAL VOUCHERS</h4>
 
                             <p className="data-vouchers"><span>PHP 300 <img src={ rafflePrizeLAZ } /></span> <br/> 1 Daily Winner</p>
                             <p className="data-vouchers"><span>PHP 500 <img src={ rafflePrizeSPP } /></span> <br/> 20 Daily Winners</p>
@@ -126,7 +126,7 @@ const RafflePageReskin = () => {
 
                     <div className="col-md-4">
                         <div className="prizes prize-phone">
-                            <h4>SMART PHONES</h4>
+                            <h4>SMARTPHONES</h4>
 
                             <p><img src={ rafflePrizeS02 } /><br/><span>SAMSUNG A02: </span> <br/> 10 Daily Winners</p>
                             <p><img src={ rafflePrizeS21 } /><br/><span>SAMSUNG S21 5G (256GB): </span> <br/> 1 Weekly Winner</p>

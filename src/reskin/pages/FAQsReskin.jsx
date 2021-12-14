@@ -248,7 +248,7 @@ const FAQsReskin = () => {
                     <thead>
                         <tr>
                             <th>Digital Vouchers</th>
-                            <th></th>
+                            <th>How to claim</th>
                         </tr>
                     </thead>
 
