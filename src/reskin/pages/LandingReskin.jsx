@@ -22,8 +22,8 @@ const LandingReskin = () => {
                 <h2>THOUSANDS OF PRIZES DAILY!</h2>
 
                 <div className="row btn-mobile">
-                    <a type="button" className="btn btn-red">REGISTER NOW</a>
-                    <a type="button" className="btn btn-blue">LOGIN</a>
+                    <Link className={"btn btn-red "}  to={"/register"} >REGISTER NOW</Link>
+                    <Link className={"btn btn-blue "}  to={"/login"} >LOGIN</Link>
                 </div>
 
                 <h6 style={{fontSize: 28 + 'px', marginBottom: -10 + 'px', marginTop: 100 + 'px'}}>HOW TO JOIN!</h6>
