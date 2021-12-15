@@ -18,8 +18,7 @@ const Error = styled.div`
     align-items: center;
     font-size: 12px;
     font-weight: 600;
-    margin-top: -50px;
-	position:fixed;
+    padding-top: 10px;
 `;
 
 const LoginReskin = () => {
@@ -56,7 +55,6 @@ const LoginReskin = () => {
 
                 <div className="box-login">
                     <p>Input your DITO Number</p>
-                    <Error hidden={error ? false : true }>{errorMessage}</Error>
                     <div className="input-group">
                         <img className="box-mobile" src={ boxMobile } />
                         <span className="input-group-text">+63</span>
@@ -68,8 +66,9 @@ const LoginReskin = () => {
                     <div className="form-check">
                     <input className="form-check-input" type="checkbox" />
                     <label className="form-check-label">Remember Me</label>
+                    <Error hidden={error ? false : true }>{errorMessage}</Error>
                     </div>
-
+                    
                     <a type="button" className="btn btn-red" onClick={ handleLogin } >LOGIN</a>
                     
                 </div>

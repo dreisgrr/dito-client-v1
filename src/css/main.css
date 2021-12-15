@@ -359,13 +359,23 @@ div.account {
   width: 10%;
 }
 
-.box-registration,
 .box-login {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: inherit;
   padding: 30px;
   min-height: 380px;
+}
+
+.box-registration {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: inherit;
+  margin-top: 20px;
+  background-color: #ce242e;
+  border-radius: 20px;
+  padding: 30px;
+  min-height: 500px;
 }
 
 .register-content,
@@ -488,9 +498,10 @@ div.account {
   margin-top: 8%;
 }
 
-.register-form .logo-dito {
-  margin-top: 40px;
+.register .logo-dito {
+  margin-top: 50px;
   margin-bottom: 90px;
+  position: sticky;
 }
 
 .box-regform form {

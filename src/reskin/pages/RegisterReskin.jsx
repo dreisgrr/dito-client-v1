@@ -17,6 +17,7 @@ const Error = styled.div`
     justify-content: left;
     align-items: center;
     font-size: 12px;
+    padding-top: 10px;
 `;
 
 const RegisterReskin = () => {
@@ -134,9 +135,9 @@ const RegisterReskin = () => {
                     <div className="form-check">
                     <input className="form-check-input" type="checkbox"/>
                     <label className="form-check-label">Remember Me</label>
+                    <Error hidden={error ? false : true }>{errorMessage}</Error>
                     </div>
                     <a type="button" onClick={ handleRegister } className="btn btn-blue">PROCEED</a>
-                    <Error hidden={error ? false : true }>{errorMessage}</Error>
                     
                 </div>
 

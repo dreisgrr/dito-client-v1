@@ -250,12 +250,12 @@ useEffect(() => {
                     <input className="form-check-input" id="checkTNC"  type="checkbox"/>
                     <label className="form-check-label"  style={{ float: 'left' }}>I agree to <a href="https://dito.ph/terms-and-conditions?hsLang=en" target="_blank" className="modal-link" type="button"data-bs-toggle="modal" data-bs-target="#Terms">DITO's Terms and Conditions</a></label>
                 </div>
-
+                <br/>
                 <div className="form-check" style={{ textAlign: 'left' }}>
                     <input className="form-check-input" id="checkPrivacy"  type="checkbox"/>
                     <label className="form-check-label" style={{ float: 'left' }} >I agree to <a href="https://dito.ph/privacy-policy?hsLang=en" target="_blank" className="modal-link" type="button"data-bs-toggle="modal" data-bs-target="#Privacy">DITO's Privacy Policy</a></label>
                 </div>
-
+                <br/>
                 <div className="form-check" style={{ marginBottom: 20 + 'px' , textAlign: 'left'}}>
                     <input className="form-check-input" id="checkMarketing" type="checkbox"/>
                     <label className="form-check-label"  >I agree to <a className="modal-link" type="button"data-bs-toggle="modal" data-bs-target="#Marketing">DITO's Telecommunity marketing notifications</a></label>
