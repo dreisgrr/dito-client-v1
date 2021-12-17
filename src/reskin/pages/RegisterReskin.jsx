@@ -37,7 +37,7 @@ const RegisterReskin = () => {
         return !str.trim().length;
     }
 
-    const validatePassword =( ) => {
+    const validatePassword = () => {
         if(!isValid)  {
             showErrorMessage(dispatch, "Invalid phone number!")
             return;
@@ -64,7 +64,7 @@ const RegisterReskin = () => {
             setPasswordFormValidate(false)
             return;
         }
-        let uppperCaseCheck = /(?=.*[a-z])/.test(password)
+        let uppperCaseCheck = /(?=.*[A-Z])/.test(password)
         if(!uppperCaseCheck) {
             showErrorMessage(dispatch, "Passwords must have at least 1 uppercase letter")
             setPasswordFormValidate(false)

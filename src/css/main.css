@@ -395,6 +395,73 @@ div.account {
   margin-top: 20px;
 }
 
+.box-login .input-group {
+  margin-bottom: 20px;
+}
+
+.box-login .label-password {
+  margin-bottom: 0;
+}
+
+.box-login > p {
+  text-align: left;
+  color: #ffffff;
+  margin-top: 22px;
+  margin-bottom: 50px;
+}
+
+.box-login .box-mobile {
+  position: absolute;
+  top: -23px;
+  width: 50px;
+}
+
+.box-login > .input-group {
+  margin-bottom: 10px;
+}
+
+.box-registration > .input-group > .input-group-text,
+.box-registration > .input-group > .form-control,
+.box-login > .input-group > .input-group-text,
+.box-login > .input-group > .form-control {
+  border: 1px solid #ffffff;
+  z-index: 99;
+}
+
+.box-registration .form-check {
+  color: #ffffff;
+  font-size: 14px;
+  text-align: right;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.box-login .form-check {
+  color: #ffffff;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.box-login .forgotpass {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.box-login .forgot-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.box-login .form-check {
+  display: flex;
+}
+
+.box-login .form-check-label {
+  font-size: 13px;
+  padding-left: 5px;
+}
+
 .box-registration .input-group,
 .box-login .input-group {
   margin-bottom: 20px;
@@ -412,6 +479,89 @@ div.account {
   color: #ffffff;
   margin-top: 22px;
   margin-bottom: 50px;
+}
+
+.sendlink .modal-content {
+  border-radius: 30px;
+  border: none;
+  background-color: #0038a8;
+  color: #ffffff;
+  padding: 30px 30px 0 30px;
+}
+
+.sendlink .btn-close {
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+}
+
+.sendlink h5 {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.sendlink p {
+  text-align: center;
+  font-weight: 200;
+  border: 1px solid gray;
+  border-radius: 10px;
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.sendlink .btn-red {
+  margin-top: 30px;
+}
+
+.sendlink .bg-footer {
+  width: 122%;
+  margin-bottom: -48px;
+}
+
+@media only screen and (max-width: 414px) {
+  .sendlink h5 {
+    font-size: 16px;
+  }
+}
+
+.newpass-label {
+  margin: 30px 0 !important;
+}
+
+.box-login .form-group {
+  text-align: left;
+  color: #ffffff;
+}
+
+.fa.fa-eye,
+.fa.fa-eye-slash {
+  position: absolute;
+  right: 0;
+  margin-top: 10px;
+  margin-right: 10px;
+  z-index: 99;
+}
+
+.box-reset
+  .input-group:not(.has-validation)
+  > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu) {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.box-verify {
+  min-height: 180px;
+}
+
+.box-login .pass-req {
+  margin: 30px 0;
+}
+
+.box-login .pass-req p {
+  font-size: 14px;
+  color: #ffffff;
+  line-height: 0;
 }
 
 .box-registration .box-mobile,

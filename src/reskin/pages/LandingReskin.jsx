@@ -18,7 +18,7 @@ const LandingReskin = () => {
         <div className="home">
             <div className="container home-content">
                 <img className="logo-loadeddito" src={ logoLoadedkadito }/>
-                <h4>DAHIL MAHAL KA NAMIN DITO, <brr/>WE ARE GIVING AWAY</h4>
+                <h4>DAHIL MAHAL KA NAMIN DITO, <br/>WE ARE GIVING AWAY</h4>
                 <h2>THOUSANDS OF PRIZES DAILY!</h2>
 
                 <div className="row btn-mobile">

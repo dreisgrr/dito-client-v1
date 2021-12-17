@@ -266,6 +266,23 @@ export const updatePersonalAddress = async (dispatch, subscriber) => {
   }
 };
 
+export const sendVerification = async (dispatch, subscriber) => {
+  try {
+    console.log("Send Email Verification");
+    const res = await publicRequest.post(
+      "/auth/subscriber/sendVerification",
+      subscriber
+    );
+
+    const { data } = res;
+    console.log(res);
+  } catch (err) {
+    if (err.response) {
+      const errorMessage = err.response.data;
+    }
+  }
+};
+
 export const sendSemaOTP = async (dispatch, params) => {
   try {
     const res = await semaOTP

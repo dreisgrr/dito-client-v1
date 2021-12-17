@@ -5,7 +5,7 @@ import '../../css/main.css';
 import '../../js/jquery-ph-locations'
 import '../../js/app'
 import { useDispatch, useSelector } from "react-redux";
-import { subscriberRegister, clearRegistrationAuth, showErrorMessage } from "../../redux/apiCalls";
+import { subscriberRegister, clearRegistrationAuth, showErrorMessage, sendVerification } from "../../redux/apiCalls";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
@@ -185,6 +185,9 @@ const RegDetailsReskin = () => {
     //console.log(addressNew)
     if(!registerDisabled) {
       subscriberRegister(dispatch, { mobileNumber, password, name, email, street, consent });
+      setTimeout(() => {
+      sendVerification(dispatch, {mobileNumber})
+      }, 2000)
       history.push("/welcomekadito");
     }
 

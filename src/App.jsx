@@ -17,6 +17,8 @@ import RafflePageReskin from './reskin/pages/RafflePageReskin';
 import FAQsReskin from './reskin/pages/FAQsReskin';
 import FooterReskin from './reskin/components/FooterReskin';
 import AccountsReskin from "./reskin/pages/AccountsReskin";
+import ResetPasswordReskin from "./reskin/pages/ResetPasswordReskin";
+import VerifyEmailReskin from "./reskin/pages/VerifyEmailReskin";
 import './js/app'
 
 const DITOLogo = styled.div`
@@ -47,6 +49,12 @@ function  App() {
       <Router>
           <Switch>
           {/* LOCAL */}
+            <Route exact path='/verify/:userId/:uniqueString'>
+              {subscriber ? <Redirect to='/' /> : <VerifyEmailReskin />}
+            </Route>
+            <Route exact path='/reset/:userId/:resetString'>
+              {subscriber ? <Redirect to='/' /> : <ResetPasswordReskin />}
+            </Route>
               <Route exact path='/landing'>
             {subscriber ? <Redirect to='/' /> : <LandingReskin />}
           </Route>
