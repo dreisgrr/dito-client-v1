@@ -99,7 +99,7 @@ const LoginReskin = () => {
         console.log(forgotFormValidate);
         if (forgotFormValidate) {
             $('#pwMessage').text('Requesting Password Reset...');
-            const redirectUrl = "http://localhost:3000/reset";
+            const redirectUrl = "https://loadedkadito.ph/reset";
             const mobileNumber = forgotNumber;
             const params = {
                 mobileNumber, email, redirectUrl
