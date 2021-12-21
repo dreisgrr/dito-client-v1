@@ -54,7 +54,7 @@ const VerifyEmailReskin = () => {
                     href="/login"
                     className='btn btn-red modal-link'
                     type='button'
-                >BACK TO LOGIN</a>
+                >OK</a>
             </div>
             <img className='logo-dito' src={logoDito} />
         </div>

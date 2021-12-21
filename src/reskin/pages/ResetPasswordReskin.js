@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { publicRequest } from "../../requestMethods";
 import { useHistory, useParams } from "react-router-dom";
 import styled from "styled-components";
-import "bootstrap/dist/js/bootstrap.js";
 import $ from "jquery";
+import "bootstrap/dist/js/bootstrap";
 
 import "../../css/main.css";
 
@@ -98,6 +98,7 @@ const ResetPasswordReskin = () => {
         newPassword,
       };
       try {
+        console.log("TRY");
         const res = await publicRequest.post(
           "/auth/subscriber/resetPassword",
           params
@@ -105,12 +106,8 @@ const ResetPasswordReskin = () => {
         const { data } = res;
         console.log(data);
         if (data.status == "SUCCESS") {
-          $("#pwMessage").text(
-            "Password reset request was sent successfully. Please check your email."
-          );
-          $("#changepass").modal("show");
-          $("#fpMobileNumber").prop("disabled", true);
-          $("#fpEmail").prop("disabled", true);
+          console.log("SUCCESS");
+          window.$("#changepass").modal("show");
         } else {
           setError(true);
           const message = data.message;
@@ -138,7 +135,7 @@ const ResetPasswordReskin = () => {
               <input
                 className='form-control'
                 placeholder='**********'
-                type='password'
+                type='text'
                 onChange={(e) => setNewPassword(e.target.value)}
                 onKeyUp={validatePassword}
               />
@@ -156,7 +153,7 @@ const ResetPasswordReskin = () => {
               <input
                 className='form-control'
                 placeholder='**********'
-                type='password'
+                type='text'
                 onChange={(e) => setConfirmNewPassword(e.target.value)}
                 onKeyUp={validatePassword}
               />
@@ -169,8 +166,22 @@ const ResetPasswordReskin = () => {
           </div>
 
           <div className='pass-req'>
-            <p>New Password must contain</p>
-            <p>1 letter, 1 number, 1 special character and no space</p>
+            <p style={{ fontSize: 14 + "px" }}>Password Requirements</p>
+            <ul
+              style={{
+                fontSize: 14 + "px",
+                color: "white",
+                listStyleType: "disc",
+                display: "block",
+                textAlign: "left",
+                marginInlineStart: 0 + "px",
+              }}
+            >
+              <li>At least one uppercase (A-Z)</li>
+              <li>At least one lowercase (a-z)</li>
+              <li>At least one number (0-9)</li>
+              <li>Minimum 8 characters</li>
+            </ul>
           </div>
 
           <div className='pass-req'>

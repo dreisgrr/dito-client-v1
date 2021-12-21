@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import { loadUserPoints, loadUserPointsHistory } from "../../redux/apiCalls";
+import 'bootstrap/dist/js/bootstrap.js'
 
 import '../../css/main.css';
 import assetsTicket from "../../assets/ticket.png";
@@ -17,16 +18,29 @@ import mobilemenuProfile from "../../assets/mobile-menu-profile.png";
 import howToJoin1 from "../../assets/how-to-join-1.png";
 import howToJoin2 from "../../assets/how-to-join-2.png";
 import howToJoin3 from "../../assets/how-to-join-3.png";
-
-import PointsHistory from "../components/PointsHistory";
+import titlePointsHistory from "../../assets/title-pointhistory.png";
 
 const RafflePageReskin = () => {
     const dispatch = useDispatch();
 
     const { mobileNumber } = useSelector((state) => state.subscriber?.currentUser?.user);
-    let raffleEntry  = useSelector((state) => state.subscriber.raffleEntry.count)
-    loadUserPoints(dispatch, { mobileNumber });
-    loadUserPointsHistory(dispatch, { mobileNumber });
+    let raffleEntry  = useSelector((state) => state.subscriber.raffleEntry.count);
+    let points = useSelector((state) => state.subscriber.pointsHistory)
+    let isEmpty = (points == null);
+    
+
+    const transactionsMap = new Map();
+    transactionsMap.set("activation", "DITO SIM Activation");
+    transactionsMap.set("DITO39", "DITO 39");
+    transactionsMap.set("DITO99", "DITO 99");
+    transactionsMap.set("DITO199", "DITO 199");
+    transactionsMap.set("firstLogin", "DITO APP");
+    transactionsMap.set("FirstLogin", "DITO APP");
+    transactionsMap.set("firstlogin", "DITO APP");
+    transactionsMap.set("VIVA1", "VIVAMAX Subscription");
+    transactionsMap.set("WeTV1", "WeTV");
+    transactionsMap.set("HBO1", "HBO 1 month Subscription");
+    transactionsMap.set("HBO3", "HBO 3 month Subscription");
     
     if (!raffleEntry) raffleEntry = 0;
 
@@ -100,6 +114,8 @@ const RafflePageReskin = () => {
 
     useEffect(() => {
         loadCountdown();
+        loadUserPoints(dispatch, { mobileNumber });
+        loadUserPointsHistory(dispatch, { mobileNumber });
     }, [])
 
     return (
@@ -110,7 +126,7 @@ const RafflePageReskin = () => {
                     <h2>{ raffleEntry } <img src={ assetsTicket } /></h2>
                     <p className="raffle-label">Your raffle entries</p>
                     <p className="raffle-date">As of { hrs } { today }</p>
-                    <p className="raffle-points"><PointsHistory/></p>
+                    <p className="raffle-points"><a className="modal-link" type="button"data-bs-toggle="modal" data-bs-target="#pointshistory">See Points History</a></p>
                 </div>
             </div>
             <div id="clockdiv">
@@ -203,6 +219,61 @@ const RafflePageReskin = () => {
                             <p><img src={ rafflePrizeS02 } /><br/><span>SAMSUNG A02: </span> <br/> 10 Daily Winners</p>
                             <p><img src={ rafflePrizeS21 } /><br/><span>SAMSUNG S21 5G (256GB): </span> <br/> 1 Weekly Winner</p>
                         </div>
+                    </div>
+                </div>
+            </div>
+            {/* <!-- Modal --> */}
+            <div className="modal fade" id="pointshistory" tabindex="-1" aria-labelledby="pointshistoryLabel" aria-hidden="true">
+                <div className="modal-dialog modal-dialog-centered">
+                    <div className="modal-content">
+                    <div className="modal-body" >
+                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <img className="title-pointhistory" src={ titlePointsHistory } />
+                        <div className="pointsTableContainer" style={{overflow: 'auto', maxHeight: 400 + 'px'}}>
+                        <table className="table table-pointshistory" >
+                            <thead>
+                                <tr>
+                                    <th>Transaction</th>
+                                    <th>Points</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                { 
+                                    ( !isEmpty )? points.map((item) => 
+                        
+                                    (
+                                            <tr key={item._id} style={{textAlign: 'center'}}>
+                                                <td style={{textAlign: 'center'}}>
+                                                    {transactionsMap.get(item.transaction)}
+                                                </td>
+                                                <td style={{textAlign: 'center'}}>
+                                                    {item.points}
+                                                </td>
+                                                <td style={{textAlign: 'center'}}>
+                                                    {(item.date).substring(0, 10)}
+                                                </td>
+                                            </tr>
+                                    )) : ""
+                                }
+                                
+                            </tbody>
+                        </table>
+                        </div>
+                        {/* <nav>
+                        <ul className="pagination justify-content-center">
+                            <li className="page-item">
+                            <a className="page-link" href="#"><span aria-hidden="true">&laquo;</span></a>
+                            </li>
+                            <li className="page-item"><a class="page-link" href="#">1</a></li>
+                            <li className="page-item">
+                            <a className="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+                            </li>
+                        </ul>
+                        </nav> */}
+                    </div>
+
                     </div>
                 </div>
             </div>

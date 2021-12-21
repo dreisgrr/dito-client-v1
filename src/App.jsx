@@ -50,10 +50,10 @@ function  App() {
           <Switch>
           {/* LOCAL */}
             <Route exact path='/verify/:userId/:uniqueString'>
-              {subscriber ? <Redirect to='/' /> : <VerifyEmailReskin />}
+                <VerifyEmailReskin />
             </Route>
             <Route exact path='/reset/:userId/:resetString'>
-              {subscriber ? <Redirect to='/' /> : <ResetPasswordReskin />}
+                <ResetPasswordReskin />
             </Route>
               <Route exact path='/landing'>
             {subscriber ? <Redirect to='/' /> : <LandingReskin />}
