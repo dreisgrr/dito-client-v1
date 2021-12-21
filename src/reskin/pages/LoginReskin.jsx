@@ -116,7 +116,8 @@ const LoginReskin = () => {
                     $('#fpEmail').prop('disabled', true)
                 }
                 else {
-                    $('#pwMessage').text(data.messsage);
+                    const message = data.message
+                    $('#pwMessage').text(message);
                 }
             }
             catch(err) {
