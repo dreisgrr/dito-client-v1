@@ -1,5 +1,5 @@
 import React from "react";
-import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route, Redirect, useRouteMatch, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./App.css";
 import RafflePage from "./subscriber/pages/RafflePage";
@@ -49,9 +49,8 @@ function  App() {
       <Router>
           <Switch>
           {/* LOCAL */}
-            <Route path='/verify/:userId'>
-                <VerifyEmailReskin />
-            </Route>
+            {/* <Route path='/verify/:userId' component={VerifyEmailReskin}/> */}
+            <Route path='/verify'><Verify/></Route>
             <Route path='/reset/:userId/:resetString'>
                 <ResetPasswordReskin />
             </Route>
@@ -94,98 +93,7 @@ function  App() {
             <LandingReskin />
           </Route>
 
-              {/* PROD ROUTE */}
-                {/* <Route exact path='/landing'>
-                  {subscriber ? <Redirect to='/' /> : <Landing />}
-                </Route>
-                <Route exact path='/register'>
-                  {subscriber ? <Redirect to='/' /> : <RegisterThruPW />}
-                </Route>
-                <Route exact path='/login'>
-                  {subscriber ? <Redirect to='/' /> : <LoginPW />}
-                </Route>
-                <Route exact path='/regDetails'>
-                  {auth ? <RegDetails /> : <Redirect to='/' />}
-                </Route>
-                <Route exact path='/'>
-                  {subscriber ?
-                  <>
-                    <Topbar/>
-                    <div className="container">
-                    <Route exact path='/'>
-                      <RafflePage />
-                    </Route>
-                    </div>
-                  </> 
-                  
-                  : <Landing />}
-                </Route> */}
 
-
-          
-          {/* Reskin */}
-          {/* <Route exact path='/reskin/landing'>
-            {subscriber ? <Redirect to='/reskin' /> : <LandingReskin />}
-          </Route>
-          <Route exact path='/reskin/register'>
-            {subscriber ? <Redirect to='/reskin' /> : <RegisterReskin />}
-          </Route>
-          <Route exact path='/reskin/login'>
-            {subscriber ? <Redirect to='/reskin' /> : <LoginReskin />}
-          </Route>
-          <Route exact path='/reskin/regDetails'>
-            {auth ? <RegDetailsReskin /> : <Redirect to='/reskin' />}
-          </Route>
-          <Route exact path='/reskin/welcomekadito'>
-            {auth ? <SplashReskin /> : <Redirect to='/reskin' />}
-          </Route>
-          <Route exact path='/reskin'>
-            {subscriber ? <HomeReskin />
-            // <>
-            //   <Topbar/>
-            //   <div className="container">
-            //   <Route exact path='/'>
-            //     <RafflePage />
-            //   </Route>
-            //   </div>
-            // </> 
-            
-            : <LandingReskin />}
-          </Route> */}
-
-          {/* Current */}
-          {/* <Route exact path='/current/landing'>
-            {subscriber ? <Redirect to='/current' /> : <Landing />}
-          </Route>
-          <Route exact path='/current/register'>
-            {subscriber ? <Redirect to='/current' /> : <Register />}
-          </Route>
-          <Route exact path='/current/login'>
-            {subscriber ? <Redirect to='/current' /> : <LoginPW />}
-          </Route>
-          <Route exact path='/current/regDetails'>
-            {auth ? <RegDetails /> : <Redirect to='/current' />}
-          </Route>
-          <Route exact path='/current'>
-            {subscriber ?
-            <>
-              <Topbar/>
-              <div className="container">
-              <Route exact path='/current'>
-                <RafflePage />
-              </Route>
-              </div>
-            </> 
-            
-            : <Landing />}
-          </Route> */}
-
-              {/* MAINTENANCE */}
-          {/* <Route exact path='/'>
-            <div className="container">
-              <div className="maintenance"></div>
-            </div>
-          </Route> */}
           
         </Switch>
       </Router>
@@ -193,4 +101,41 @@ function  App() {
     )
 }
 
+function Verify() {
+  let { path, url } = useRouteMatch();
+
+  return(
+    <div>
+      <Switch>
+        <Route exact path={path}>
+          <LandingReskin/>
+        </Route>
+        <Route path={`${path}/:userId`}>
+          <VerifyTwo />
+        </Route>
+      </Switch>
+    </div>
+  )
+}
+
+function VerifyTwo() {
+  let { userId } = useParams();
+  let { path, url } = useRouteMatch();
+  console.log(userId)
+  return(
+    <div>
+      <Switch>
+        <Route exact path={path}>
+          <LandingReskin/>
+        </Route>
+        <Route path={`${path}/:uniqueString`}>
+          <VerifyEmailReskin />
+        </Route>
+      </Switch>
+    </div>
+  )
+}
+
 export default App;
+
+

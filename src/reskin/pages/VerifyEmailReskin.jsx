@@ -9,11 +9,12 @@ import titleLogin from "../../assets/title-login.png";
 import logoDito from "../../assets/logo-dito.png";
 
 const VerifyEmailReskin = () => {
-  // const { userId, uniqueString } = useParams();
-  // const params = {
-  //     userId,
-  //     uniqueString
-  // }
+  const { userId, uniqueString } = useParams();
+  const params = {
+      userId,
+      uniqueString
+  }
+  console.log(params)
 
 
     // useEffect( async() => {
