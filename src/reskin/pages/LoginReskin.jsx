@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect, useState } from "react";
 import { resetLoginError, subscriberLoginPW} from "../../redux/apiCalls"
 import { useDispatch, useSelector } from "react-redux";
-import { publicRequest } from "../../requestMethods"
+import { publicRequest, local } from "../../requestMethods"
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import 'bootstrap/dist/js/bootstrap.js'
@@ -102,7 +102,7 @@ const LoginReskin = () => {
                 mobileNumber, email, redirectUrl
             }
             try {
-                const res = await publicRequest.post("/auth/subscriber/requestPasswordReset", params);
+                const res = await local.post("/auth/subscriber/requestPasswordReset", params);
                 const { data } = res;
                 if ( data.status == "PENDING") {
                     $('#pwMessage').text('Password reset request was sent successfully. Please check your email.');

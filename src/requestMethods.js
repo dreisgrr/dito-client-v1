@@ -27,6 +27,11 @@ export const publicRequest = axios.create({
   header: { "Content-Type": "application/json" },
 });
 
+export const local = axios.create({
+  baseURL: localhost,
+  header: { "Content-Type": "application/json" },
+});
+
 export const userRequest = axios.create({
   baseURL: BASE_URL,
   header: { token: `Bearer ${TOKEN}` },

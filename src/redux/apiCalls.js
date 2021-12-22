@@ -26,7 +26,7 @@ import {
   showErrorMessageAddressRedux,
   resetAccountPageErrorsRedux,
 } from "./subscriberRedux";
-import { publicRequest, requestOTP, semaOTP } from "../requestMethods";
+import { publicRequest, local, requestOTP, semaOTP } from "../requestMethods";
 
 export const subscriberLogin = async (dispatch, subscriber) => {
   dispatch(loginStart());
@@ -249,7 +249,7 @@ export const updatePersonalAddress = async (dispatch, subscriber) => {
 export const sendVerification = async (dispatch, subscriber) => {
   try {
     console.log("Send Email Verification");
-    const res = await publicRequest.post(
+    const res = await local.post(
       "/auth/subscriber/sendVerification",
       subscriber
     );
