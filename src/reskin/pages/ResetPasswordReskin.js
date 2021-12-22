@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { publicRequest } from "../../requestMethods";
 import { useHistory, useParams } from "react-router-dom";
 import styled from "styled-components";
-import $ from "jquery";
 import "bootstrap/dist/js/bootstrap";
 
 import "../../css/main.css";
@@ -14,7 +13,7 @@ import boxMobile from "../../assets/box-mobile.png";
 import logoDito from "../../assets/logo-dito.png";
 import bgFooter from "../../assets/registration-banner-footer.png";
 
-const Error = styled.div`
+const ErrorDiv = styled.div`
   color: white;
   text-align: center;
   justify-content: center;
@@ -185,7 +184,7 @@ const ResetPasswordReskin = () => {
           </div>
 
           <div className='pass-req'>
-            <Error hidden={error ? false : true}>{errorMessage}</Error>
+            <ErrorDiv hidden={error ? false : true}>{errorMessage}</ErrorDiv>
           </div>
 
           <input

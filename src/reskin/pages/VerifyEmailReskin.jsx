@@ -2,7 +2,6 @@ import React from 'react'
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { publicRequest } from "../../requestMethods";
-import $ from "jquery";
 
 import "../../css/main.css";
 
@@ -10,27 +9,29 @@ import titleLogin from "../../assets/title-login.png";
 import logoDito from "../../assets/logo-dito.png";
 
 const VerifyEmailReskin = () => {
-  const { userId, uniqueString } = useParams();
-  const params = {
-      userId,
-      uniqueString
-  }
+  // const { userId, uniqueString } = useParams();
+  // const params = {
+  //     userId,
+  //     uniqueString
+  // }
 
 
-    useEffect( async() => {
-        try {
-        const res = await publicRequest.post(
-          "/auth/subscriber/verifyEmail",
-          params
-        );
-        const { data } = res;
-        console.log(data);
-        const message = data.message
-        $("#emailMessage").text(message);
-      } catch (err) {
-        console.log(err);
-      }
-    }, [])
+    // useEffect( async() => {
+    //   console.log(userId)
+    //   console.log(uniqueString)
+    //   //   try {
+    //   //   const res = await publicRequest.post(
+    //   //     "/auth/subscriber/verifyEmail",
+    //   //     params
+    //   //   );
+    //   //   const { data } = res;
+    //   //   console.log(data);
+    //   //   const message = data.message
+    //   //   window.$("#emailMessage").text(message);
+    //   // } catch (err) {
+    //   //   console.log(err);
+    //   // }
+    // }, [])
 
     return (
         <div className='login'>
