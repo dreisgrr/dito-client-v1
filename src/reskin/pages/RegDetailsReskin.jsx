@@ -186,7 +186,7 @@ const RegDetailsReskin = () => {
     if(!registerDisabled) {
       subscriberRegister(dispatch, { mobileNumber, password, name, email, street, consent });
       setTimeout(() => {
-      sendVerification(dispatch, {mobileNumber})
+      //sendVerification(dispatch, {mobileNumber})
       }, 2000)
       history.push("/welcomekadito");
     }

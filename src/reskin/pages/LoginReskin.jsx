@@ -145,7 +145,7 @@ const LoginReskin = () => {
                         <input type="password" className="form-control" placeholder="Password" onChange={(e)=>setPassword(e.target.value)} />
                     </div>
                     <div className="forgot-group">
-                        <a className="forgotpass modal-link" type="button"data-bs-toggle="modal" data-bs-target="#forgotPass">Forgot Password?</a>
+                        {/* <a className="forgotpass modal-link" type="button"data-bs-toggle="modal" data-bs-target="#forgotPass">Forgot Password?</a> */}
 
                         <div className="form-check">
                             <input className="form-check-input" type="checkbox" />
