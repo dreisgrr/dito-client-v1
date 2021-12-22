@@ -14,25 +14,24 @@ const VerifyEmailReskin = () => {
       userId,
       uniqueString
   }
-  console.log(params)
 
 
-    // useEffect( async() => {
-    //   console.log(userId)
-    //   console.log(uniqueString)
-    //   //   try {
-    //   //   const res = await publicRequest.post(
-    //   //     "/auth/subscriber/verifyEmail",
-    //   //     params
-    //   //   );
-    //   //   const { data } = res;
-    //   //   console.log(data);
-    //   //   const message = data.message
-    //   //   window.$("#emailMessage").text(message);
-    //   // } catch (err) {
-    //   //   console.log(err);
-    //   // }
-    // }, [])
+    useEffect( async() => {
+      console.log(userId)
+      console.log(uniqueString)
+        try {
+        const res = await publicRequest.post(
+          "/auth/subscriber/verifyEmail",
+          params
+        );
+        const { data } = res;
+        console.log(data);
+        const message = data.message
+        window.$("#emailMessage").text(message);
+      } catch (err) {
+        console.log(err);
+      }
+    }, [])
 
     return (
         <div className='login'>
