@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { publicRequest } from "../../requestMethods";
+import $ from "jquery"
 
 import "../../css/main.css";
 
@@ -27,7 +28,7 @@ const VerifyEmailReskin = () => {
         const { data } = res;
         console.log(data);
         const message = data.message
-        window.$("#emailMessage").text(message);
+        $("#emailMessage").text(message);
       } catch (err) {
         console.log(err);
       }
