@@ -49,7 +49,7 @@ function  App() {
       <Router>
           <Switch>
           {/* LOCAL */}
-            <Route path='/verify'>
+            <Route path='/verify/:userId'>
                 <VerifyEmailReskin />
             </Route>
             <Route path='/reset/:userId/:resetString'>
