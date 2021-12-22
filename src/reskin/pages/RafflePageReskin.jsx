@@ -72,7 +72,6 @@ const RafflePageReskin = () => {
           let initializeClock = (id, endtime) => {
             var clock = document.getElementById(id);
           
-            console.log(clock)
             var hoursSpan = clock.querySelector(".hour");
             var minutesSpan = clock.querySelector(".minutes");
             var secondsSpan = clock.querySelector(".seconds");

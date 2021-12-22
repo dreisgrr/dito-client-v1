@@ -61,7 +61,6 @@ const Topbar = () => {
     const { accessToken, mobileNumber, name, email, address, activity} = useSelector((state) => state.subscriber?.currentUser?.user);
     
     const handleLogout = () => {
-        console.log("Logout");
         localStorage.removeItem("persist:root");
         window.location = "/";
     }

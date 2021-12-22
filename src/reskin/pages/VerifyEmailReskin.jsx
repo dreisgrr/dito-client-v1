@@ -18,15 +18,12 @@ const VerifyEmailReskin = () => {
 
 
     useEffect( async() => {
-      console.log(userId)
-      console.log(uniqueString)
         try {
         const res = await publicRequest.post(
           "/auth/subscriber/verifyEmail",
           params
         );
         const { data } = res;
-        console.log(data);
         const message = data.message
         $("#emailMessage").text(message);
       } catch (err) {

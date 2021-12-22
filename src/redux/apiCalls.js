@@ -33,7 +33,6 @@ export const subscriberLogin = async (dispatch, subscriber) => {
   try {
     const res = await publicRequest.post("/auth/subscriber/login", subscriber);
     const { data } = res;
-    console.log(data);
     dispatch(loginSuccess(data));
   } catch (err) {
     if (err.response) {
@@ -50,7 +49,6 @@ export const subscriberLoginPW = async (dispatch, subscriber) => {
   try {
     const res = await publicRequest.post("/auth/subscriber/login", subscriber);
     const { data } = res;
-    console.log(data);
     dispatch(loginSuccessPW(data));
   } catch (err) {
     if (err.response) {
@@ -61,16 +59,13 @@ export const subscriberLoginPW = async (dispatch, subscriber) => {
 };
 
 export const sunscriberNotExists = async (dispatch, subscriber) => {
-  console.log("params" + subscriber);
   dispatch(loginStart());
   try {
-    console.log("is Not Existing: " + subscriber);
     const res = await publicRequest.post(
       "/auth/subscriber/ifNotExists",
       subscriber
     );
     dispatch(notRegisteredsuccess(res));
-    console.log("res" + res);
   } catch (err) {
     if (err.response) {
       const errorMessage = err.response.data;
@@ -80,7 +75,6 @@ export const sunscriberNotExists = async (dispatch, subscriber) => {
 };
 export const sunscriberNotExistsPW = async (dispatch, subscriber) => {
   console.log("apiCall - sunscriberNotExistsPW");
-  console.log(JSON.stringify(subscriber));
   dispatch(loginStart());
   try {
     const res = await publicRequest.post(
@@ -89,7 +83,6 @@ export const sunscriberNotExistsPW = async (dispatch, subscriber) => {
     );
     const { config } = res;
     const newUser = config.data;
-    console.log(newUser);
     dispatch(registerPWSuccess(JSON.parse(newUser)));
   } catch (err) {
     if (err.response) {
@@ -120,7 +113,6 @@ export const subscriberGenerateOTP = async (dispatch, phone) => {
       mobileNumber: phone,
     });
 
-    console.log(res);
     dispatch(verifyOTPCreated(res));
   } catch (err) {
     if (err) {
@@ -139,7 +131,6 @@ export const subscriberVerifyOTP = async (dispatch, user) => {
       mobileNumber: user.mobileNumber,
       code: user.otp,
     });
-    console.log(res.data);
     dispatch(verifyOTPCreated(res.data));
   } catch (err) {
     if (err) {
@@ -156,12 +147,6 @@ export const sunscriberOTPVerified = (dispatch, mobileNumber) => {
 export const subscriberRegister = async (dispatch, subscriber) => {
   console.log("apiCall - subscriberRegister");
   const { mobileNumber, password, name, email, address, consent } = subscriber;
-  console.log(mobileNumber);
-  console.log(password);
-  console.log(email);
-  console.log(name);
-  console.log(address);
-  console.log(consent);
   dispatch(loginStart());
   try {
     const res = await publicRequest.post(
@@ -170,7 +155,6 @@ export const subscriberRegister = async (dispatch, subscriber) => {
     );
     const { data } = res;
     const user = data;
-    console.log(user);
     dispatch(registerSuccess(user));
   } catch (err) {
     if (err.response) {
@@ -188,7 +172,6 @@ export const loadUserPoints = async (dispatch, mobileNumber) => {
       mobileNumber
     );
     const { data } = res;
-    console.log(data);
     dispatch(updateUserInfo(data));
   } catch (err) {
     if (err.response) {
@@ -221,7 +204,6 @@ export const updatePersonalInfo = async (dispatch, subscriber) => {
     );
 
     const { data } = res;
-    console.log(res);
     dispatch(updatePersonalInfoRedux(subscriber));
   } catch (err) {
     if (err.response) {
@@ -239,7 +221,6 @@ export const updatePersonalPw = async (dispatch, subscriber) => {
     );
 
     const { data } = res;
-    console.log(res);
     dispatch(updatePersonalPwRedux(subscriber));
   } catch (err) {
     if (err.response) {
@@ -257,7 +238,6 @@ export const updatePersonalAddress = async (dispatch, subscriber) => {
     );
 
     const { data } = res;
-    console.log(res);
     dispatch(updatePersonalAddressRedux(subscriber));
   } catch (err) {
     if (err.response) {
@@ -275,7 +255,6 @@ export const sendVerification = async (dispatch, subscriber) => {
     );
 
     const { data } = res;
-    console.log(res);
   } catch (err) {
     if (err.response) {
       const errorMessage = err.response.data;

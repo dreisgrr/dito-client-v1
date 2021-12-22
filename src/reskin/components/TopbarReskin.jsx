@@ -27,7 +27,7 @@ const TopbarReskin = () => {
     const location = useLocation();
     const { pathname } = location;
     const splitLocation = pathname.split("/");
-    //console.log("split"+splitLocation[1].toString().includes("/raffle") || splitLocation[1] === '');
+    //("split"+splitLocation[1].toString().includes("/raffle") || splitLocation[1] === '');
     const { name, mobileNumber } = useSelector((state) => state.subscriber?.currentUser?.user);
 
     const handleLogout = () => {

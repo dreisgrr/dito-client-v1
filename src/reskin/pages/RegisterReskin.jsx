@@ -70,8 +70,6 @@ const RegisterReskin = () => {
             setPasswordFormValidate(false)
             return;
         }
-        console.log(password)
-        console.log(confirmPassword)
         if(password !== confirmPassword) {
             showErrorMessage(dispatch, "Passwords do not match!")
             setPasswordFormValidate(false)

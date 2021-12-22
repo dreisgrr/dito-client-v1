@@ -176,13 +176,7 @@ const RegDetailsReskin = () => {
         marketing: marketing,
     }
     const { mobileNumber, password } = tempUser;
-    // console.log( mobileNumber)
-    // console.log( password)
-    // console.log(name)
-    // console.log(email)
-    // console.log(consent)
-    console.log("street: "+street)
-    //console.log(addressNew)
+
     if(!registerDisabled) {
       subscriberRegister(dispatch, { mobileNumber, password, name, email, street, consent });
       setTimeout(() => {

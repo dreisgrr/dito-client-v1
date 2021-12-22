@@ -120,13 +120,13 @@ const Login = () => {
     } 
 
     useEffect(() => {
-        console.log("useEffect isRegistered");
+        ("useEffect isRegistered");
         subscriberGenerateOTP(dispatch, mobileNumber);
     }, [isRegistered])
 
     useEffect(() => {
         if(smsOtp) {
-            console.log("useEffect valid OTP");
+            ("useEffect valid OTP");
             sunscriberOTPVerified(dispatch, mobileNumber);
             loadUserPoints(dispatch, { mobileNumber });
         }

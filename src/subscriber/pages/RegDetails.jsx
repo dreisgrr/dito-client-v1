@@ -101,13 +101,11 @@ const RegDetails = () => {
     const [error, setError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
 
-    console.log(regions)
 
     const { tempUser } = useSelector((state) => state.subscriber);
 
 
     const handleRegister = (e) => {
-        console.log("handleRegister");
         e.preventDefault();
         //VALIDATE
         if(!emailIsValid(email)) {
@@ -116,7 +114,6 @@ const RegDetails = () => {
 
         //PROCESS
         const address = `${street} ${barangay} ${city} ${province} ${region}`;
-        console.log(address)
         const consent = {
             tnc: true,
             privacy: true,

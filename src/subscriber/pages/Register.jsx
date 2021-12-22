@@ -116,7 +116,6 @@ const Register = () => {
     const { isAuthenticated, isNewUser, smsOtp, isFetching, error, errorMessage} = useSelector((state) => state.subscriber);
     const [mobileNumber, setMobileNumber] = useState('');
     const [otp, setOtp] = useState('');
-    console.log(mobileNumber)
     const handleLogin = (e) => {
         e.preventDefault();
         if(mobileNumber.length<10) return

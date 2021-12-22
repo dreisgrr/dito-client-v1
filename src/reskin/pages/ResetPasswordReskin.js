@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { publicRequest } from "../../requestMethods";
 import { useHistory, useParams } from "react-router-dom";
 import styled from "styled-components";
+import $ from "jquery";
 import "bootstrap/dist/js/bootstrap";
 
 import "../../css/main.css";
@@ -37,7 +38,6 @@ const ResetPasswordReskin = () => {
   };
 
   const validatePassword = () => {
-    console.log(passwordFormValidate);
     if (isStringInputEmpty(newPassword)) {
       setError(true);
       setErrorMessage("Password is required");
@@ -80,32 +80,24 @@ const ResetPasswordReskin = () => {
     setError(false);
     setErrorMessage("");
     setPasswordFormValidate(true);
-    console.log(passwordFormValidate);
   };
 
   const handleResetPassword = async (e) => {
     validatePassword();
-    console.log(passwordFormValidate);
     if (passwordFormValidate) {
-      console.log(newPassword);
-      console.log(confirmNewPassword);
-      console.log(userId);
-      console.log(resetString);
       const params = {
         userId,
         resetString,
         newPassword,
       };
       try {
-        console.log("TRY");
+        // window.$("#changepass").modal("show");
         const res = await publicRequest.post(
           "/auth/subscriber/resetPassword",
           params
         );
         const { data } = res;
-        console.log(data);
         if (data.status == "SUCCESS") {
-          console.log("SUCCESS");
           window.$("#changepass").modal("show");
         } else {
           setError(true);
@@ -134,7 +126,7 @@ const ResetPasswordReskin = () => {
               <input
                 className='form-control'
                 placeholder='**********'
-                type='text'
+                type='password'
                 onChange={(e) => setNewPassword(e.target.value)}
                 onKeyUp={validatePassword}
               />
@@ -152,7 +144,7 @@ const ResetPasswordReskin = () => {
               <input
                 className='form-control'
                 placeholder='**********'
-                type='text'
+                type='password'
                 onChange={(e) => setConfirmNewPassword(e.target.value)}
                 onKeyUp={validatePassword}
               />

@@ -105,7 +105,7 @@ const Prefix = styled.input`
 const RegisterThruPW = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-    // console.log("Remove"+ subscriber);
+    // ("Remove"+ subscriber);
     // if (!subscriber) {
     //     localStorage.removeItem("persist:root");
     // }

@@ -16,7 +16,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 export default function AlertDialogSlide() {
     const pointsHistory = useSelector((state) => state.subscriber?.pointsHistory);
     let isEmpty = (pointsHistory == null);
-    console.log(isEmpty)
     // const [ points, setPoints] = useState('');
     // setPoints(pointsHistory);
     const [open, setOpen] = React.useState(false);

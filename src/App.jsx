@@ -37,7 +37,6 @@ const DITOLogo = styled.div`
 
 function  App() {
   const subscriber = useSelector((state) => state.subscriber?.currentUser);
-  console.log("Remove"+ subscriber);
   if (subscriber == null) {
     localStorage.removeItem("persist:root");
     localStorage.clear();
@@ -121,7 +120,6 @@ function Verify() {
 function VerifyTwo() {
   let { userId } = useParams();
   let { path, url } = useRouteMatch();
-  console.log(userId)
   return(
     <div>
       <Switch>

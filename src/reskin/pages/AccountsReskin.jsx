@@ -48,7 +48,6 @@ const AccountsReskin = () => {
     }
 
     const validatePersonalInfo =( ) => {
-        console.log(personalInfoValidate);
         if(isStringInputEmpty(name)) {
             showErrorMessage(dispatch, "Name is required")
             setPersonalInfoValidate(false)
@@ -75,7 +74,6 @@ const AccountsReskin = () => {
     }
 
     const handleUpdateInfo =(e) => {
-        console.log(personalInfoValidate);
         e.preventDefault();
         validatePersonalInfo();
         if(personalInfoValidate) {
@@ -137,7 +135,6 @@ const AccountsReskin = () => {
     }
 
     const validateAddress = () => {
-        console.log("inside validate")
         if(isStringInputEmpty(street)) {
             showErrorMessageAddress(dispatch, "Address is required")
             setAddressFormValidate(false)
@@ -166,11 +163,8 @@ const AccountsReskin = () => {
     }
     const handleUpdateAddress = (e) => {
         e.preventDefault();
-        console.log("afer validate")
         validateAddress();
-        console.log("afer validate")
         if(addressFormValidate){
-            console.log("validated address")
             const mobileNumber = user.mobileNumber;
             const address = street
             updatePersonalAddress(dispatch, { mobileNumber, address});

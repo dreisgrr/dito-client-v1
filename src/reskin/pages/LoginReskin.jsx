@@ -78,7 +78,6 @@ const LoginReskin = () => {
             return;
         }
         $('#pwMessage').text('');
-        console.log(forgotFormValidate);
         if(isStringInputEmpty(email)) {
          $('#pwMessage').text('Email is required');
         setforgotFormValidate(false);
@@ -91,12 +90,10 @@ const LoginReskin = () => {
         return;
         }
         setforgotFormValidate(true);
-        console.log(forgotFormValidate);
     }
 
     const handleRequestReset = async (e) => {
         e.preventDefault();
-        console.log(forgotFormValidate);
         if (forgotFormValidate) {
             $('#pwMessage').text('Requesting Password Reset...');
             const redirectUrl = "https://loadedkadito.ph/reset";
@@ -104,11 +101,9 @@ const LoginReskin = () => {
             const params = {
                 mobileNumber, email, redirectUrl
             }
-            console.log(params);
             try {
                 const res = await publicRequest.post("/auth/subscriber/requestPasswordReset", params);
                 const { data } = res;
-                console.log(data)
                 if ( data.status == "PENDING") {
                     $('#pwMessage').text('Password reset request was sent successfully. Please check your email.');
                     $('#pwResetBtn').prop('disabled', true)
