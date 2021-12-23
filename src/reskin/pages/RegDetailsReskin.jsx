@@ -12,6 +12,7 @@ import styled from "styled-components";
 
 import titleRegistration from "../../assets/title-registration.png";
 import logoDito from "../../assets/logo-dito.png";
+import { publicRequest } from '../../requestMethods';
 
 const Error = styled.div`
     color: red;
@@ -79,6 +80,7 @@ const RegDetailsReskin = () => {
   const [privacy, setPrivacy] = useState(false);
   const [marketing, setMarketing] = useState(false);
   const [emailValid, SetEmailValid] = useState(false);
+  const [emailAlreadyRegistered, setEmailAlreadyRegistered] = useState(true);
   const[registerDisabled, setRegisterDisabled] = useState(true);
 
 
@@ -94,7 +96,26 @@ const RegDetailsReskin = () => {
     return !str.trim().length;
   }
 
-  const validateForm =( ) => {
+  const checkIfEmailExists = async() => {
+    try {
+      console.log(email)
+      const res = await publicRequest.post("/auth/subscriber/checkIfEmailExists", { email} );
+      const { data } = res;
+      console.log( data )
+      if (data.status === "SUCCESS") {
+        setEmailAlreadyRegistered(false);
+      }
+      if( data.status === "FAILED" ){
+        setEmailAlreadyRegistered(true);
+      showErrorMessage(dispatch, "Email is already registered")
+      }
+    }
+    catch(error) {
+      console.log(error)
+    }
+  }
+
+  const validateForm = () => {
     const checkTNC = document.getElementById('checkTNC').checked;
     const checkPrivacy = document.getElementById('checkPrivacy').checked;
 
@@ -143,6 +164,7 @@ const RegDetailsReskin = () => {
       showErrorMessage(dispatch, "You must agree to DITO's Privacy Policy")
       return;
     }
+    if(emailAlreadyRegistered) return;
     // if ( emailValid && checkPrivacy && checkTNC ) {
     //   setRegisterDisabled(false);
     // }
@@ -209,7 +231,7 @@ useEffect(() => {
 
                 <div className="form-group">
                     <label style={{ float: 'left' }}>Email Address</label >
-                    <input type="email" className="form-control" placeholder="juandelacruz@gmail.com" maxLength="50" type="email" onChange={(e) => emailValidator(e.target.value)}></input>
+                    <input type="email" className="form-control" placeholder="juandelacruz@gmail.com" maxLength="50" type="email" onBlur={ checkIfEmailExists } onChange={(e) => emailValidator(e.target.value)}></input>
                 </div>
 
                 {/* <div className="form-group">
