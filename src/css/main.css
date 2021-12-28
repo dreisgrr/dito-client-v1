@@ -37,6 +37,16 @@ body {
   padding: 10px 0;
   margin-bottom: 16px;
 }
+.btn-blue:disabled,
+.btn-blue[disabled] {
+  background-color: grey;
+  border-color: grey;
+  border-radius: 25px;
+  width: 100%;
+  color: #ffffff;
+  padding: 10px 0;
+  margin-bottom: 16px;
+}
 
 .btn-red:hover,
 .btn-blue:hover {
@@ -375,7 +385,6 @@ div.account {
   background-color: #ce242e;
   border-radius: 20px;
   padding: 30px;
-  min-height: 500px;
 }
 
 .register-content,
@@ -649,8 +658,6 @@ div.account {
 }
 
 .register .logo-dito {
-  margin-top: 50px;
-  margin-bottom: 90px;
   position: sticky;
 }
 

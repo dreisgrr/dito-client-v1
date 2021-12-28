@@ -127,21 +127,25 @@ const RegDetailsReskin = () => {
 
     if(isStringInputEmpty(name)) {
       showErrorMessage(dispatch, "Your name is required")
+      setRegisterDisabled(true);
       return;
     }
 
     if(name.length < 5) {
       showErrorMessage(dispatch, "Full name too short")
+      setRegisterDisabled(true);
       return;
     }
 
     if(isStringInputEmpty(email)) {
       showErrorMessage(dispatch, "Email is required")
+      setRegisterDisabled(true);
       return;
     }
 
     if (!emailValid) {
       showErrorMessage(dispatch, "The email you entered is invalid")
+      setRegisterDisabled(true);
       return;
     }
     // if(isStringInputEmpty(region) || isStringInputEmpty(province) || isStringInputEmpty(city) || isStringInputEmpty(street) ) {
@@ -150,24 +154,33 @@ const RegDetailsReskin = () => {
     // }
     if(isStringInputEmpty(street) ){
       showErrorMessage(dispatch, "Address is required")
+      setRegisterDisabled(true);
       return;
     }
     if(street.length < 15){
       showErrorMessage(dispatch, "Address too short")
+      setRegisterDisabled(true);
       return;
     }
     if (!checkTNC) {
       showErrorMessage(dispatch, "You must accept DITO's Terms and Conditions")
+      setRegisterDisabled(true);
       return;
     }
     if (!checkPrivacy) {
       showErrorMessage(dispatch, "You must agree to DITO's Privacy Policy")
+      setRegisterDisabled(true);
       return;
     }
-    if(emailAlreadyRegistered) return;
+    if(emailAlreadyRegistered) {
+      showErrorMessage(dispatch, "The email you entered is invalid")
+      setRegisterDisabled(true);
+      return;
+    }
     // if ( emailValid && checkPrivacy && checkTNC ) {
     //   setRegisterDisabled(false);
     // }
+      showErrorMessage(dispatch, "")
     setRegisterDisabled(false);
   }
   const clearDetails = (e) => {
@@ -226,7 +239,7 @@ useEffect(() => {
                 <div className="form-group">
                 
                     <label style={{ float: 'left' }}>Full Name</label>
-                    <input type="text" className="form-control" placeholder="Juan de la Cruz" maxLength="50" type="text" onChange={(e) => setName(e.target.value)} ></input>
+                    <input type="text" className="form-control" placeholder="Juan de la Cruz" maxLength="50" type="text" onChange={(e) => setName(e.target.value)} onBlur={validateForm}></input>
                 </div>
 
                 <div className="form-group">
@@ -262,16 +275,16 @@ useEffect(() => {
                     <label style={{ float: 'left' }}>Complete Address</label><br/>
                     <p >House Number, Street Name, Barangay, City, Province, Postal Code</p>
                     {/* <input type="text" placeholder="Unit Number, House number, Building name, Street Name Barangay, City, Province, Region" className="form-control" id="" maxLength="50" type="text" onChange={(e) => setStreet(e.target.value)}></input> */}
-                    <textarea id="addressStreet"  cols="40" placeholder='House Number, Street Name, Barangay, City, Province, Postal Code' maxLength="80" rows="6" className="form-control" onChange={(e) => setStreet(e.target.value)} />
+                    <textarea id="addressStreet"  cols="40" placeholder='House Number, Street Name, Barangay, City, Province, Postal Code' maxLength="80" rows="6" className="form-control" onChange={(e) => setStreet(e.target.value)} onBlur={validateForm} />
                 </div>
 
                 <div className="form-check" style={{ textAlign: 'left' }}>
-                    <input className="form-check-input" id="checkTNC"  type="checkbox"/>
+                    <input className="form-check-input" id="checkTNC"  type="checkbox" onClick={validateForm} />
                     <label className="form-check-label"  style={{ float: 'left' }}>I agree to <a href="https://dito.ph/terms-and-conditions?hsLang=en" target="_blank" className="modal-link" type="button"data-bs-toggle="modal" data-bs-target="#Terms">DITO's Terms and Conditions</a></label>
                 </div>
                 <br/>
                 <div className="form-check" style={{ textAlign: 'left' }}>
-                    <input className="form-check-input" id="checkPrivacy"  type="checkbox"/>
+                    <input className="form-check-input" id="checkPrivacy"  type="checkbox" onClick={validateForm} />
                     <label className="form-check-label" style={{ float: 'left' }} >I agree to <a href="https://dito.ph/privacy-policy?hsLang=en" target="_blank" className="modal-link" type="button"data-bs-toggle="modal" data-bs-target="#Privacy">DITO's Privacy Policy</a></label>
                 </div>
                 <br/>
@@ -280,7 +293,7 @@ useEffect(() => {
                     <label className="form-check-label"  >I agree to <a className="modal-link" type="button"data-bs-toggle="modal" data-bs-target="#Marketing">DITO's Telecommunity marketing notifications</a></label>
                 </div>
             </div>
-            <button className="btn btn-red"  onClick={ (e) => handleRegister(e) } >REGISTER</button>
+            <button className="btn btn-red"  onClick={ (e) => handleRegister(e) } disabled={ registerDisabled } >REGISTER</button>
             <Error hidden={error ? false : true }>{errorMessage}</Error>
             <button className="btn btn-red"  onClick={ (e) => clearDetails(e) } >RE-ENTER MOBILE PHONE</button>
         </div>

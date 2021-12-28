@@ -74,8 +74,9 @@ const RegisterReskin = () => {
             showErrorMessage(dispatch, "Passwords do not match!")
             setPasswordFormValidate(false)
             return;
-          }
-          setPasswordFormValidate(true)
+        }
+        showErrorMessage(dispatch, "");
+        setPasswordFormValidate(true);
     }
 
     const handleRegister = (e) => {
@@ -118,24 +119,41 @@ const RegisterReskin = () => {
                     <div className="input-group">
                         <img className="box-mobile" src={ boxMobile }/>
                         <span className="input-group-text">+63</span>
-                        <input type="tel" className="form-control" placeholder="991 000 0000" maxLength="10"  onFocus={(e) => resetLoginError(dispatch)} onInput={(e) => resetError(e.target.value)} />
+                        <input type="tel" className="form-control" placeholder="991 000 0000" maxLength="10"  onFocus={(e) => resetLoginError(dispatch)} onInput={(e) => resetError(e.target.value)} onBlur={validatePassword}/>
                     </div>
                     <p className="label-password">Password</p>
                     <div className="input-group">
-                    <input type="password" className="form-control" onChange={(e)=>setPassword(e.target.value)} />
+                    <input type="password" className="form-control" onChange={(e)=>setPassword(e.target.value)} onBlur={validatePassword} />
                     </div>
 
                     <p className="label-password">Confirm Password</p>
                     <div className="input-group">
-                        <input type="password" className="form-control" onChange={(e) =>setConfirmPassword(e.target.value)} />
+                        <input type="password" className="form-control" onChange={(e) =>setConfirmPassword(e.target.value)} onBlur={validatePassword} />
+                    </div>
+
+                    <div className='pass-req'>
+                        <p style={{ fontSize: 12 + "px", color: 'white', textAlign: 'left' }}>Password Requirements</p>
+                        <ul
+                        style={{
+                            fontSize: 12 + "px",
+                            color: "white",
+                            listStyleType: "disc",
+                            display: "block",
+                            textAlign: "left",
+                            marginInlineStart: 0 + "px",
+                        }}
+                        >
+                            <li>At least one uppercase (A-Z)</li>
+                            <li>At least one lowercase (a-z)</li>
+                            <li>At least one number (0-9)</li>
+                            <li>Minimum 8 characters</li>
+                        </ul>
                     </div>
 
                     <div className="form-check">
-                    <input className="form-check-input" type="checkbox"/>
-                    <label className="form-check-label">Remember Me</label>
                     <Error hidden={error ? false : true }>{errorMessage}</Error>
                     </div>
-                    <a type="button" onClick={ handleRegister } className="btn btn-blue">PROCEED</a>
+                    <a type="button" className="btn btn-blue" disabled={ passwordFormValidate ? false : true } onClick={ handleRegister } >PROCEED</a>
                     
                 </div>
 
