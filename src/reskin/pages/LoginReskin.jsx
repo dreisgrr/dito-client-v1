@@ -102,7 +102,7 @@ const LoginReskin = () => {
                 mobileNumber, email, redirectUrl
             }
             try {
-                const res = await local.post("/auth/subscriber/requestPasswordReset", params);
+                const res = await publicRequest.post("/auth/subscriber/requestPasswordReset", params);
                 const { data } = res;
                 if ( data.status == "PENDING") {
                     $('#pwMessage').text('Password reset request was sent successfully. Please check your email.');

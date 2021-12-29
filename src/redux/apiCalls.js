@@ -249,7 +249,7 @@ export const updatePersonalAddress = async (dispatch, subscriber) => {
 export const sendVerification = async (dispatch, subscriber) => {
   try {
     console.log("Send Email Verification");
-    const res = await local.post(
+    const res = await publicRequest.post(
       "/auth/subscriber/sendVerification",
       subscriber
     );
