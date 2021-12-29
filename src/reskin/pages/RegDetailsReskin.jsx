@@ -214,9 +214,9 @@ const RegDetailsReskin = () => {
 
     if(!registerDisabled) {
       subscriberRegister(dispatch, { mobileNumber, password, name, email, street, consent });
-      setTimeout(() => {
-      sendVerification(dispatch, {mobileNumber})
-      }, 1000)
+      // setTimeout(() => {
+      // sendVerification(dispatch, {mobileNumber})
+      // }, 1000)
       history.push("/welcomekadito");
     }
 
