@@ -68,10 +68,27 @@ div.home {
 .btn-mobile {
   display: none;
 }
+.conversion-box {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  text-align: center;
+  align-items: center;
+  margin: auto;
+  width: 100%;
+}
 
-.home-content > .logo-loadeddito {
+.conversion-box .logo-loadeddito {
   width: 70%;
   margin-top: 120px;
+}
+.conversion-box .logo-conversionIcons {
+  width: 40%;
+  margin-top: 50px;
+}
+.conversion-box .logo-conversionText {
+  width: 40%;
+  margin-top: 50px;
 }
 
 .home-content h4 {
@@ -99,11 +116,32 @@ div.home {
   transform: translate(-50%, -50%);
   right: 50%;
 }
+.postraffle h6 {
+  color: #0038a8;
+  background-color: #fad115;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 20px;
+  width: 80%;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  right: 50%;
+  top: 80px;
+  filter: drop-shadow(0px 4px 4px #0038a8);
+}
 
 .img-howtojoin {
   width: 35%;
   height: 25%;
   padding-right: 20px;
+}
+
+.loginText {
+  font-size: 14px;
+  margin-top: 50px;
+  margin-bottom: -10px;
 }
 
 .box-howtojoin-1,
@@ -202,11 +240,26 @@ a.link-seemachanics {
 .home-footer {
   width: 100%;
 }
+@media only screen and (max-width: 991px) {
+  .conversion-box .logo-conversionIcons {
+    width: 60%;
+  }
+  .conversion-box .logo-conversionText {
+    width: 80%;
+  }
+}
 
 @media only screen and (max-width: 768px) {
   .home-content > .logo-loadeddito {
     width: 100%;
     margin-top: 200px;
+  }
+
+  .conversion-box .logo-conversionIcons {
+    width: 80%;
+  }
+  .conversion-box .logo-conversionText {
+    width: 100%;
   }
   .home-content h2 {
     font-size: 52px;
@@ -225,6 +278,7 @@ a.link-seemachanics {
     flex-direction: column;
     text-align: center;
     align-items: center;
+    margin-bottom: 30px;
   }
 
   .btn-mobile .btn {
@@ -237,6 +291,12 @@ a.link-seemachanics {
     width: 35%;
     padding: 10px 0;
     font-size: 16px;
+  }
+  .postraffle h6 {
+    width: 80%;
+    padding: 10px 0;
+    font-size: 18px;
+    top: 80px;
   }
 
   .img-howtojoin {
@@ -310,6 +370,12 @@ a.link-seemachanics {
 @media only screen and (max-width: 414px) {
   .home-content > .logo-loadeddito {
     margin-top: 50px;
+  }
+  .conversion-box .logo-conversionIcons {
+    width: 70%;
+  }
+  .conversion-box .logo-conversionText {
+    width: 70%;
   }
 
   .home-content h2 {

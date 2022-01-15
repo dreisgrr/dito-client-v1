@@ -7,6 +7,7 @@ import styled from "styled-components";
 import maintenance from "../src/assets/img/maintenance.png";
 
 import LandingReskin from "./reskin/pages/LandingReskin";
+import LandingPostRaffle from "./reskin/pages/LandingPostRaffle";
 import LoginReskin from "./reskin/pages/LoginReskin";
 import RegisterReskin from "./reskin/pages/RegisterReskin";
 import RegDetailsReskin from "./reskin/pages/RegDetailsReskin";
@@ -54,16 +55,16 @@ function  App() {
                 <ResetPasswordReskin />
             </Route>
               <Route exact path='/landing'>
-            {subscriber ? <Redirect to='/' /> : <LandingReskin />}
+            {subscriber ? <Redirect to='/' /> : <LandingPostRaffle />}
           </Route>
           <Route exact path='/register'>
-            {subscriber ? <Redirect to='/' /> : <RegisterReskin />}
+            {subscriber ? <Redirect to='/' /> : <LandingPostRaffle />}
           </Route>
           <Route exact path='/login'>
             {subscriber ? <Redirect to='/' /> : <LoginReskin />}
           </Route>
           <Route exact path='/regDetails'>
-            {auth ? <RegDetailsReskin /> : <Redirect to='/' />}
+            {auth ? <LandingPostRaffle /> : <Redirect to='/' />}
           </Route>
           <Route exact path='/welcomekadito'>
             {auth ? <SplashReskin /> : <Redirect to='/' />}
@@ -89,7 +90,7 @@ function  App() {
             </>
             )}
           <Route path='/'>
-            <LandingReskin />
+            <LandingPostRaffle />
           </Route>
 
 
