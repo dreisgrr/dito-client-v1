@@ -22,9 +22,6 @@ const LandingPostRaffle = () => {
                 <img className="logo-loadeddito" src={ logoLoadedkadito }/>
                 {/* <h4>DAHIL MAHAL KA NAMIN DITO, <br/>WE ARE GIVING AWAY</h4> */}
                 <h2>Hi DITOzen! Thank you for participating in the promo!</h2>
-                <div className="col-md-12">
-                    <a href="https://dito.ph/loaded-ka-dito-mechanics?hsLang=en" target="_blank" className="link-seemachanics">See Full Mechanics</a>
-                </div>
                 
 
                 <h6 >If you're not part of the THOUSANDS of daily winners sa DITO Loaded Ang Pasko raffle promo -- no worries, worth it pa rin ang pagsali mo! Non-winning raffle entries will automatically be converted to DITO Rewards Points.</h6>
@@ -84,6 +81,10 @@ const LandingPostRaffle = () => {
                     <p className="loginText">You may log in anytime to check your points!</p>
                     <Link className={"btn btn-blue "}  to={"/login"} >LOGIN</Link>
                 </div>
+                <div className="col-md-12">
+                        <a href="https://dito.ph/loaded-ka-dito-mechanics?hsLang=en" target="_blank" className="link-seemachanics">See Full Mechanics</a>
+                    </div>
+                
                 <div className="col-md-12">
                     <img className="img-homefooter-1" src={ logoDito } />
                     <img className="img-homefooter-2" src={ howToJoinSocmed } />

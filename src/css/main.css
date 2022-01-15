@@ -208,13 +208,13 @@ div.home {
 
 a.link-seemachanics {
   margin-top: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   font-size: 14px;
+  line-height: 50px;
 }
 
 .home-content .btn {
   margin-top: 20px;
-  margin-bottom: 45px;
 }
 
 .img-homefooter img {
@@ -278,7 +278,7 @@ a.link-seemachanics {
     flex-direction: column;
     text-align: center;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 16px;
   }
 
   .btn-mobile .btn {
